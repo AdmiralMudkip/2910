@@ -1,12 +1,7 @@
 var grid_array;
 var boat_location;
 
-//variables to store in the array
-var empty = 0;
-var boat = 1;
-var mine = 2;
-var treasure = 3;
-var goal = 4;
+
 
 
 //level arrays
@@ -90,6 +85,13 @@ var FF = {
 	
     offset: {top: 0, left: 0},
 
+    //variables to store in the array
+    empty: 0,
+    boat: 1,
+    mine: 2,
+    treasure: 3,
+    goal: 4,
+
     init: function() {
 
         // the proportion of width to height
@@ -172,10 +174,10 @@ var FF = {
 
     resize: function() {
 
-        FF.currentHeight = window.innerHeight;
+        FF.currentWidth = window.innerWidth;
         // resize the width in proportion
         // to the new height
-        FF.currentWidth = FF.currentHeight * FF.RATIO;
+        FF.currentHeight = FF.currentWidth / FF.RATIO;
 
         // this will create some extra space on the
         // page, allowing us to scroll past
