@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var grid_array;
 var boat_location;
 
@@ -14,7 +13,11 @@ var level1 = [[boat,treasure],[mine,goal]];
 
 
 function checkLocation(){
+    
+}
 
+function checkDestination(){
+    
 }
 
 function win(){
@@ -54,8 +57,6 @@ function toLevelSelect(){
 function toHighScores(){
     
 }
-=======
->>>>>>> aaa52a65d2ff0660d57afb94dbc59d9daef9e4a1
 
 // all the code goes here
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating
