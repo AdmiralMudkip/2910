@@ -1,0 +1,24 @@
+
+.menubar ul {
+    margin: 0; 
+    padding: 0;
+    width:185px;
+    list-style-type: none;
+}
+
+.menubar ul li a {
+    text-decoration: none;
+    color: white; 
+    padding: 10.5px 11px;
+    background-color: #0066ff;
+    display:block;
+}
+ 
+.menubar ul li a:visited {
+    color: white;
+}
+ 
+.menubar ul li a:hover, .menubar ul li .current {
+    color: white;
+    background-color: #00e36e;
+}
