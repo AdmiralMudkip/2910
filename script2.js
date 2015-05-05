@@ -1,23 +1,29 @@
-var grid_array;
-var boat_location;
-
-
-
-
 //level arrays
 //each segment is a row
+
+var currentLevel[][];
 var level1 = [[boat,treasure],[mine,goal]];
 
 
 // game logic functions
 
-
-function checkLocation(){
-    
+//recieves an input value, and searches the currentlevel array for that value.
+//won't work with mines, use it for the boat, goal, and treasure.
+function checkLocation(var search){
+    for (var i = 0; i < currentLevel[e][0]; i++){
+        for (var e = 0; e < currentLevel[i][e]; e++)
+            if currentLevel[i][e] = search{
+                return currentLevel[i][e];
+            }
+        }
+    }
 }
 
 function checkDestination(){
-    
+    checkLocation(boat){
+        for 
+           
+    }
 }
 
 function win(){
@@ -29,7 +35,9 @@ function loss(){
 }
 
 function moveLeft(){
-    
+    checkLocation(boat){
+        
+    }
 }
 
 function moveRight(){
@@ -41,6 +49,11 @@ function moveUp(){
 }
 
 function moveDown(){
+    
+}
+
+//should reset the currentlevel array with the respective stored array
+function newLevel(){
     
 }
 
