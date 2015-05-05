@@ -13,7 +13,11 @@ var level1 = [[boat,treasure],[mine,goal]];
 
 
 function checkLocation(){
+    
+}
 
+function checkDestination(){
+    
 }
 
 function win(){
