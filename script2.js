@@ -1,30 +1,71 @@
 //level arrays
 //each segment is a row
 
-var currentLevel[][];
-var level1 = [[boat,treasure],[mine,goal]];
+var currentLevel;
+var level1 = [[boat, treasure], [mine, goal]];
 
 
 // game logic functions
 
 //recieves an input value, and searches the currentlevel array for that value.
-//won't work with mines, use it for the boat, goal, and treasure.
-function checkLocation(var search){
-    for (var i = 0; i < currentLevel[e][0]; i++){
-        for (var e = 0; e < currentLevel[i][e]; e++)
-            if currentLevel[i][e] = search{
+//! - important : won't work with mines (because there's lots of them), use it for the boat, goal, and treasure.
+//this function is supposed to iterate through the array, I dont think it currently does this ~Jason
+function checkLocation(search) {
+    var i, e;
+    
+    for (i = 0; i < currentLevel[i][0]; i++) {
+        for (e = 0; e < currentLevel[i][e]; e++) {
+            if (currentLevel[i][e] = search) {
                 return currentLevel[i][e];
+                // should return the position of the value that was searched for
             }
         }
     }
 }
 
-function checkDestination(){
-    checkLocation(boat){
-        for 
+
+function checkDestination() {
+    checkLocation(boat) {
+        if 
            
     }
 }
+
+// functions to check up/down/left/right.  This should probably be used instead of just one function, make it easier. ~Jason
+function checkLeft(){
+    checkLocation(boat){
+        if (currentLevel[i - 1][e] = 0){
+            return true;   
+        }
+    }
+}
+        
+function checkRight(){
+    checkLocation(boat){
+        if  (currentLevel[i + 1][e] = 0{
+             return true;
+        }
+    }
+}
+        
+        
+function checkAbove(){
+    checkLocation(boat){
+        if  (currentLevel[i][e - 1] = 0){
+            return true;   
+        }
+    }
+}
+        
+function checkBelow(){
+    checkLocation(boat){
+        if (currentLevel[i][e + 1] = 0){
+            return true;
+        }
+    }
+    
+}
+        
 
 function win(){
     
