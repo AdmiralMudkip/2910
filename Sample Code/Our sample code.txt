@@ -1,0 +1,110 @@
+
+***Sample Code***
+
+Create/Spawn player:
+
+var player = {
+  color: "#00A",
+  x: 220,
+  y: 270,
+  width: 32,
+  height: 32,
+  draw: function() {
+    canvas.fillStyle = this.color;
+    canvas.fillRect(this.x, this.y, this.width, this.height);
+  }
+};
+- Rectangle Example (draw):
+function draw() {
+  canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  player.draw();
+}
+
+Player Movement:
+
+- Update function to move player:
+
+function update() {
+  if (keydown.left) {
+    player.x -= 2;
+  }
+
+  if (keydown.right) {
+    player.x += 2;
+  }
+}
+
+- Adds player boundary:
+
+function update() {
+  if (keydown.left) {
+    player.x -= 5;
+  }
+
+  if (keydown.right) {
+    player.x += 5;
+  }
+
+  player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
+}
+
+Collision Detection:
+
+- Simple rectangle collision detection
+
+function collides(a, b) {
+  return a.x < b.x + b.width &&
+         a.x + a.width > b.x &&
+         a.y < b.y + b.height &&
+         a.y + a.height > b.y;
+}
+
+- Handles collisions from Update method (bullet example)
+
+function handleCollisions() {
+  playerBullets.forEach(function(bullet) {
+    enemies.forEach(function(enemy) {
+      if (collides(bullet, enemy)) {
+        enemy.explode();
+        bullet.active = false;
+      }
+    });
+  });
+
+  enemies.forEach(function(enemy) {
+    if (collides(enemy, player)) {
+      enemy.explode();
+      player.explode();
+    }
+  });
+}
+
+function update() {
+  ...
+  handleCollisions();
+}
+
+- Flags for removal and adds Explosion:
+
+function Enemy(I) {
+  ...
+
+  I.explode = function() {
+    this.active = false;
+    // Extra Credit: Add an explosion graphic
+  };
+
+  return I;
+};
+
+player.explode = function() {
+  this.active = false;
+  // Extra Credit: Add an explosion graphic and then end the game
+};
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~    Sources:   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://www.html5rocks.com/en/tutorials/canvas/notearsgame/
+http://jlongster.com/Making-Sprite-based-Games-with-Canvas
+http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+
