@@ -13,29 +13,24 @@ var level1 = [[boat, treasure], [mine, goal]];
 function checkLocation(search) {
     var i, e;
     
-    for (i = 0; i < currentLevel[i][0]; i++) {
-        for (e = 0; e < currentLevel[i][e]; e++) {
+    for (i = 0; i < currentLevel.length; i++) {
+        for (e = 0; e < currentLevel.length.length; e++) {
             if (currentLevel[i][e] = search) {
                 return currentLevel[i][e];
-                // should return the position of the value that was searched for
             }
+            // !-- OLDER CODE.  Trying the above instead.  Just keeping this around. ~Jason
+            //if (currentLevel[i].number.split(',').indexOf(search) >= 0 {
+            //  return currentLevel[i][j];
+           // should return the position of the value that was searched for
         }
     }
-}
 
 
-function checkDestination() {
-    checkLocation(boat) {
-        if 
-           
-    }
-}
-
-// functions to check up/down/left/right.  This should probably be used instead of just one function, make it easier. ~Jason
+// functions to check up/down/left/right.  Returns the location of the tile if it is empty. ~Jason  
 function checkLeft(){
     checkLocation(boat){
         if (currentLevel[i - 1][e] = 0){
-            return true;   
+            return currentLevel[i - 1][e];   
         }
     }
 }
@@ -43,7 +38,7 @@ function checkLeft(){
 function checkRight(){
     checkLocation(boat){
         if  (currentLevel[i + 1][e] = 0{
-             return true;
+             return currentlevel[i + 1][e];
         }
     }
 }
@@ -52,7 +47,7 @@ function checkRight(){
 function checkAbove(){
     checkLocation(boat){
         if  (currentLevel[i][e - 1] = 0){
-            return true;   
+            return currentLevel[i][e - 1];
         }
     }
 }
@@ -60,7 +55,7 @@ function checkAbove(){
 function checkBelow(){
     checkLocation(boat){
         if (currentLevel[i][e + 1] = 0){
-            return true;
+            return currentLevel[i][e + 1];
         }
     }
     
@@ -76,9 +71,12 @@ function loss(){
 }
 
 function moveLeft(){
-    checkLocation(boat){
+    var temp;
+    temp = checkLocation(boat)
+    
+    checkLeft();
         
-    }
+    
 }
 
 function moveRight(){
