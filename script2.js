@@ -1,10 +1,18 @@
 //level arrays
 //each segment is a row
 
+var empty = 0;
+var boat = 1;
+var mine = 2;
+var treasure = 3;
+var goal = 4;
 var currentLevel;
-var level1 = [[boat, treasure], [mine, goal]];
+var level1 = [[9, 9, 9, 9],
+              [9, boat, treasure, 9],
+              [9, mine, goal, 9],
+              [9, 9, 9, 9]];
 
-
+currentLevel = level1;
 // game logic functions
 
 //recieves an input value, and searches the currentlevel array for that value.
@@ -15,7 +23,7 @@ function checkLocation(search) {
     
     for (i = 0; i < currentLevel.length; i++) {
         for (e = 0; e < currentLevel.length.length; e++) {
-            if (currentLevel[i][e] = search) {
+            if (currentLevel[i][e] === search) {
                 return currentLevel[i][e];
             }
             // !-- OLDER CODE.  Trying the above instead.  Just keeping this around. ~Jason
@@ -27,74 +35,81 @@ function checkLocation(search) {
 
 
 // functions to check up/down/left/right.  Returns the location of the tile if it is empty. ~Jason  
-function checkLeft(){
-    checkLocation(boat){
-        if (currentLevel[i - 1][e] = 0){
-            return currentLevel[i - 1][e];   
+    function checkLeft() {
+        var temp = checkLocation(boat);
+        if (currentLevel[i - 1][e] === 0) {
+            return currentLevel[i - 1][e];
+        }
+        
+    }
+        
+    function checkRight() {
+        var temp = checkLocation(boat);
+        if (currentLevel[i + 1][e] === 0) {
+            return currentlevel[i + 1][e];
         }
     }
-}
-        
-function checkRight(){
-    checkLocation(boat){
-        if  (currentLevel[i + 1][e] = 0{
-             return currentlevel[i + 1][e];
-        }
-    }
-}
         
         
-function checkAbove(){
-    checkLocation(boat){
-        if  (currentLevel[i][e - 1] = 0){
+    function checkAbove() {
+        var temp = checkLocation(boat);
+        if (currentLevel[i][e - 1] === 0) {
             return currentLevel[i][e - 1];
         }
+    
     }
-}
         
-function checkBelow(){
-    checkLocation(boat){
-        if (currentLevel[i][e + 1] = 0){
+    function checkBelow() {
+        var temp = checkLocation(boat);
+        if (currentLevel[i][e + 1] === 0) {
             return currentLevel[i][e + 1];
         }
     }
-    
-}
-        
+            
 
-function win(){
+    function win() {
     
-}
+    }
 
-function loss(){
+    function loss() {
     
-}
+    }
 
-function moveLeft(){
+    function moveLeft() {
     var temp;
     temp = checkLocation(boat)
     
-    checkLeft();
+        if (checkLeft() === mine) {
+            loss();   
+        }
+        
+        if (checkLeft() === treasure) {
+            scoreIncrease;   
+        }
+        
+        if (checkLeft() === goal) {
+            win();
+        }
         
     
-}
+        }
 
-function moveRight(){
+        function moveRight() {
     
-}
+        }
 
-function moveUp(){
+        function moveUp() {
     
-}
+        }
 
-function moveDown(){
+        function moveDown() {
     
-}
+        }
 
-//should reset the currentlevel array with the respective stored array
-function newLevel(){
+//should reset the currentlevel array with the respective stored array.  Will have to be called when the user beats a level.
+        function newLevel() {
     
-}
+        }
 
 // ui functions
 
