@@ -76,35 +76,75 @@ function checkLocation(search) {
     }
 
     function moveLeft() {
-    var temp;
-    temp = checkLocation(boat)
+        var temp = checkLocation(boat);
     
         if (checkLeft() === mine) {
-            loss();   
+            loss();
         }
         
         if (checkLeft() === treasure) {
-            scoreIncrease;   
+            scoreIncrease();
         }
         
         if (checkLeft() === goal) {
             win();
         }
+    }
+
+    function moveRight() {
+        var temp = checkLocation(boat);
+    
+            
+        if (checkRight() === mine) {
+            loss();
+        }
         
-    
+        if (checkRight() === treasure) {
+            scoreIncrease;   
         }
+        
+        if (checkRight() === goal) {
+            win();
+        }
+        
+    }
 
-        function moveRight() {
-    
+    function moveUp() {
+        var temp = checkLocation(boat);
+        
+        if (checkUp() === mine) {
+            loss();
         }
+        
+        if (checkUp() === treasure) {
+            scoreIncrease;   
+        }
+        
+        if (checkUp() === goal) {
+            win();
+        }
+    }
 
-        function moveUp() {
-    
+    function moveDown() {
+        var temp = checkLocation(boat);
+        
+        if (checkDown() === empty) {
+            
+            
         }
-
-        function moveDown() {
-    
+        
+        if (checkDown() === mine) {
+            loss();
         }
+        
+        if (checkDown() === treasure) {
+            scoreIncrease;   
+        }
+        
+        if (checkDown() === goal) {
+            win();
+        }
+    }
 
 //should reset the currentlevel array with the respective stored array.  Will have to be called when the user beats a level.
         function newLevel() {
