@@ -13,7 +13,7 @@ var level1 = [[boat, treasure], [mine, goal]];
 function checkLocation(search) {
     var i, e;
     
-    for (i = 0; i < currentLevel[i][0]; i++){
+    for (i = 0; i < currentLevel[i][0]; i++) {
         for (e = 0; e < currentLevel[i][e]; e++) {
             if (currentLevel[i][e] = search) {
                 return currentLevel[i][e];
@@ -25,7 +25,7 @@ function checkLocation(search) {
 
 
 function checkDestination() {
-    checkLocation(boat){
+    checkLocation(boat) {
         if 
            
     }
@@ -34,26 +34,34 @@ function checkDestination() {
 // functions to check up/down/left/right.  This should probably be used instead of just one function, make it easier. ~Jason
 function checkLeft(){
     checkLocation(boat){
-        return currentLevel[i - 1][e];
+        if (currentLevel[i - 1][e] = 0){
+            return true;   
+        }
     }
 }
         
 function checkRight(){
     checkLocation(boat){
-        return currentLevel[i + 1][e];   
+        if  (currentLevel[i + 1][e] = 0{
+             return true;
+        }
     }
 }
         
         
 function checkAbove(){
     checkLocation(boat){
-        return currentLevel[i][e - 1];   
+        if  (currentLevel[i][e - 1] = 0){
+            return true;   
+        }
     }
 }
         
 function checkBelow(){
     checkLocation(boat){
-        return currentLevel[i][e + 1];   
+        if (currentLevel[i][e + 1] = 0){
+            return true;
+        }
     }
     
 }
