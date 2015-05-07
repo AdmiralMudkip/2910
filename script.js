@@ -154,6 +154,16 @@ window.requestAnimFrame = (function(){
         }, 1);
     };
 
+    function startLevel(level) {
+        currentLevel = level;
+        var i;
+            for(i = 0; i < currentLevel.length; i++) {
+                if(currentLevel[i][0] === boat) {
+                    
+                }
+            }
+    };
+
 // abstracts various canvas operations into
 // standalone functions
 window.Draw = {
