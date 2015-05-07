@@ -14,21 +14,21 @@ window.requestAnimFrame = (function(){
 // name of our game
 var FF = {
 
-	
+
     // set up some initial values
-    WIDTH: 720, 
-    HEIGHT:  480, 
+    WIDTH: 720,
+    HEIGHT: 480,
     // we'll set the rest of these
     // in the init function
-    RATIO:  null,
-    currentWidth:  null,
-    currentHeight:  null,
+    RATIO: null,
+    currentWidth: null,
+    currentHeight: null,
     canvas: null,
-    ctx:  null,
-	
-    scale:  1,
-	
-    offset: {top: 0, left: 0},
+    ctx: null,
+
+    scale: 1,
+
+    offset: { top: 0, left: 0 },
 
     //variables to store in the array
     empty: 0,
@@ -36,8 +36,22 @@ var FF = {
     mine: 2,
     treasure: 3,
     goal: 4,
+    bar: 9,
 
-    init: function() {
+    //direction of the boat
+    left: 5,
+    right: 6,
+    up: 7,
+    down: 8,
+
+    //levels
+    currentLevel: 0,
+    level1: [[bar, bar, bar, bar],
+             [bar, boat, mine, bar],
+             [bar, treasure, goal, bar],
+             [bar, bar, bar, bar]],
+
+    init: function () {
 
         // the proportion of width to height
         FF.RATIO = FF.WIDTH / FF.HEIGHT;
@@ -57,67 +71,67 @@ var FF = {
 
         // we're ready to resize
         FF.resize();
-		FF.resize();
-		
-		// we need to sniff out Android and iOS
-		// so that we can hide the address bar in
-		// our resize function
-		FF.ua = navigator.userAgent.toLowerCase();
-		FF.android = FF.ua.indexOf('android') > -1 ? true : false;
-		FF.ios = ( FF.ua.indexOf('iphone') > -1 || FF.ua.indexOf('ipad') > -1  ) ? 
+        FF.resize();
+
+        // we need to sniff out Android and iOS
+        // so that we can hide the address bar in
+        // our resize function
+        FF.ua = navigator.userAgent.toLowerCase();
+        FF.android = FF.ua.indexOf('android') > -1 ? true : false;
+        FF.ios = (FF.ua.indexOf('iphone') > -1 || FF.ua.indexOf('ipad') > -1) ?
 		true : false;
-		
-		// listen for clicks
-		window.addEventListener('click', function(e) {
-			e.preventDefault();
-			FF.Input.set(e);
-		}, false);
 
-		// listen for touches
-		window.addEventListener('touchstart', function(e) {
-			e.preventDefault();
-			// the event object has an array
-			// named touches; we just want
-			// the first touch
-			FF.Input.set(e.touches[0]);
-		}, false);
-		
-		window.addEventListener('touchmove', function(e) {
-			// we're not interested in this,
-			// but prevent default behaviour
-			// so the screen doesn't scroll
-			// or zoom
-			e.preventDefault();
-		}, false);
-		
-		window.addEventListener('touchend', function(e) {
-			// as above
-			e.preventDefault();
-		}, false);
-		
+        // listen for clicks
+        window.addEventListener('click', function (e) {
+            e.preventDefault();
+            FF.Input.set(e);
+        }, false);
+
+        // listen for touches
+        window.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            // the event object has an array
+            // named touches; we just want
+            // the first touch
+            FF.Input.set(e.touches[0]);
+        }, false);
+
+        window.addEventListener('touchmove', function (e) {
+            // we're not interested in this,
+            // but prevent default behaviour
+            // so the screen doesn't scroll
+            // or zoom
+            e.preventDefault();
+        }, false);
+
+        window.addEventListener('touchend', function (e) {
+            // as above
+            e.preventDefault();
+        }, false);
+
         //menu starts on startup
-		FF.ctx.drawImage(document.getElementById("Main"), 0, 0,FF.canvas.width,FF.canvas.height);
-		
-		
-		//drawing invisible images
-		//FF.Draw.circle(100, 100, 50, 'rgba(255,255,0,0)');
-		
-		//FF.Draw.rect(0,0,FF.canvas.width,FF.canvas.height*7/8, 'Blue');
-		
-		
-		// FF.Draw.rect(0,FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height/8, 'Brown');
-		// FF.Draw.circle(FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
-		
-		// FF.Draw.circle(FF.canvas.width - FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
-		// FF.Draw.text('Frantic Frigate', FF.canvas.height*5/32, FF.canvas.height*61/64, 20, '#066');
+        FF.ctx.drawImage(document.getElementById("Main"), 0, 0, FF.canvas.width, FF.canvas.height);
 
-		//how to use an image
-		// var levelOne = document.getElementById("levelOne");
-		// FF.ctx.drawImage(levelOne, 0, 0,FF.canvas.width,FF.canvas.height*7/8);
-		// FF.ctx.drawImage(levelOne, 0, FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height*1/8);
+
+        //drawing invisible images
+        //FF.Draw.circle(100, 100, 50, 'rgba(255,255,0,0)');
+
+        //FF.Draw.rect(0,0,FF.canvas.width,FF.canvas.height*7/8, 'Blue');
+
+
+        // FF.Draw.rect(0,FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height/8, 'Brown');
+        // FF.Draw.circle(FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
+
+        // FF.Draw.circle(FF.canvas.width - FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
+        // FF.Draw.text('Frantic Frigate', FF.canvas.height*5/32, FF.canvas.height*61/64, 20, '#066');
+
+        //how to use an image
+        // var levelOne = document.getElementById("levelOne");
+        // FF.ctx.drawImage(levelOne, 0, 0,FF.canvas.width,FF.canvas.height*7/8);
+        // FF.ctx.drawImage(levelOne, 0, FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height*1/8);
     },
 
-    resize: function() {
+    resize: function () {
 
         FF.currentWidth = window.innerWidth;
         // resize the width in proportion
@@ -140,10 +154,20 @@ var FF = {
         // we use a timeout here because some mobile
         // browsers don't fire if there is not
         // a short delay
-        window.setTimeout(function() {
-                window.scrollTo(0,1);
+        window.setTimeout(function () {
+            window.scrollTo(0, 1);
         }, 1);
+    },
+
+
+
+    level: function (levelName) {
+        currentLevel = levelName;
+        boatDir = right;
+
+        
     }
+
 
 };
 
@@ -176,6 +200,5 @@ FF.Draw = {
 	
 
 };
-
 window.addEventListener('load', FF.init, false);
 window.addEventListener('resize', FF.resize, false);
