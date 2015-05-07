@@ -13,6 +13,25 @@ var level1 = [[9, 9, 9, 9],
               [9, 9, 9, 9]];
 
 currentLevel = level1;
+
+draw: function() {
+    var self = this;
+    this.context.clearRect(0, 0, this.w, this.h);
+    _(this.agents).each(function(agent) {
+        self.drawTile(
+            agent.getSprite(),
+            agent.getTileSpec()[agent.getTileId()],
+            agent.position.x,
+            agent.position.y
+        );
+    });
+}
+
+
+
+
+
+
 // game logic functions
 
 //recieves an input value, and searches the currentlevel array for that value.
@@ -23,7 +42,7 @@ function checkLocation(search) {
     
     for (i = 0; i < currentLevel.length; i++) {
         for (e = 0; e < currentLevel.length.length; e++) {
-            if (currentLevel[i][e] === search) {
+            if (currentLevel[i][e] == search) {
                 return currentLevel[i][e];
             }
             // !-- OLDER CODE.  Trying the above instead.  Just keeping this around. ~Jason
@@ -37,7 +56,7 @@ function checkLocation(search) {
 // functions to check up/down/left/right.  Returns the location of the tile if it is empty. ~Jason  
     function checkLeft() {
         var temp = checkLocation(boat);
-        if (currentLevel[i - 1][e] === 0) {
+        if (currentLevel[i - 1][e] == 0) {
             return currentLevel[i - 1][e];
         }
         
@@ -45,7 +64,7 @@ function checkLocation(search) {
         
     function checkRight() {
         var temp = checkLocation(boat);
-        if (currentLevel[i + 1][e] === 0) {
+        if (currentLevel[i + 1][e] == 0) {
             return currentlevel[i + 1][e];
         }
     }
@@ -53,7 +72,7 @@ function checkLocation(search) {
         
     function checkAbove() {
         var temp = checkLocation(boat);
-        if (currentLevel[i][e - 1] === 0) {
+        if (currentLevel[i][e - 1] == 0) {
             return currentLevel[i][e - 1];
         }
     
@@ -61,7 +80,7 @@ function checkLocation(search) {
         
     function checkBelow(checkLocation) {
         var temp = checkLocation(boat);
-        if (currentLevel[i][e + 1] === 0) {
+        if (currentLevel[i][e + 1] == 0) {
             return currentLevel[i][e + 1];
         }
     }
@@ -78,13 +97,13 @@ function checkLocation(search) {
     function moveLeft() {
         var temp = checkLocation(boat);
     
-        if (checkLeft(temp) === empty) {
+        if (checkLeft(temp) == empty) {
             //?? Should assign the position left of the current location to the boat, and the current one empty ~Jason
-        } else if (checkLeft() === mine) {
+        } else if (checkLeft() == mine) {
             loss();
-        } else if (checkLeft() === treasure) {
+        } else if (checkLeft() == treasure) {
             scoreIncrease();
-        } else if (checkLeft() === goal) {
+        } else if (checkLeft() == goal) {
             win();
         }
     }
@@ -93,15 +112,15 @@ function checkLocation(search) {
         var temp = checkLocation(boat);
     
             
-        if (checkRight() === mine) {
+        if (checkRight() == mine) {
             loss();
         }
         
-        if (checkRight() === treasure) {
+        if (checkRight() == treasure) {
             scoreIncrease;   
         }
         
-        if (checkRight() === goal) {
+        if (checkRight() == goal) {
             win();
         }
         
@@ -110,15 +129,15 @@ function checkLocation(search) {
     function moveUp() {
         var temp = checkLocation(boat);
         
-        if (checkUp() === mine) {
+        if (checkUp() == mine) {
             loss();
         }
         
-        if (checkUp() === treasure) {
+        if (checkUp() == treasure) {
             scoreIncrease;   
         }
         
-        if (checkUp() === goal) {
+        if (checkUp() == goal) {
             win();
         }
     }
@@ -126,20 +145,20 @@ function checkLocation(search) {
     function moveDown() {
         var temp = checkLocation(boat);
         
-        if (checkDown() === empty) {
+        if (checkDown() == empty) {
             
             
         }
         
-        if (checkDown() === mine) {
+        if (checkDown() == mine) {
             loss();
         }
         
-        if (checkDown() === treasure) {
+        if (checkDown() == treasure) {
             scoreIncrease;   
         }
         
-        if (checkDown() === goal) {
+        if (checkDown() == goal) {
             win();
         }
     }
