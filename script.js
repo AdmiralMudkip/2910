@@ -30,27 +30,6 @@ var FF = {
 
     offset: { top: 0, left: 0 },
 
-    //variables to store in the array
-    empty: 0,
-    boat: 1,
-    mine: 2,
-    treasure: 3,
-    goal: 4,
-    bar: 9,
-
-    //direction of the boat
-    left: 5,
-    right: 6,
-    up: 7,
-    down: 8,
-
-    //levels
-    currentLevel: 0,
-    level1: [[bar, bar, bar, bar],
-             [bar, boat, mine, bar],
-             [bar, treasure, goal, bar],
-             [bar, bar, bar, bar]],
-
     init: function () {
 
         // the proportion of width to height
@@ -62,7 +41,7 @@ var FF = {
         FF.canvas = document.getElementsByTagName('canvas')[0];
         // setting this is important
         // otherwise the browser will
-        // default to 720 x 480
+        // default to 320 x 200
         FF.canvas.width = FF.WIDTH;
         FF.canvas.height = FF.HEIGHT;
         // the canvas context enables us to 
@@ -109,9 +88,8 @@ var FF = {
             e.preventDefault();
         }, false);
 
-        //menu starts on startup
+        
         FF.ctx.drawImage(document.getElementById("Main"), 0, 0, FF.canvas.width, FF.canvas.height);
-
 
         //drawing invisible images
         //FF.Draw.circle(100, 100, 50, 'rgba(255,255,0,0)');
@@ -133,10 +111,10 @@ var FF = {
 
     resize: function () {
 
-        FF.currentWidth = window.innerWidth;
+        FF.currentHeight = window.innerHeight;
         // resize the width in proportion
         // to the new height
-        FF.currentHeight = FF.currentWidth / FF.RATIO;
+        FF.currentWidth = FF.currentHeight * FF.RATIO;
 
         // this will create some extra space on the
         // page, allowing us to scroll past
@@ -157,17 +135,7 @@ var FF = {
         window.setTimeout(function () {
             window.scrollTo(0, 1);
         }, 1);
-    },
-
-
-
-    level: function (levelName) {
-        currentLevel = levelName;
-        boatDir = right;
-
-        
     }
-
 
 };
 
@@ -200,5 +168,6 @@ FF.Draw = {
 	
 
 };
+
 window.addEventListener('load', FF.init, false);
 window.addEventListener('resize', FF.resize, false);
