@@ -154,14 +154,22 @@ window.requestAnimFrame = (function(){
         }, 1);
     };
 
+    //when you click the level you wish to play this runs
     function startLevel(level) {
         currentLevel = level;
-        var i;
+        var i, boatLocX, boatLocY;
             for(i = 0; i < currentLevel.length; i++) {
                 if(currentLevel[i][0] === boat) {
-                    
+                    boatLocX = 0;
+                    boatLocY = i;
                 }
             }
+
+    };
+    
+    //this starts the level setup animation and 
+    function levelBackground(level) {
+        
     };
 
 // abstracts various canvas operations into
