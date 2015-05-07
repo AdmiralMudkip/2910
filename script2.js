@@ -59,7 +59,7 @@ function checkLocation(search) {
     
     }
         
-    function checkBelow() {
+    function checkBelow(checkLocation) {
         var temp = checkLocation(boat);
         if (currentLevel[i][e + 1] === 0) {
             return currentLevel[i][e + 1];
@@ -74,19 +74,17 @@ function checkLocation(search) {
     function loss() {
     
     }
-
+//example for how all the other move functions should look. ~Jason
     function moveLeft() {
         var temp = checkLocation(boat);
     
-        if (checkLeft() === mine) {
+        if (checkLeft(temp) === empty) {
+            //?? Should assign the position left of the current location to the boat, and the current one empty ~Jason
+        } else if (checkLeft() === mine) {
             loss();
-        }
-        
-        if (checkLeft() === treasure) {
+        } else if (checkLeft() === treasure) {
             scoreIncrease();
-        }
-        
-        if (checkLeft() === goal) {
+        } else if (checkLeft() === goal) {
             win();
         }
     }
