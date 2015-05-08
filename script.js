@@ -13,7 +13,7 @@ window.requestAnimFrame = (function(){
 })();
 
 
-
+  
     // set up some initial values
     var WIDTH = 720;
     var HEIGHT = 480;
