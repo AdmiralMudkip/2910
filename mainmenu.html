@@ -8,10 +8,42 @@
     </head>
     <body>
     <div class="menubar">
-    <a class="button1" href="FranticFrigate.html"></a>
-    <a class="button2" href="#"></a>
-    <a class="button3" href="#"></a>
-    <a class="button4" href="#"></a>
+    <a id="button1" href="FranticFrigate.html"></a>
+    <a id="button2" href="levelselect.html"></a>
+    <a id="button3" href="#"></a>
+    <a id="button4" id="buttonPlaySound" href="#"></a>
+
+
+
 </div>   
+        <audio> <source src="sound/button.mp3" type="audio/mpeg"> </audio>
+        
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document).ready(function() {
+    $(".menubar").click(function(event){
+    $('.menubar').html();
+        });
+    });
+    
+    var audio = document.getElementsByTagName("audio")[0];
+    
+    button1.onclick = function() {
+        audio.currentTime = 0;
+        audio.play();
+    }
+    button2.onclick = function() {
+        audio.currentTime = 0;
+        audio.play();
+    }
+    button3.onclick = function() {
+        audio.currentTime = 0;
+        audio.play();
+    }
+    button4.onclick = function() {
+        audio.currentTime = 0;
+        audio.play();
+    }
+</script> 
     </body>
 </html>

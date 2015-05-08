@@ -13,7 +13,7 @@ window.requestAnimFrame = (function(){
 })();
 
 
-
+  
     // set up some initial values
     var WIDTH = 720;
     var HEIGHT = 480;
@@ -41,10 +41,12 @@ window.requestAnimFrame = (function(){
     var right = 7;
     var down = 8;
     
-    var level1 = [[bar, bar, bar, bar],
-              [bar, boat, treasure, bar],
-              [bar, mine, goal, bar],
-              [bar, bar, bar, bar]];
+    var level1 = [  
+                    [bar,   bar,      bar,        bar],
+                    [bar,   boat,     treasure,   bar],
+                    [bar,   mine,     goal,       bar],
+                    [bar,   bar,      bar,        bar]
+                ];
 
 
     function init() {
@@ -118,8 +120,20 @@ window.requestAnimFrame = (function(){
         var treasureGrabbed = 0;
         var boatLocX = 1;
         var boatLocY = 1;
+        var boatLocDrawX = 265;
+        var boatLocDrawY = 145;
         
-        window.ctx.drawImage(document.getElementById("boat"), (boatLocX + 264), (boatLocY + 144));
+        //var boatMove = new Audio("sound/wombo-combo.mp3");  wombo combo version, used as a tester
+        var boatMove = new Audio("sound/oarswater-000.ogg", true);
+        var backgroundMusic = new Audio("sound/background.mp3", true);
+        
+        backgroundMusic.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        
+        backgroundMusic.play();
+        window.ctx.drawImage(document.getElementById("boat"), (boatLocDrawX), (boatLocDrawY));
         
         window.addEventListener('keydown', function (e) {
             
@@ -142,6 +156,7 @@ window.requestAnimFrame = (function(){
                 }
         }, false);
         
+        //these functions return the value in the respective position in the array relative to the boat
         function checkLeft() {
             return currentLevel[boatLocX - 1][boatLocY];
         }
@@ -151,11 +166,11 @@ window.requestAnimFrame = (function(){
         function checkUp() {
             return currentLevel[boatLocX][boatLocY - 1];
         }
-        
         function checkDown() {
             return currentLevel[boatLocX][boatLocY + 1];
         }
 
+        
         function winner() {
             alert("You win!");
         }
@@ -164,30 +179,35 @@ window.requestAnimFrame = (function(){
             alert("You lose!");
         }
         
+        
         function moveLeft() {
             if(checkLeft() != bar) {
                 //boat moving left anim func
                 boatCurrentDir = left;
                 if(checkLeft() == treasure) {
                     //boat gets treasure anim func
-                    treasureGrabbed += 1;
+                    //treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
-                if(checkLeft() == mine) {
+                else if(checkLeft() == mine) {
                     //boat explodes func
-                    lose = 1;
+                    //lose = 1;
+                    alert("You hit a mine!");
                 }
 
-                if(checkLeft() == goal) {
+                else if(checkLeft() == goal) {
                     //winning anim function
-                    win = 1;
+                    //win = 1;
+                    alert("You reached the goal!");
                 }
-                
+                boatLocDrawX -= 64;
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocX -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), ((boatLocX * 50) + 215), ((boatLocY * 50) + 95));
+                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                boatMove.play();
             } 
         }
 
@@ -198,25 +218,28 @@ window.requestAnimFrame = (function(){
                 if(checkRight() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
-                    alert("you grabbed a treasure!");
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkRight() == mine) {
                     //boat explodes func
                     lose = 1;
+                    alert("You hit a mine!");
                 }
 
                 if(checkRight() == goal) {
                     //winning anim function
-                    win = 1;
                     
+                    alert("You reached the goal!");
                 }
                 
+                boatLocDrawX += 64;
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocX += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), ((boatLocX * 50) + 230), ((boatLocY * 50) + 95));
+                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                boatMove.play();
             } 
         }
 
@@ -227,23 +250,28 @@ window.requestAnimFrame = (function(){
                 if(checkUp() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkUp() == mine) {
                     //boat explodes func
                     lose = 1;
+                    alert("You hit a mine!");
                 }
 
                 if(checkUp() == goal) {
                     //winning anim function
                     win = 1;
+                    alert("You reached the goal!");
                 }
                 
+                boatLocDrawY -= 64;
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocY -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), ((boatLocX * 50) + 215), ((boatLocY * 50) + 105));
+                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                boatMove.play();
             } 
         }
 
@@ -254,26 +282,28 @@ window.requestAnimFrame = (function(){
                 if(checkDown() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
-                    
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkDown() == mine) {
                     //boat explodes func
                     lose = 1;
-                    alert("you lose");
+                    alert("You hit a mine!");
                 }
 
                 if(checkDown() == goal) {
                     //winning anim function
                     win = 1;
-                    
+                    alert("You reached the goal!");
                 }
                 
+                boatLocDrawY += 64;
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocY += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), ((boatLocX * 50) + 215), ((boatLocY * 50) + 105));
+                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                boatMove.play();
             } 
         }
         

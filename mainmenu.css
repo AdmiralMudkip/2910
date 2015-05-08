@@ -4,7 +4,7 @@ body {
   background-size: 1280px 720px;
 }
 
-.button1 {
+#button1 {
   position: absolute;      
   top: 110px;      
   right: 90px;
@@ -13,7 +13,7 @@ body {
   border-radius: 8px;
 }
 
-.button2 {
+#button2 {
   position: absolute;      
   top: 215px;      
   right: 90px;
@@ -22,7 +22,7 @@ body {
   border-radius: 8px;
 }
 
-.button3 {
+#button3 {
   position: absolute;      
   top: 312px;      
   right: 90px;
@@ -31,7 +31,7 @@ body {
   border-radius: 8px;
 }
 
-.button4 {
+#button4 {
   position: absolute;      
   top: 430px;      
   right: 90px;
