@@ -120,8 +120,7 @@ window.requestAnimFrame = (function(){
         var treasureGrabbed = 0;
         var boatLocX = 1;
         var boatLocY = 1;
-        var boatLocDrawX = 265;
-        var boatLocDrawY = 145;
+        
         
         //var boatMove = new Audio("sound/wombo-combo.mp3");  wombo combo version, used as a tester
         var boatMove = new Audio("sound/oarswater-000.ogg", true);
@@ -133,7 +132,7 @@ window.requestAnimFrame = (function(){
         }, false);
         
         backgroundMusic.play();
-        window.ctx.drawImage(document.getElementById("boat"), (boatLocDrawX), (boatLocDrawY));
+        window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
         
         window.addEventListener('keydown', function (e) {
             
@@ -201,12 +200,12 @@ window.requestAnimFrame = (function(){
                     //win = 1;
                     alert("You reached the goal!");
                 }
-                boatLocDrawX -= 64;
+                
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocX -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -233,12 +232,12 @@ window.requestAnimFrame = (function(){
                     alert("You reached the goal!");
                 }
                 
-                boatLocDrawX += 64;
+                
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocX += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -265,12 +264,12 @@ window.requestAnimFrame = (function(){
                     alert("You reached the goal!");
                 }
                 
-                boatLocDrawY -= 64;
+                
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocY -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -297,12 +296,12 @@ window.requestAnimFrame = (function(){
                     alert("You reached the goal!");
                 }
                 
-                boatLocDrawY += 64;
+                
                 currentLevel[boatLocX][boatLocY] = empty;
                 boatLocY += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), boatLocDrawX, boatLocDrawY);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -355,9 +354,9 @@ window.requestAnimFrame = (function(){
     };
 
     //when you click the level you wish to play this runs
-    function startLevel() {
-        //currentLevel = level;
-        //levelBackground(currentLevel);
+    function startLevel(level) {
+        currentLevel = level;
+        levelBackground(currentLevel);
         var i;
         var boatCurrentDir = right;
         var win = 0;
@@ -513,12 +512,12 @@ window.requestAnimFrame = (function(){
         
         
         
-        //for(i = 0; i < currentLevel.length.length; i++) {
-        //    if(currentLevel[1][i] === boat) {
-        //        boatLocX = 1;
-        //        boatLocY = i;
-        //    }
-        //}
+        for(i = 0; i < currentLevel.length.length; i++) {
+            if(currentLevel[1][i] === boat) {
+                boatLocX = 1;
+                boatLocY = i;
+            }
+        }
 
         while(win == 0 && lose == 0) {
             //play the game
