@@ -6,7 +6,7 @@ var boat = 1;
 var mine = 2;
 var treasure = 3;
 var goal = 4;
-var bar = 10;
+var bar = 10;//short for barrier
 var currentLevel;
 var level1 = [[bar, bar, bar, bar],
               [bar, boat, treasure, bar],
@@ -23,7 +23,9 @@ var boatLocationY = 1;
 
 currentLevel = level1;
 
-
+function drawPlayer() {
+    ctx.drawImage(//imagefile, (boatLocattionX * PixelsPerTile), (boatLocationY * PixelsPerTile);   
+}
 
 // game logic functions
 
@@ -63,7 +65,7 @@ currentLevel = level1;
             boatLocationX = boatLocationX - 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();   
         } else if (checkLeft() == mine) {
             loss();
         } else if (checkLeft() == treasure) {
@@ -73,7 +75,7 @@ currentLevel = level1;
             boatLocationX = boatLocationX - 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
             scoreIncrease();
         } else if (checkLeft() == goal) {
             win();
@@ -89,7 +91,7 @@ currentLevel = level1;
             boatLocationX = boatLocationX + 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
         } else if (checkRight() == mine) {
             loss();
         } else if (checkRight() == treasure) {
@@ -99,7 +101,7 @@ currentLevel = level1;
             boatLocationX = boatLocationX + 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
             scoreIncrease();
         } else if (checkRight() == goal) {
             win();
@@ -116,7 +118,7 @@ currentLevel = level1;
             boatLocationY = boatLocationY - 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
         } else if (checkUp() == mine) {
             loss();
         } else if (checkUp() == treasure) {
@@ -126,7 +128,7 @@ currentLevel = level1;
             boatLocationY = boatLocationY - 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
             scoreIncrease();
         } else if (checkUp() == goal) {
             win();
@@ -142,7 +144,7 @@ currentLevel = level1;
             boatLocationY = boatLocationY + 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
         } else if (checkDown() == mine) {
             loss();
         } else if (checkDown() == treasure) {
@@ -152,13 +154,38 @@ currentLevel = level1;
             boatLocationY = boatLocationY + 1;
         
             currentLevel[boatLocationX][boatLocationY] == boat;
-        
+            soundMove.play();
             scoreIncrease();
         } else if (checkDown() == goal) {
             win();
         }
     }
 
+soundMove = document.getElementById('move');
+
+function keyPress(e) {
+    e = e || window.event;
+    
+    if (e.keyCode == '38' ) {
+        //up arrow
+        moveUp();
+    }
+     else if (e.keyCode == '40') {
+        // down arrow
+        moveDown();
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+        moveLeft();
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+        moveRight();    
+    }
+}
+    
+    
+    
 //should reset the currentlevel array with the respective stored array.  Will have to be called when the user beats a level.
         function newLevel() {
     
