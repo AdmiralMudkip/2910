@@ -354,9 +354,9 @@ window.requestAnimFrame = (function(){
     };
 
     //when you click the level you wish to play this runs
-    function startLevel() {
-        //currentLevel = level;
-        //levelBackground(currentLevel);
+    function startLevel(level) {
+        currentLevel = level;
+        levelBackground(currentLevel);
         var i;
         var boatCurrentDir = right;
         var win = 0;
@@ -512,12 +512,12 @@ window.requestAnimFrame = (function(){
         
         
         
-        //for(i = 0; i < currentLevel.length.length; i++) {
-        //    if(currentLevel[1][i] === boat) {
-        //        boatLocX = 1;
-        //        boatLocY = i;
-        //    }
-        //}
+        for(i = 0; i < currentLevel.length.length; i++) {
+            if(currentLevel[1][i] === boat) {
+                boatLocX = 1;
+                boatLocY = i;
+            }
+        }
 
         while(win == 0 && lose == 0) {
             //play the game
