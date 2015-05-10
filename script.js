@@ -40,7 +40,7 @@ window.requestAnimFrame = (function(){
     var up = 6;
     var right = 7;
     var down = 8;
-    
+    //level 1 array
     var level1 = [  
                     [bar,   bar,      bar,        bar],
                     [bar,   boat,     treasure,   bar],
@@ -178,7 +178,7 @@ window.requestAnimFrame = (function(){
             alert("You lose!");
         }
         
-        
+        //move functions.  Checks to see what's in the adjacent tile, and then does something based on whatever was found
         function moveLeft() {
             if(checkLeft() != bar) {
                 //boat moving left anim func
