@@ -1,210 +1,3 @@
-//level arrays
-//each segment is a row
-
-var empty = 0;
-var boat = 1;
-var mine = 2;
-var treasure = 3;
-var goal = 4;
-var bar = 10;//short for barrier
-var currentLevel;
-var level1 = [[bar, bar, bar, bar],
-              [bar, boat, treasure, bar],
-              [bar, mine, goal, bar],
-              [bar, bar, bar, bar]];
-
-var boatLocation = [1][1];
-
-//will have to be local variables
-var boatLocationX = 1;
-var boatLocationY = 1;
-
-
-
-currentLevel = level1;
-
-function drawPlayer() {
-    ctx.drawImage(//imagefile, (boatLocattionX * PixelsPerTile), (boatLocationY * PixelsPerTile);   
-}
-
-// game logic functions
-
-// functions to check up/down/left/right.  Returns the location of the tile if it is empty. ~Jason  
-    function checkLeft() {
-            return currentLevel[boatLocationX - 1][boatLocationY];        
-    }
-        
-    function checkRight() {
-            return currentlevel[boatLocationX + 1][boatLocationY];
-    }
-        
-    function checkAbove() {
-            return currentLevel[boatLocationX][boatLocationY - 1];
-    }
-        
-    function checkBelow() {
-            return currentLevel[boatLocationX][boatLocationY + 1];
-    }
-            
-//win/loss functions, can be updated later on with actual content.  Leave as is for now.
-    function win() {
-        alert("You win!");
-    }
-
-    function loss() {
-        alert("You lose!");
-    }
-
-//example for how all the other move functions should look. ~Jason
-    function moveLeft() {
-        
-        if (checkLeft() == empty) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationX = boatLocationX - 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();   
-        } else if (checkLeft() == mine) {
-            loss();
-        } else if (checkLeft() == treasure) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationX = boatLocationX - 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-            scoreIncrease();
-        } else if (checkLeft() == goal) {
-            win();
-        }
-    }
-
-    function moveRight() {
-        
-        if (checkRight() == empty) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationX = boatLocationX + 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-        } else if (checkRight() == mine) {
-            loss();
-        } else if (checkRight() == treasure) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationX = boatLocationX + 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-            scoreIncrease();
-        } else if (checkRight() == goal) {
-            win();
-        }
-        
-    }
-
-    function moveUp() {
-        
-        if (checkUp() == empty) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationY = boatLocationY - 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-        } else if (checkUp() == mine) {
-            loss();
-        } else if (checkUp() == treasure) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationY = boatLocationY - 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-            scoreIncrease();
-        } else if (checkUp() == goal) {
-            win();
-        }
-    }
-
-    function moveDown() {
-        
-        if (checkDown() == empty) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationY = boatLocationY + 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-        } else if (checkDown() == mine) {
-            loss();
-        } else if (checkDown() == treasure) {
-            
-            currentLevel[boatLocationX][boatLocationY] == empty;
-        
-            boatLocationY = boatLocationY + 1;
-        
-            currentLevel[boatLocationX][boatLocationY] == boat;
-            soundMove.play();
-            scoreIncrease();
-        } else if (checkDown() == goal) {
-            win();
-        }
-    }
-
-soundMove = document.getElementById('move');
-
-function keyPress(e) {
-    e = e || window.event;
-    
-    if (e.keyCode == '38' ) {
-        //up arrow
-        moveUp();
-    }
-     else if (e.keyCode == '40') {
-        // down arrow
-        moveDown();
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-        moveLeft();
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-        moveRight();    
-    }
-}
-    
-    
-    
-//should reset the currentlevel array with the respective stored array.  Will have to be called when the user beats a level.
-        function newLevel() {
-    
-        }
-
-// ui functions
-
-function toMainMenu(){
-    
-}
-
-function toLevelSelect(){
-    
-}
-
-function toHighScores(){
-    
-}
-
 // all the code goes here
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating
 // shim layer with setTimeout fallback
@@ -218,171 +11,383 @@ window.requestAnimFrame = (function(){
             window.setTimeout(callback, 1000 / 60);
           };
 })();
-// name of our game
-var FF = {
 
-	
+
+  
     // set up some initial values
-    WIDTH: 720, 
-    HEIGHT:  480, 
+    var WIDTH = 720;
+    var HEIGHT = 480;
     // we'll set the rest of these
     // in the init function
-    RATIO:  null,
-    currentWidth:  null,
-    currentHeight:  null,
-    canvas: null,
-    ctx:  null,
-	
-    scale:  1,
-	
-    offset: {top: 0, left: 0},
+    var RATIO = null;
+    var currentWidth = null;
+    var currentHeight = null;
+    var canvas = null;
+    var ctx = null;
 
-    //variables to store in the array
-    empty: 0,
-    boat: 1,
-    mine: 2,
-    treasure: 3,
-    goal: 4,
+    var scale = 1;
 
-    init: function() {
+    //array variables
+    var empty = 0;
+    var boat = 1;
+    var mine = 2;
+    var treasure = 3;
+    var goal = 4;
+    var bar = 9;
+    
+    //boat directions
+    var left = 5;
+    var up = 6;
+    var right = 7;
+    var down = 8;
+    //level 1 array
+    var level1 = [  
+                    [bar,   bar,      bar,        bar],
+                    [bar,   boat,     treasure,   bar],
+                    [bar,   mine,     goal,       bar],
+                    [bar,   bar,      bar,        bar]
+                ];
+
+    var level2 = [
+                    [bar,   bar,    bar,    bar,    bar,    bar],
+                    [bar,   boat,   empty,  mine,   goal,   bar],
+                    [bar,   mine,   empty,  empty,  empty,  bar],
+                    [bar,   bar,    bar,    bar,    bar,    bar]
+                ];
+
+
+    function init() {
 
         // the proportion of width to height
-        FF.RATIO = FF.WIDTH / FF.HEIGHT;
+        RATIO = WIDTH / HEIGHT;
         // these will change when the screen is resized
-        FF.currentWidth = FF.WIDTH;
-        FF.currentHeight = FF.HEIGHT;
+        window.currentWidth = window.WIDTH;
+        window.currentHeight = window.HEIGHT;
         // this is our canvas element
-        FF.canvas = document.getElementsByTagName('canvas')[0];
+        window.canvas = document.getElementsByTagName('canvas')[0];
         // setting this is important
         // otherwise the browser will
-        // default to 720 x 480
-        FF.canvas.width = FF.WIDTH;
-        FF.canvas.height = FF.HEIGHT;
+        // default to 320 x 200
+        window.canvas.width = window.WIDTH;
+        window.canvas.height = window.HEIGHT;
         // the canvas context enables us to 
         // interact with the canvas api
-        FF.ctx = FF.canvas.getContext('2d');
+        window.ctx = window.canvas.getContext('2d');
 
         // we're ready to resize
-        FF.resize();
-		FF.resize();
-		
-		// we need to sniff out Android and iOS
-		// so that we can hide the address bar in
-		// our resize function
-		FF.ua = navigator.userAgent.toLowerCase();
-		FF.android = FF.ua.indexOf('android') > -1 ? true : false;
-		FF.ios = ( FF.ua.indexOf('iphone') > -1 || FF.ua.indexOf('ipad') > -1  ) ? 
+        window.resize();
+        window.resize();
+
+        // we need to sniff out Android and iOS
+        // so that we can hide the address bar in
+        // our resize function
+        window.ua = navigator.userAgent.toLowerCase();
+        window.android = window.ua.indexOf('android') > -1 ? true : false;
+        window.ios = (window.ua.indexOf('iphone') > -1 || window.ua.indexOf('ipad') > -1) ?
 		true : false;
-		
-		// listen for clicks
-		window.addEventListener('click', function(e) {
-			e.preventDefault();
-			FF.Input.set(e);
-		}, false);
 
-		// listen for touches
-		window.addEventListener('touchstart', function(e) {
-			e.preventDefault();
-			// the event object has an array
-			// named touches; we just want
-			// the first touch
-			FF.Input.set(e.touches[0]);
-		}, false);
-		
-		window.addEventListener('touchmove', function(e) {
-			// we're not interested in this,
-			// but prevent default behaviour
-			// so the screen doesn't scroll
-			// or zoom
-			e.preventDefault();
-		}, false);
-		
-		window.addEventListener('touchend', function(e) {
-			// as above
-			e.preventDefault();
-		}, false);
-		
-        //menu starts on startup
-		FF.ctx.drawImage(document.getElementById("Main"), 0, 0,FF.canvas.width,FF.canvas.height);
-		
-		
-		//drawing invisible images
-		//FF.Draw.circle(100, 100, 50, 'rgba(255,255,0,0)');
-		
-		//FF.Draw.rect(0,0,FF.canvas.width,FF.canvas.height*7/8, 'Blue');
-		
-		
-		// FF.Draw.rect(0,FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height/8, 'Brown');
-		// FF.Draw.circle(FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
-		
-		// FF.Draw.circle(FF.canvas.width - FF.canvas.height*1/16, FF.canvas.height*15/16, FF.canvas.height*1/32, 'rgba(255,255,0,0.5)');
-		// FF.Draw.text('Frantic Frigate', FF.canvas.height*5/32, FF.canvas.height*61/64, 20, '#066');
+        // listen for clicks
+        window.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            //window.Input.set(e);
+        }, false);
 
-		//how to use an image
-		// var levelOne = document.getElementById("levelOne");
-		// FF.ctx.drawImage(levelOne, 0, 0,FF.canvas.width,FF.canvas.height*7/8);
-		// FF.ctx.drawImage(levelOne, 0, FF.canvas.height*7/8,FF.canvas.width,FF.canvas.height*1/8);
-    },
+        // listen for touches
+        window.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            // the event object has an array
+            // named touches; we just want
+            // the first touch
+            window.Input.set(e.touches[0]);
+        }, false);
 
-    resize: function() {
+        window.addEventListener('touchmove', function (e) {
+            // we're not interested in this,
+            // but prevent default behaviour
+            // so the screen doesn't scroll
+            // or zoom
+            e.preventDefault();
+        }, false);
 
-        FF.currentWidth = window.innerWidth;
+        window.addEventListener('touchend', function (e) {
+            // as above
+            e.preventDefault();
+        }, false);
+
+        
+        window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+        
+        var currentLevel = level1;
+        levelBackground(currentLevel);
+        var i;
+        var boatCurrentDir = right;
+        var win = 0;
+        var lose = 0;
+        var treasureGrabbed = 0;
+        var boatLocX = 1;
+        var boatLocY = 1;
+        
+        var tileWidth = 64;
+        var boatStartLevel1X = 145;
+        var boatStartLevel1Y = 265;
+        
+        
+        //var boatMove = new Audio("sound/wombo-combo.mp3");  wombo combo version, used as a tester
+        var boatMove = new Audio("sound/oarswater-000.ogg", true);
+        var backgroundMusic = new Audio("sound/background.mp3", true);
+        
+        backgroundMusic.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        
+        backgroundMusic.play();
+        
+        
+        window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * tileWidth) + boatStartLevel1X), (((boatLocY - 1) * tileWidth) + boatStartLevel1Y));
+        
+        window.addEventListener('keydown', function (e) {
+            
+                if (e.keyCode == '38' ) {
+                    //up arrow
+                    moveUp();
+                    
+                }
+                else if (e.keyCode == '40') {
+                    // down arrow
+                    moveDown();
+                }
+                else if (e.keyCode == '37') {
+                    // left arrow
+                    moveLeft();
+                }
+                else if (e.keyCode == '39') {
+                    // right arrow
+                    moveRight();    
+                }
+        }, false);
+        
+        //these functions return the value in the respective position in the array relative to the boat
+        function checkLeft() {
+            return currentLevel[boatLocX][boatLocY - 1];
+        }
+        function checkRight() {
+            return currentLevel[boatLocX][boatLocY + 1];
+        }
+        function checkUp() {
+            return currentLevel[boatLocX - 1][boatLocY];
+        }
+        function checkDown() {
+            return currentLevel[boatLocX + 1][boatLocY];
+        }
+
+        
+        function winner() {
+            alert("You win!");
+        }
+
+        function loser() {
+            alert("You lose!");
+        }
+        function scoreIncrease() {
+            alert("Score increased!");   
+        }
+        
+        //drawing functions, the first should take the current locations and starting locations for the boat, and draw it based on those. -- in progress
+        //will have to check the current level and pull the correct starting position variables
+        drawBoat(var currentY, var currentX, var startY , var startX) {
+            window.ctx.drawImage(document.getElementById("boat"), (((currentY - 1) * tileWidth) + startY), (((currentX - 1) * tileWidth) + startX));
+        }
+        
+        drawBackground(var levelNum) {
+            window.ctx.drawImage(document.getElementbyId("levelNum"), 0, 0, window.canvas.width, window.canvas.height);
+        }
+        
+        //move functions.  Checks to see what's in the adjacent tile, and then does something based on whatever was found.  Then, if the boat moves, the boat's location in the array is set to 0, it's location variable is updated, the corresponding space in the array is updated to now hold the boat, and the background is redrawn, and then the boat is redrawn on top of that. 
+        function moveLeft() {
+            if(checkLeft() != bar) {
+                //change direction that the boat is facing
+                
+                if(checkLeft() == treasure) {
+                    //boat gets treasure anim func
+                    scoreIncrease();
+                }
+
+                else if(checkLeft() == mine) {
+                    //boat explodes func
+                    loser();
+                }
+
+                else if(checkLeft() == goal) {
+                    //winning anim function
+                    winner();
+                }
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocY -= 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * tileWidth) + boatStartLevel1X), (((boatLocX - 1) * tileWidth) + boatStartLevel1Y));
+                
+            } 
+        }
+
+        function moveRight() {
+            if(checkRight() != bar) {
+                //change direction that the boat is facing
+                
+                if(checkLeft() == treasure) {
+                    //boat gets treasure anim func
+                    scoreIncrease();
+                }
+
+                else if(checkLeft() == mine) {
+                    //boat explodes func
+                    loser();
+                }
+
+                else if(checkLeft() == goal) {
+                    //winning anim function
+                    winner();
+                }
+                
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocY += 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * tileWidth) + boatStartLevel1X), (((boatLocX - 1) * tileWidth) + boatStartLevel1Y));
+                
+            } 
+        }
+
+        function moveUp() {
+            if(checkUp() != bar) {
+                //change direction that the boat is facing
+                
+                if(checkLeft() == treasure) {
+                    //boat gets treasure anim func
+                    scoreIncrease();
+                }
+
+                else if(checkLeft() == mine) {
+                    //boat explodes func
+                    loser();
+                }
+
+                else if(checkLeft() == goal) {
+                    //winning anim function
+                    winner();
+                }
+                
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocX -= 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * tileWidth) + boatStartLevel1X), (((boatLocX - 1) * tileWidth) + boatStartLevel1Y));
+                
+            } 
+        }
+
+        function moveDown() {
+            if(checkDown() != bar) {
+                //change direction that the boat is facing
+                
+                if(checkLeft() == treasure) {
+                    //boat gets treasure anim func
+                    scoreIncrease();
+                }
+
+                else if(checkLeft() == mine) {
+                    //boat explodes func
+                    loser();
+                }
+
+                else if(checkLeft() == goal) {
+                    //winning anim function
+                    winner();
+                }
+                
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocX += 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+                //drawBoat(boatLocY, boatLocX, boatStartLevel1X, boatStartLevel1Y);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * tileWidth) + boatStartLevel1X), (((boatLocX - 1) * tileWidth) + boatStartLevel1Y));
+                
+            } 
+        }
+        };
+
+    function resize() {
+
+        window.currentHeight = window.innerHeight;
         // resize the width in proportion
         // to the new height
-        FF.currentHeight = FF.currentWidth / FF.RATIO;
+        window.currentWidth = window.currentHeight * window.RATIO;
 
         // this will create some extra space on the
         // page, allowing us to scroll past
         // the address bar, thus hiding it.
-        if (FF.android || FF.ios) {
+        if (window.android || window.ios) {
             document.body.style.height = (window.innerHeight + 50) + 'px';
         }
 
         // set the new canvas style width and height
         // note: our canvas is still 320 x 480, but
         // we're essentially scaling it with CSS
-        FF.canvas.style.width = FF.currentWidth + 'px';
-        FF.canvas.style.height = FF.currentHeight + 'px';
+        window.canvas.style.width = window.currentWidth + 'px';
+        window.canvas.style.height = window.currentHeight + 'px';
 
         // we use a timeout here because some mobile
         // browsers don't fire if there is not
         // a short delay
-        window.setTimeout(function() {
-                window.scrollTo(0,1);
+        window.setTimeout(function () {
+            window.scrollTo(0, 1);
         }, 1);
+    };
+
+    //when you click the level you wish to play this runs
+    function startLevel(level) {
     }
 
-};
+    //this starts the level setup animation and 
+    function levelBackground(level) {
+        
+    };
 
 // abstracts various canvas operations into
 // standalone functions
-FF.Draw = {
+window.Draw = {
 
-    clear: function() {
-        FF.ctx.clearRect(0, 0, FF.WIDTH, FF.HEIGHT);
+    clear: function () {
+        window.ctx.clearRect(0, 0, window.WIDTH, window.HEIGHT);
     },
 
-    rect: function(x, y, w, h, col) {
-        FF.ctx.fillStyle = col;
-        FF.ctx.fillRect(x, y, w, h);
+    rect: function (x, y, w, h, col) {
+        window.ctx.fillStyle = col;
+        window.ctx.fillRect(x, y, w, h);
     },
 
-    circle: function(x, y, r, col) {
-        FF.ctx.fillStyle = col;
-        FF.ctx.beginPath();
-        FF.ctx.arc(x, y, r, 0,  Math.PI * 2, true);
-        FF.ctx.closePath();
-        FF.ctx.fill();
+    circle: function (x, y, r, col) {
+        window.ctx.fillStyle = col;
+        window.ctx.beginPath();
+        window.ctx.arc(x, y, r, 0, Math.PI * 2, true);
+        window.ctx.closePath();
+        window.ctx.fill();
     },
 
-    text: function(string, x, y, size, col) {
-        FF.ctx.font = 'bold '+size+'px Monospace';
-        FF.ctx.fillStyle = col;
-        FF.ctx.fillText(string, x, y);
+    text: function (string, x, y, size, col) {
+        window.ctx.font = 'bold ' + size + 'px Monospace';
+        window.ctx.fillStyle = col;
+        window.ctx.fillText(string, x, y);
     }
-	
+
 
 };
 
-window.addEventListener('load', FF.init, false);
-window.addEventListener('resize', FF.resize, false);
+window.addEventListener('load', window.init, false);
+window.addEventListener('resize', window.resize, false);

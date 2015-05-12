@@ -40,7 +40,7 @@ window.requestAnimFrame = (function(){
     var up = 6;
     var right = 7;
     var down = 8;
-    
+    //level 1 array
     var level1 = [  
                     [bar,   bar,      bar,        bar],
                     [bar,   boat,     treasure,   bar],
@@ -157,16 +157,16 @@ window.requestAnimFrame = (function(){
         
         //these functions return the value in the respective position in the array relative to the boat
         function checkLeft() {
-            return currentLevel[boatLocX - 1][boatLocY];
-        }
-        function checkRight() {
-            return currentLevel[boatLocX + 1][boatLocY];
-        }
-        function checkUp() {
             return currentLevel[boatLocX][boatLocY - 1];
         }
-        function checkDown() {
+        function checkRight() {
             return currentLevel[boatLocX][boatLocY + 1];
+        }
+        function checkUp() {
+            return currentLevel[boatLocX - 1][boatLocY];
+        }
+        function checkDown() {
+            return currentLevel[boatLocX + 1][boatLocY];
         }
 
         
@@ -178,7 +178,7 @@ window.requestAnimFrame = (function(){
             alert("You lose!");
         }
         
-        
+        //move functions.  Checks to see what's in the adjacent tile, and then does something based on whatever was found
         function moveLeft() {
             if(checkLeft() != bar) {
                 //boat moving left anim func
@@ -202,10 +202,10 @@ window.requestAnimFrame = (function(){
                 }
                 
                 currentLevel[boatLocX][boatLocY] = empty;
-                boatLocX -= 1;
+                boatLocY -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -234,10 +234,10 @@ window.requestAnimFrame = (function(){
                 
                 
                 currentLevel[boatLocX][boatLocY] = empty;
-                boatLocX += 1;
+                boatLocY += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -266,10 +266,10 @@ window.requestAnimFrame = (function(){
                 
                 
                 currentLevel[boatLocX][boatLocY] = empty;
-                boatLocY -= 1;
+                boatLocX -= 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
@@ -298,10 +298,10 @@ window.requestAnimFrame = (function(){
                 
                 
                 currentLevel[boatLocX][boatLocY] = empty;
-                boatLocY += 1;
+                boatLocX += 1;
                 currentLevel[boatLocX][boatLocY] = boat;
                 window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
-                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
                 boatMove.play();
             } 
         }
