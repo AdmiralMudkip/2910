@@ -47,7 +47,7 @@ window.requestAnimFrame = (function(){
                     [bar,   mine,     goal,       bar],
                     [bar,   bar,      bar,        bar]
                 ];
-
+    level1.name = "LevelOne";
 
     function init() {
 
@@ -109,7 +109,7 @@ window.requestAnimFrame = (function(){
         }, false);
 
         
-        window.ctx.drawImage(document.getElementById("LevelOne20"), 0, 0, window.canvas.width, window.canvas.height);
+        window.ctx.drawImage(document.getElementById("" + level1.name), 0, 0, window.canvas.width, window.canvas.height);
         
         var currentLevel = level1;
         levelBackground(currentLevel);
@@ -362,9 +362,15 @@ window.requestAnimFrame = (function(){
         var win = 0;
         var lose = 0;
         var treasureGrabbed = 0;
-        var boatLocX = 1;
-        var boatLocY = 1;
+        var boatLocX, boatLocY;
         
+        for(i = 0; i < currentLevel.length.length; i++) {
+            if(currentLevel[1][i] == boat) {
+                boatLocX = 1;
+                boatLocY = i;
+            }
+        }
+
         window.ctx.drawImage(document.getElementById("boat"), boatLocX, boatLocY);
         
         window.addEventListener('keydown', function (e) {
@@ -512,12 +518,7 @@ window.requestAnimFrame = (function(){
         
         
         
-        for(i = 0; i < currentLevel.length.length; i++) {
-            if(currentLevel[1][i] === boat) {
-                boatLocX = 1;
-                boatLocY = i;
-            }
-        }
+        
 
         while(win == 0 && lose == 0) {
             //play the game
