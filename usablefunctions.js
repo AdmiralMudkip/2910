@@ -1,20 +1,31 @@
 //when you click the level you wish to play this runs
     function startLevel(level) {
         currentLevel = level;
-        levelBackground(currentLevel);
         var i;
         var boatCurrentDir = right;
         var win = 0;
         var lose = 0;
         var treasureGrabbed = 0;
         var boatLocX, boatLocY;
-        
-        for(i = 0; i < currentLevel.length.length; i++) {
-            if(currentLevel[1][i] == boat) {
-                boatLocX = 1;
-                boatLocY = i;
+
+        for (i = 0; i < currentLevel.length; i++) {
+            if (currentLevel[i][1] == boat) {
+                boatLocX = i;
+                boatLocY = 1;
             }
         }
+
+        levelBackground(currentLevel);
+
+        var boatMoveSound = boatSound();
+        var music = backgroundMusic(currentLevel);
+
+        music.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+
+        backgroundMusic.play();
 
         window.ctx.drawImage(document.getElementById("boat"), boatLocX, boatLocY);
         
@@ -180,5 +191,17 @@
     
     //this starts the level setup animation and 
     function levelBackground(level) {
-        
+        window.ctx.drawImage(document.getElementById("" + currentLevel.name), 0, 0, window.canvas.width, window.canvas.height);
     };
+
+    //boat moving sound
+    function boatSound() {
+        return new Audio("sound/oarswater-000.ogg", true);
+    }
+
+    //background music depending on where you are in the game
+    function backgroundMusic(location) {
+        if(location.name == "LevelOne") {
+            return new Audio("sound/background.mp3", true);
+        }
+    }
