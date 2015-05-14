@@ -200,7 +200,9 @@ window.requestAnimFrame = (function(){
 
         window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
         
-        window.addEventListener('keydown', function (e) {
+        window.addEventListener('keydown', movement, false);
+
+        function movement(e) {
             
                 if (e.keyCode == '38' ) {
                     //up arrow
@@ -218,7 +220,7 @@ window.requestAnimFrame = (function(){
                     // right arrow
                     moveRight();    
                 }
-        }, false);
+        }
         
         function checkLeft() {
             return currentLevel[boatLocX][boatLocY - 1];
@@ -267,6 +269,7 @@ window.requestAnimFrame = (function(){
                     winner();
                 }
             } 
+
         }
 
         function moveRight() {
@@ -379,6 +382,15 @@ window.requestAnimFrame = (function(){
                 }
             } 
         }
+        if(lose == 1) {
+            lose = 0;
+            window.removeEventListener('keydown', movement, false);
+            return;
+        } else if(win == 1) {
+            win = 0;
+            window.removeEventListener('keydown', movement, false);
+            return;
+        }
         
     };
     
@@ -406,12 +418,10 @@ window.requestAnimFrame = (function(){
 
         function winner() {
             alert("You win!");
-            init();
         }
 
         function loser() {
             alert("You lose!");
-            init();
         }
 
 // abstracts various canvas operations into
