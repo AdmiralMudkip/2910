@@ -6,15 +6,70 @@
         <title>Frantic Frigate</title>
     </head>
     <body>
-
     <script>
-        // Create the canvas
-        var canvas = document.createElement("canvas");
-        var ctx = canvas.getContext("2d");
-        canvas.width = 1280;
-        canvas.height = 720;
-        document.body.appendChild(canvas);
-    </script>
+   window.onload = function() {
+        var canvas=document.getElementById("canvas"); // grabs the canvas element
+        var context=canvas.getContext("2d"); // returns the 2d context object
+        var img=new Image() //creates a variable for a new image
+ 
+        img.src= "images/mainmenu.png" // specifies the location of the image
+        context.drawImage(img,0,0,1280,720); // draws the image at the specified x and y location
+        }
 
+        var play = document.createElement('input');
+        play.type = "button";
+        play.style.width = '482px';
+        play.style.height = '68px';
+        play.style.left = '760px';
+        play.style.top = '160px';
+        play.style.background = "none";
+        play.style.position = "absolute";
+        play.id = "play";
+        play.onclick = "changeMenu('FranticFrigate', 'mouseclick')";
+        document.body.appendChild(play);
+
+        var levelselect = document.createElement('input');
+        levelselect.type = "button";
+        levelselect.style.width = '482px';
+        levelselect.style.height = '68px';
+        levelselect.style.left = '758px';
+        levelselect.style.top = '268px';
+        levelselect.style.background = "none";
+        levelselect.style.position = "absolute";
+        levelselect.id = "play";
+        levelselect.onmouseenter = "changeMenu('levelselect', 'mouseenter')";
+        levelselect.onmouseleave = "changeMenu('levelselect', 'mouseleave')";
+        levelselect.onclick = "changeMenu('levelselect', 'mouseclick')";
+        document.body.appendChild(levelselect);
+
+        var highscores = document.createElement('input');
+        highscores.type = "button";
+        highscores.style.width = '482px';
+        highscores.style.height = '68px';
+        highscores.style.left = '760px';
+        highscores.style.top = '366px';
+        highscores.style.background = "none";
+        highscores.style.position = "absolute";
+        highscores.id = "highscores";
+        highscores.onmouseenter = "changeMenu('highscores', 'mouseenter')";
+        highscores.onmouseleave = "changeMenu('highscores', 'mouseleave')";
+        highscores.onclick = "changeMenu('highscores', 'mouseclick')";
+        document.body.appendChild(highscores);
+
+        var instructions = document.createElement('input');
+        instructions.type = "button";
+        instructions.style.width = '482px';
+        instructions.style.height = '68px';
+        instructions.style.left = '764px';
+        instructions.style.top = '480px';
+        instructions.style.background = "none";
+        instructions.style.position = "absolute";
+        instructions.id = "instructions";
+        instructions.onmouseenter = "changeMenu('instructions', 'mouseenter')";
+        instructions.onmouseleave = "changeMenu('instructions', 'mouseleave')";
+        instructions.onclick = "changeMenu('instructions', 'mouseclick')";
+        document.body.appendChild(instructions);
+    </script>
+    <canvas id="canvas" width="1280" height="720"></canvas>
     </body>
 </html>
