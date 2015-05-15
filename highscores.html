@@ -27,7 +27,7 @@
 var getTopScores = function(ctx, callback, context) {
 	console.log('pulling scores');
 	
-
+var obj;
 	$.ajax({
         
 		type: 'GET',
@@ -38,14 +38,15 @@ var getTopScores = function(ctx, callback, context) {
 			
             
             findScores(data, context);
-            
+            var info = data;
+            obj = JSON.parse(data);
 			if (callback) callback();
 		},
 		error: function(xhr, msg) {
 			console.error('AJAX error', xhr.status, msg);
 		}
 	});
-    return data;
+    return obj;
 };
 console.log(scores);
 // Post a score
@@ -70,17 +71,18 @@ var postScore = function(ctx, name, time, callback) {
 
 };
     
-        getTopScores(context);
-        function findScores(input, context) {
-
-    for (var i = 0; i < input.length; i++) {
-    console.log("PAIR " + i + ": " + input[i].name);
-    console.log("PAIR " + i + ": " + input[i].time);
-        context.fillText(input[i].time, 100, 100);
-            } 
+        var external = getTopScores(context);
+        //function findScores(input, context) {
+        console.log('ayy');
+        console.log(external);
+    //for (var i = 0; i < input.length; i++) {
+    //console.log("PAIR " + i + ": " + input[i].name);
+    //console.log("PAIR " + i + ": " + input[i].time);
+     //   context.fillText(input[i].time, 100, 100);
+     //       } 
             
-        }
-        context.fillText(getTopScores(), 100, 100);
+     //   }
+        
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     <img src = "images/scores1280.jpg" id="highscores" style="display:none">
