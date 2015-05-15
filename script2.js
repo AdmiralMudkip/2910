@@ -405,8 +405,14 @@ window.requestAnimFrame = (function(){
     }
     
         function winner(movement) {
-            alert("You win!, your score was ");
+            
             var x = 'f';
+            var x = document.getElementById("minutes").innerHTML;
+                    var y = document.getElementById("seconds").innerHTML;
+                    var z = 120;
+                    var score = 120 - (60 * x + y);
+                    alert("Time: " + x + ':' + y
+                    + " Score: " + score);
             startLevel(level2);
             window.removeEventListener('keydown', movement, false);
             return x;
