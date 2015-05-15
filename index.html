@@ -25,7 +25,9 @@
         play.style.background = "none";
         play.style.position = "absolute";
         play.id = "play";
-        play.onclick = "changeMenu('FranticFrigate', 'mouseclick')";
+        play.onmouseenter = function(){changeMenu('play', 'mouseenter')};
+        play.onmouseleave = function(){changeMenu('play', 'mouseleave')};
+        play.onclick = function(){changeMenu('play', 'mouseclick')};
         document.body.appendChild(play);
 
         var levelselect = document.createElement('input');
@@ -36,10 +38,10 @@
         levelselect.style.top = '268px';
         levelselect.style.background = "none";
         levelselect.style.position = "absolute";
-        levelselect.id = "play";
-        levelselect.onmouseenter = "changeMenu('levelselect', 'mouseenter')";
-        levelselect.onmouseleave = "changeMenu('levelselect', 'mouseleave')";
-        levelselect.onclick = "changeMenu('levelselect', 'mouseclick')";
+        levelselect.id = "levelselect";
+        levelselect.onmouseenter = function(){changeMenu('levelselect', 'mouseenter')};
+        levelselect.onmouseleave = function(){changeMenu('levelselect', 'mouseleave')};
+        levelselect.onclick = function(){changeMenu('levelselect', 'mouseclick')};
         document.body.appendChild(levelselect);
 
         var highscores = document.createElement('input');
@@ -51,9 +53,9 @@
         highscores.style.background = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
-        highscores.onmouseenter = "changeMenu('highscores', 'mouseenter')";
-        highscores.onmouseleave = "changeMenu('highscores', 'mouseleave')";
-        highscores.onclick = "changeMenu('highscores', 'mouseclick')";
+        highscores.onmouseenter = function(){changeMenu('highscores', 'mouseenter')};
+        highscores.onmouseleave = function(){changeMenu('highscores', 'mouseleave')};
+        highscores.onclick = function(){changeMenu('highscores', 'mouseclick')};
         document.body.appendChild(highscores);
 
         var instructions = document.createElement('input');
@@ -65,10 +67,21 @@
         instructions.style.background = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
-        instructions.onmouseenter = "changeMenu('instructions', 'mouseenter')";
-        instructions.onmouseleave = "changeMenu('instructions', 'mouseleave')";
-        instructions.onclick = "changeMenu('instructions', 'mouseclick')";
+        instructions.onmouseenter = function(){changeMenu('instructions', 'mouseenter')};
+        instructions.onmouseleave = function(){changeMenu('instructions', 'mouseleave')};
+        instructions.onclick = function(){changeMenu('instructions', 'mouseclick')};
         document.body.appendChild(instructions);
+
+        instructions.onclick=function(){changeImage(this);};
+        instructions.onclick=function(){changeImage(this);};
+
+        function changeImage(img){
+            
+            //this should take in a variable to represent the destination, and then use some ifs and whatnot to decide which background to paint.  try http://stackoverflow.com/questions/26815652/how-can-i-remove-image-from-fabric-js-canvas-using-button to remove buttons. For now, just make sure the one that takes you to the game works.  have it initialize the game function from script.js  ~Jason
+        context.clearRect(0,0,1280,720);
+        img.src= "images/instructions.jpg"
+        context.drawImage(img,0,0,1280,720);
+    }
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     </body>
