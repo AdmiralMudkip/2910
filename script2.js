@@ -159,11 +159,12 @@ window.requestAnimFrame = (function(){
     function startLevel(level) {
 
         var currentLevel;
-        var i,j,x,f;
+        var i,j,x;
         var boatCurrentDir;
         
         var treasureGrabbed;
-        var boatLocX, boatLocY;
+        var boatLocX = 0
+        var boatLocY = 0;
         
         var score = 0;
         
@@ -196,7 +197,8 @@ window.requestAnimFrame = (function(){
         
         var boatMoveSound = boatSound();
         var music = backgroundMusic(currentLevel);
-        var lossSound = loseSound();
+        var loss = loseSound();
+        
         //music.addEventListener('ended', function() {
         //    this.currentTime = 0;
         //    this.play();
@@ -252,14 +254,14 @@ window.requestAnimFrame = (function(){
 
                 else if(checkLeft() == mine) {
                     //boat explodes func
-                    
-                    loser();
+                    loser(movement, loss, currentLevel);
+                    loss.play();
                 }
 
                 else if(checkLeft() == goal) {
                     //winning anim function
-                    
-                    winner();
+                    winner(movement);
+                    return;
                 }
                 
                 currentLevel[boatLocX][boatLocY] = empty;
@@ -285,12 +287,14 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == mine) {
                     //boat explodes func
-                    loser();
+                    loser(movement, loss, currentLevel);
+                    loss.play();
                 }
 
                 if(checkRight() == goal) {
                     //winning anim function
-                    winner();
+                    winner(movement);
+                    return;
                 }
                 
                 
@@ -315,12 +319,14 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == mine) {
                     //boat explodes func
-                    loser();
+                    loser(movement, loss, currentLevel);
+                    loss.play();
                 }
 
                 if(checkUp() == goal) {
                     //winning anim function
-                    winner();
+                    winner(movement);
+                    return;
                 }
                 
                 
@@ -346,12 +352,14 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == mine) {
                     //boat explodes func
-                    loser();
+                    loser(movement, loss, currentLevel);
+                    loss.play();
+                    window.removeEventListener('keydown', movement, false);
                 }
 
                 if(checkDown() == goal) {
                     //winning anim function
-                    winner();
+                    winner(movement);
                     return;
                 }
                 
@@ -366,7 +374,7 @@ window.requestAnimFrame = (function(){
             } 
         }
         
-        if (x = f) {
+        if (x = 'f') {
             return;
         }
     };
@@ -386,7 +394,8 @@ window.requestAnimFrame = (function(){
     }
     
     function loseSound() {
-        return new Audio("sound/wilhelm.mp3", true);   
+        return new Audio("sound/wilhelm.mp3", true);  
+        
     }
     //background music depending on where you are in the game
     function backgroundMusic(location) {
@@ -395,8 +404,7 @@ window.requestAnimFrame = (function(){
         }
     }
     
-
-        function winner() {
+        function winner(movement) {
             alert("You win!, your score was ");
             var x = 'f';
             startLevel(level2);
@@ -404,9 +412,10 @@ window.requestAnimFrame = (function(){
             return x;
         }
 
-        function loser() {
-            alert("You lose!");
-            lossSound.play();
+        function loser(movement, loss, currentLevel) {
+            alert("You lose, level restarting.");
+            loss.play();
+            startLevel(currentLevel);
             window.removeEventListener('keydown', movement, false);
         }
 
@@ -414,8 +423,7 @@ window.requestAnimFrame = (function(){
             
         }
 
-// abstracts various canvas operations into
-// standalone functions
+// abstracts various canvas operations into standalone functions
 window.Draw = {
 
     clear: function () {

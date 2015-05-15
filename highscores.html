@@ -9,10 +9,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     
     <script>
-        
+        var context;
    window.onload = function() {
         var canvas = document.getElementById("canvas"); // grabs the canvas element
-        var context = canvas.getContext("2d"); // returns the 2d context object
+        context = canvas.getContext("2d");
         var img = document.getElementById("highscores");
         
         context.drawImage(img,0,0,1280,720); // draws the image at the specified x and y location
@@ -24,7 +24,7 @@
         // ctx.topScores is defined in the setup() function and is used to cache and display the fetched results.
 
 // Get a number of top scores
-var getTopScores = function(ctx, callback) {
+var getTopScores = function(ctx, callback, context) {
 	console.log('pulling scores');
 	
 
@@ -35,17 +35,17 @@ var getTopScores = function(ctx, callback) {
 		url: 'https://highscore2910.herokuapp.com/scores/',
 		success: function(data) {
 			console.log('Scores downloaded', data);
-			scores = data;
-            console.log('get');
-            console.log(scores);
-            window.scores = scores;
+			
+            
+            findScores(data, context);
+            
 			if (callback) callback();
 		},
 		error: function(xhr, msg) {
 			console.error('AJAX error', xhr.status, msg);
 		}
 	});
-    return scores;
+    return data;
 };
 console.log(scores);
 // Post a score
@@ -69,25 +69,18 @@ var postScore = function(ctx, name, time, callback) {
 	});
 
 };
-    //function findScores(scores) {
-    //    for (i=0; i < scores.length; i++) {
-    //        for (j = 0; j < scores[0].length; j++) {
-    //            if 
-                
-    //        if scores[i][1] == 
-            
-    //    }
-        
-    //}
-        
-        function findScores(input) {
-            
+    
+        getTopScores(context);
+        function findScores(input, context) {
+
     for (var i = 0; i < input.length; i++) {
-    console.log("PAIR " + i + ": " + input[i].oid);
-    console.log("PAIR " + i + ": " + input[i].cid);
-    }    
+    console.log("PAIR " + i + ": " + input[i].name);
+    console.log("PAIR " + i + ": " + input[i].time);
+        context.fillText(input[i].time, 100, 100);
+            } 
+            
         }
-        
+        context.fillText(getTopScores(), 100, 100);
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     <img src = "images/scores1280.jpg" id="highscores" style="display:none">
