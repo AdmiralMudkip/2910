@@ -169,9 +169,10 @@ window.requestAnimFrame = (function(){
             return currentLevel[boatLocX + 1][boatLocY];
         }
 
-        
+
+
         function winner() {
-            alert("You win!");
+            alert("You win! ");
         }
 
         function loser() {
@@ -198,7 +199,12 @@ window.requestAnimFrame = (function(){
                 else if(checkLeft() == goal) {
                     //winning anim function
                     //win = 1;
-                    alert("You reached the goal!");
+                    var x = document.getElementById("minutes").innerHTML;
+                    var y = document.getElementById("seconds").innerHTML;
+                    var z = 120;
+                    var score = 120 - (60 * x + y);
+                    alert("Time: " + x + ':' + y
+                    + " Score: " + score);
                 }
                 
                 currentLevel[boatLocX][boatLocY] = empty;
@@ -228,8 +234,13 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == goal) {
                     //winning anim function
-                    
-                    alert("You reached the goal!");
+                    var x = document.getElementById("minutes").innerHTML;
+                    var y = document.getElementById("seconds").innerHTML;
+                    var z = 120;
+                    var score = 120 - (60 * x + y);
+                    alert("Time: " + x + ':' + y
+                    + " Score: " + score);
+
                 }
                 
                 
@@ -261,7 +272,12 @@ window.requestAnimFrame = (function(){
                 if(checkUp() == goal) {
                     //winning anim function
                     win = 1;
-                    alert("You reached the goal!");
+                    var x = document.getElementById("minutes").innerHTML;
+                    var y = document.getElementById("seconds").innerHTML;
+                    var z = 120;
+                    var score = 120 - (60 * x + y);
+                    alert("Time: " + x + ':' + y
+                    + " Score: " + score);
                 }
                 
                 
@@ -293,7 +309,13 @@ window.requestAnimFrame = (function(){
                 if(checkDown() == goal) {
                     //winning anim function
                     win = 1;
-                    alert("You reached the goal!");
+                    /*Nicks timer code to display timer's time at level end*/
+                    var x = document.getElementById("minutes").innerHTML;
+                    var y = document.getElementById("seconds").innerHTML;
+                    var z = 120;
+                    var score = 120 - (60 * x + y);
+                    alert("Time: " + x + ':' + y
+                    + " Score: " + score);
                 }
                 
                 

@@ -4,7 +4,29 @@
     <head>
         <meta charset="utf-8" />
         <title>Nick's Testing</title>
-
+        <style type="text/css">
+            /*body {
+                color: white;
+            }*/
+                        
+            div {
+                width: 600px;
+                height: 300px;
+                margin: 0 auto;                                             
+            }
+            
+            h1 {
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            #clock {
+                display: block;
+                margin: 0 auto;
+                background: #610B4B;
+                border: 2px solid grey;                
+            }
+        </style>
     </head>
     <body>
         <canvas></canvas>
@@ -13,7 +35,12 @@
         <script src="timer.js" type="text/javascript"></script>
         <!--Creates alert that pauses displays it's time 
         and continues the timer after being closed-->
-        <button type="button" onclick="clearTimer()">Pause</button>
-        
+        <button type="button" onclick="clearTimer()">Pause</button>        
+
+         <script src="timer.js" type="text/javascript"></script>
+        <div>
+            <h1>Digital Clock using HTML5 Canvas and JavaScript</h1>
+            <canvas id="clock" width="400" height="200"></canvas>
+                   </div>
     </body>
 </html>
