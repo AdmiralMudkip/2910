@@ -1,22 +1,33 @@
 //when you click the level you wish to play this runs
     function startLevel(level) {
         currentLevel = level;
-        levelBackground(currentLevel);
         var i;
         var boatCurrentDir = right;
         var win = 0;
         var lose = 0;
         var treasureGrabbed = 0;
         var boatLocX, boatLocY;
-        
-        for(i = 0; i < currentLevel.length.length; i++) {
-            if(currentLevel[1][i] == boat) {
-                boatLocX = 1;
-                boatLocY = i;
+
+        for (i = 0; i < currentLevel.length; i++) {
+            if (currentLevel[i][1] == boat) {
+                boatLocX = i;
+                boatLocY = 1;
             }
         }
 
-        window.ctx.drawImage(document.getElementById("boat"), boatLocX, boatLocY);
+        levelBackground(currentLevel);
+
+        var boatMoveSound = boatSound();
+        var music = backgroundMusic(currentLevel);
+
+        music.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+
+        music.play();
+
+        window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + 265), (((boatLocY - 1) * 64) + 145));
         
         window.addEventListener('keydown', function (e) {
             
@@ -40,17 +51,16 @@
         }, false);
         
         function checkLeft() {
-            return currentLevel[boatLocX - 1][boatLocY];
-        }
-        function checkRight() {
-            return currentLevel[boatLocX + 1][boatLocY];
-        }
-        function checkUp() {
             return currentLevel[boatLocX][boatLocY - 1];
         }
-        
-        function checkDown() {
+        function checkRight() {
             return currentLevel[boatLocX][boatLocY + 1];
+        }
+        function checkUp() {
+            return currentLevel[boatLocX - 1][boatLocY];
+        }
+        function checkDown() {
+            return currentLevel[boatLocX + 1][boatLocY];
         }
 
         function winner() {
@@ -67,22 +77,28 @@
                 boatCurrentDir = left;
                 if(checkLeft() == treasure) {
                     //boat gets treasure anim func
-                    treasureGrabbed += 1;
+                    //treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
-                if(checkLeft() == mine) {
+                else if(checkLeft() == mine) {
                     //boat explodes func
-                    lose = 1;
+                    //lose = 1;
+                    alert("You hit a mine!");
                 }
 
-                if(checkLeft() == goal) {
+                else if(checkLeft() == goal) {
                     //winning anim function
-                    win = 1;
+                    //win = 1;
+                    alert("You reached the goal!");
                 }
                 
-                currentLevel[boatLocationX][boatLocationY] = empty;
-                boatLocationX -= 1;
-                currentLevel[boatLocationX][boatLocationY] = boat;
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocY -= 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                levelBackground(currentLevel);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
+                boatMoveSound.play();
             } 
         }
 
@@ -93,21 +109,28 @@
                 if(checkRight() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkRight() == mine) {
                     //boat explodes func
                     lose = 1;
+                    alert("You hit a mine!");
                 }
 
                 if(checkRight() == goal) {
                     //winning anim function
-                    win = 1;
+                    
+                    alert("You reached the goal!");
                 }
                 
-                currentLevel[boatLocationX][boatLocationY] = empty;
-                boatLocationX += 1;
-                currentLevel[boatLocationX][boatLocationY] = boat;
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocY += 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                levelBackground(currentLevel);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
+                boatMoveSound.play();
             } 
         }
 
@@ -118,21 +141,28 @@
                 if(checkUp() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkUp() == mine) {
                     //boat explodes func
                     lose = 1;
+                    alert("You hit a mine!");
                 }
 
                 if(checkUp() == goal) {
                     //winning anim function
                     win = 1;
+                    alert("You reached the goal!");
                 }
                 
-                currentLevel[boatLocationX][boatLocationY] = empty;
-                boatLocationY -= 1;
-                currentLevel[boatLocationX][boatLocationY] = boat;
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocX -= 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                levelBackground(currentLevel);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
+                boatMoveSound.play();
             } 
         }
 
@@ -143,42 +173,60 @@
                 if(checkDown() == treasure) {
                     //boat gets treasure anim func
                     treasureGrabbed += 1;
+                    alert("You grabbed some treasure!");
                 }
 
                 if(checkDown() == mine) {
                     //boat explodes func
                     lose = 1;
+                    alert("You hit a mine!");
                 }
 
                 if(checkDown() == goal) {
                     //winning anim function
                     win = 1;
+                    alert("You reached the goal!");
                 }
                 
-                currentLevel[boatLocationX][boatLocationY] = empty;
-                boatLocationY += 1;
-                currentLevel[boatLocationX][boatLocationY] = boat;
+                
+                currentLevel[boatLocX][boatLocY] = empty;
+                boatLocX += 1;
+                currentLevel[boatLocX][boatLocY] = boat;
+                levelBackground(currentLevel);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + 265), (((boatLocX - 1) * 64) + 145));
+                boatMoveSound.play();
             } 
         }
         
-        
-        
-        
-
-        while(win == 0 && lose == 0) {
-            //play the game
-        }
 
         if(win == 1) {
             winner();
+            init();
         }
         if(lose == 1) {
             loser();
+            init();
         }
-        init();
-    };
-    
-    //this starts the level setup animation and 
-    function levelBackground(level) {
         
     };
+    
+    //this starts the level setup animation
+    function levelAnim(level) {
+        
+    }
+    //draws the level background
+    function levelBackground(level) {
+        window.ctx.drawImage(document.getElementById("" + currentLevel.name), 0, 0, window.canvas.width, window.canvas.height);
+    };
+
+    //boat moving sound
+    function boatSound() {
+        return new Audio("sound/oarswater-000.ogg", true);
+    }
+
+    //background music depending on where you are in the game
+    function backgroundMusic(location) {
+        if(location.name == "LevelOne") {
+            return new Audio("sound/background.mp3", true);
+        }
+    }
