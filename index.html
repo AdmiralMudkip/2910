@@ -11,6 +11,7 @@
             var canvas = document.getElementById("canvas"); 
             var context = canvas.getContext("2d"); 
             var img = new Image() 
+            var imgone = new Image()
 
             img.src = "images/mainmenu.png" 
             context.drawImage(img, 0, 0, 1280, 720); 
@@ -25,8 +26,6 @@
         play.style.background = "none";
         play.style.position = "absolute";
         play.id = "play";
-        play.onmouseenter = function () { changeMenu('play', 'mouseenter') };
-        play.onmouseleave = function () { changeMenu('play', 'mouseleave') };
         play.onclick = function () { changeMenu('play', 'mouseclick') };
         document.body.appendChild(play);
 
@@ -39,8 +38,6 @@
         levelselect.style.background = "none";
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
-        levelselect.onmouseenter = function () { changeMenu('levelselect', 'mouseenter') };
-        levelselect.onmouseleave = function () { changeMenu('levelselect', 'mouseleave') };
         levelselect.onclick = function () { changeMenu('levelselect', 'mouseclick') };
         document.body.appendChild(levelselect);
 
@@ -53,8 +50,6 @@
         highscores.style.background = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
-        highscores.onmouseenter = function () { changeMenu('highscores', 'mouseenter') };
-        highscores.onmouseleave = function () { changeMenu('highscores', 'mouseleave') };
         highscores.onclick = function () { changeMenu('highscores', 'mouseclick') };
         document.body.appendChild(highscores);
 
@@ -67,10 +62,18 @@
         instructions.style.background = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
-        instructions.onmouseenter = function () { changeMenu('instructions', 'mouseenter') };
-        instructions.onmouseleave = function () { changeMenu('instructions', 'mouseleave') };
-        instructions.onclick = function () { changeMenu('instructions', 'mouseclick') };
+        instructions.onclick = function (e) { changeMenu('instructions', 'mouseclick') };
         document.body.appendChild(instructions);
+
+                canvas.addEventListener(
+                    'mouseclick',
+                    function (e) {
+                        if ((instructions.style.width == '482px' && instructions.style.height == '68px') && (instructions.style.left == '764px' && instructions.style.top == '480px')) {
+                            context.drawImage(imgone, 0, 0, 1280, 720); 
+                            imgone.src = 'images/instructions.jpg';
+                        }
+                    },
+                    false);
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     </body>
