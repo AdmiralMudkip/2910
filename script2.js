@@ -43,18 +43,34 @@ window.requestAnimFrame = (function(){
     var up = 6;
     var right = 7;
     var down = 8;
+
+    //timer things
+    var z = 120;
+    var treasureGrab = 0;
+
+    //other things
+
+    var nextLevel; //that's some next level stuff right there
+
     //level 1 array
     var level1 = [  
-                    [bar,   bar,      bar,        bar],
-                    [bar,   boat,     treasure,   bar],
-                    [bar,   mine,     goal,       bar],
-                    [bar,   bar,      bar,        bar]
+                    [bar,   bar,        bar,        bar],
+                    [bar,   boat,       treasure,   bar],
+                    [bar,   mine,       goal,       bar],
+                    [bar,   bar,        bar,        bar]
                 ];
     var level2 = [ 
-                    [bar,   bar,      bar,        bar,      bar,    bar],
-                    [bar,   boat,     empty,      mine,     empty,  bar],
-                    [bar,   mine,     empty,      empty,    goal,   bar],
-                    [bar,   bar,      bar,        bar,      bar,    bar]
+                    [bar,   bar,        bar,        bar,      bar,      bar],
+                    [bar,   boat,       empty,      mine,     empty,    bar],
+                    [bar,   mine,       empty,      empty,    goal,     bar],
+                    [bar,   bar,        bar,        bar,      bar,      bar]
+                ];
+    var level3 = [  
+                    [bar,   bar,        bar,        bar,      bar],
+                    [bar,   boat,       mine,       treasure, bar],
+                    [bar,   empty,      empty,      empty,    bar],
+                    [bar,   mine,       empty,      goal,     bar],
+                    [bar,   bar,        bar,        bar,      bar]
                 ];
     level1.name = "LevelOne";
     level1.width = 2;
@@ -63,6 +79,10 @@ window.requestAnimFrame = (function(){
     level2.name = "LevelTwo";
     level2.width = 4;
     level2.height = 2;
+
+    level3.name = "LevelThree";
+    level3.width = 3;
+    level3.height = 3;
 
     function init() {
 
@@ -162,19 +182,18 @@ window.requestAnimFrame = (function(){
         var i,j,x;
         var boatCurrentDir;
         
-        var treasureGrabbed;
+        var treasureGrabbed = 0;
         var boatLocX = 0
         var boatLocY = 0;
         
         var score = 0;
         
+        
         currentLevel = null;
         currentLevel = level.slice(0);
         
-        
         boatCurrentDir = right;
        
-
         for (i = 0; i < currentLevel.length; i++) {
             for (j = 0; j < currentLevel[0].length; j++) {
                 if (currentLevel[i][j] == boat) {
@@ -190,9 +209,16 @@ window.requestAnimFrame = (function(){
         if (level == level1) { 
             boatDrawX = 265;
             boatDrawY = 145;
+            nextLevel = level2;
         } else if (level == level2) {
             boatDrawX = 200;
             boatDrawY = 120;
+            nextLevel = level3;
+        } else if (level == level3) {
+            boatDrawX = 232;
+            boatDrawY = 117;
+        } else if (level == level4) {
+            boatDraw   
         }
         
         var boatMoveSound = boatSound();
@@ -249,7 +275,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = left;
                 if(checkLeft() == treasure) {
                     //boat gets treasure anim func
-                    
+                    scoreIncrease();
                 }
 
                 else if(checkLeft() == mine) {
@@ -281,8 +307,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = right;
                 if(checkRight() == treasure) {
                     //boat gets treasure anim func
-                    treasureGrabbed += 1;
-                    alert("You grabbed some treasure!");
+                    scoreIncrease();
                 }
 
                 if(checkRight() == mine) {
@@ -314,7 +339,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = up;
                 if(checkUp() == treasure) {
                     //boat gets treasure anim func
-                    alert("You grabbed some treasure!");
+                    scoreIncrease();
                 }
 
                 if(checkUp() == mine) {
@@ -346,8 +371,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = down;
                 if(checkDown() == treasure) {
                     //boat gets treasure anim func
-                    treasureGrabbed += 1;
-                    alert("You grabbed some treasure!");
+                    scoreIncrease();
                 }
 
                 if(checkDown() == mine) {
@@ -374,9 +398,7 @@ window.requestAnimFrame = (function(){
             } 
         }
         
-        if (x = 'f') {
-            return;
-        }
+        
     };
     
     //this starts the level setup animation
@@ -405,17 +427,18 @@ window.requestAnimFrame = (function(){
     }
     
         function winner(movement) {
-            
-            var x = 'f';
-            var x = document.getElementById("minutes").innerHTML;
                     var y = document.getElementById("seconds").innerHTML;
-                    var z = 120;
-                    var score = 120 - (60 * x + y);
-                    alert("Time: " + x + ':' + y
-                    + " Score: " + score);
-            startLevel(level2);
+                    var score = 100 - (10 * y) + (treasureGrab * 50);
+                    if (score < 0) {
+                        score = 0;   
+                    }
+            
+                    alert('Your score was: ' + score);
+            
+            startLevel(nextLevel);
+            
             window.removeEventListener('keydown', movement, false);
-            return x;
+            return null;
         }
 
         function loser(movement, loss, currentLevel) {
@@ -426,7 +449,7 @@ window.requestAnimFrame = (function(){
         }
 
         function scoreIncrease() {
-            
+            treasureGrab += 1;
         }
 
 // abstracts various canvas operations into standalone functions

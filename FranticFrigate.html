@@ -18,24 +18,21 @@ img{display:none;}
 
 <body>
     <img id="Main" src="images/MainMenu.png"/>
+    <!-- Level images to be pulled into the JavaScript -->
     <img id="LevelOne" src="art/levelOne/LevelOne20.png"/>
     <img id="LevelTwo" src="art/Levels/2.png" />
+    <img id="LevelThree" src="art/Levels/3.png" />
+    <img id="LevelFour" src="art/Levels/4.png" />
+    <img id="LevelFive" src="art/Levels/5.png" />
+    
     <img id="boat" src="art/Boat/Rotations/ShipRotation1.png"/>
     
-<canvas> </canvas>
+<canvas></canvas>
+<label id="minutes">00</label>:<label id="seconds">00</label>
+<button type="button" onclick="clearTimer()">Pause</button>
+    
+            
 <script src="script2.js"></script>
-    <!--<div id="gameTimer">
-        <!--Timer that counts up-->
-        <label id="minutes">00</label>:<label id="seconds">00</label>
-        <script src="timer.js" type="text/javascript"></script>
-        <!--Creates alert that pauses displays it's time 
-        and continues the timer after being closed-->
-        <button type="button" onclick="clearTimer()">Pause</button>
-    </div>
-            <!--<div>
-            <canvas id="clock" width="400" height="200"></canvas>
-                   </div>-->
-=======
-<script src="script2.js"></script>
+<script src="timer.js" type="text/javascript"></script>
 </body>
 </html>
