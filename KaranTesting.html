@@ -20,10 +20,11 @@
         startCanvas();
 
                 var one = c.getContext("2d");
-                var two = c.getContext("2d");
-                var three = c.getContext("2d");
-                var four = c.getContext("2d");
-                var five = c.getContext("2d");
+                //since they're all referencing the same thing, only use one
+                //var two = c.getContext("2d");
+                //var three = c.getContext("2d");
+                //var four = c.getContext("2d");
+                //var five = c.getContext("2d");
                 var clearCanvas = false;
 
         var play = document.createElement('input');

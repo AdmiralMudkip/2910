@@ -66,12 +66,22 @@ window.requestAnimFrame = (function(){
                     [bar,   bar,        bar,        bar,      bar,      bar]
                 ];
     var level3 = [  
-                    [bar,   bar,        bar,        bar,      bar],
-                    [bar,   boat,       mine,       treasure, bar],
-                    [bar,   empty,      empty,      empty,    bar],
-                    [bar,   mine,       empty,      goal,     bar],
-                    [bar,   bar,        bar,        bar,      bar]
+                    [bar,   bar,        bar,        bar,        bar],
+                    [bar,   boat,       mine,       treasure,   bar],
+                    [bar,   empty,      empty,      empty,      bar],
+                    [bar,   mine,       empty,      goal,       bar],
+                    [bar,   bar,        bar,        bar,        bar]
                 ];
+    var level4 = [  
+                    [bar,   bar,        bar,        bar,        bar,        bar],
+                    [bar,   treasure,   mine,       empty,      treasure,   bar],
+                    [bar,   boat,       empty,      empty,      mine,       bar],
+                    [bar,   empty,      mine,       empty,      goal,       bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar]
+                ];
+    var level5 = [
+                    [bar,   bar,        bar,        bar,        bar,        bar],
+                    [bar,
     level1.name = "LevelOne";
     level1.width = 2;
     level1.height = 2;
@@ -217,8 +227,11 @@ window.requestAnimFrame = (function(){
         } else if (level == level3) {
             boatDrawX = 232;
             boatDrawY = 117;
+            nextLevel = level4;
         } else if (level == level4) {
-            boatDraw   
+            boatDrawX =   
+                
+            nextLevel = level5;
         }
         
         var boatMoveSound = boatSound();
