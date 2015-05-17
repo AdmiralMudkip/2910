@@ -74,14 +74,19 @@ window.requestAnimFrame = (function(){
                 ];
     var level4 = [  
                     [bar,   bar,        bar,        bar,        bar,        bar],
-                    [bar,   treasure,   mine,       empty,      treasure,   bar],
-                    [bar,   boat,       empty,      empty,      mine,       bar],
-                    [bar,   empty,      mine,       empty,      goal,       bar],
+                    [bar,   boat,       mine,       empty,      treasure,   bar],
+                    [bar,   empty,      empty,      empty,      mine,       bar],
+                    [bar,   treasure,   mine,       empty,      goal,       bar],
                     [bar,   bar,        bar,        bar,        bar,        bar]
                 ];
     var level5 = [
                     [bar,   bar,        bar,        bar,        bar,        bar],
-                    [bar,
+                    [bar,   boat,       empty,      mine,       treasure,   bar],
+                    [bar,   mine,       empty,      empty,      empty,      bar],
+                    [bar,   empty,      empty,      empty,      empty,      bar],
+                    [bar,   treasure,   mine,       empty,      goal,       bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar]
+                ];
     level1.name = "LevelOne";
     level1.width = 2;
     level1.height = 2;
@@ -93,6 +98,14 @@ window.requestAnimFrame = (function(){
     level3.name = "LevelThree";
     level3.width = 3;
     level3.height = 3;
+    
+    level4.name = "LevelFour";
+    level4.width = 4;
+    level4.height = 3;
+    
+    level5.name = "LevelFive";
+    level5.width = 4;
+    level5.width = 4;
 
     function init() {
 
@@ -153,7 +166,7 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        startLevel(level1);
+        startLevel(level5);
         
     };
 
@@ -229,9 +242,12 @@ window.requestAnimFrame = (function(){
             boatDrawY = 117;
             nextLevel = level4;
         } else if (level == level4) {
-            boatDrawX =   
-                
+            boatDrawX = 199;   
+            boatDrawY = 117;
             nextLevel = level5;
+        } else if (level == level5) {
+            boatDrawX = 232;
+            boatDrawY = 53;
         }
         
         var boatMoveSound = boatSound();
