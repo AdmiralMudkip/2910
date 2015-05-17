@@ -6,14 +6,14 @@
         <title>Frantic Frigate</title>
     </head>
     <body>
-    <script>
+    <script type="text/javascript">
         window.onload = function () {
-            var canvas = document.getElementById("canvas"); // grabs the canvas element
-            var context = canvas.getContext("2d"); // returns the 2d context object
-            var img = new Image() //creates a variable for a new image
+            var canvas = document.getElementById("canvas"); 
+            var context = canvas.getContext("2d"); 
+            var img = new Image() 
 
-            img.src = "images/mainmenu.png" // specifies the location of the image
-            context.drawImage(img, 0, 0, 1280, 720); // draws the image at the specified x and y location
+            img.src = "images/mainmenu.png" 
+            context.drawImage(img, 0, 0, 1280, 720); 
         }
 
         var play = document.createElement('input');
@@ -24,7 +24,7 @@
         play.style.top = '160px';
         play.style.background = "none";
         play.style.position = "absolute";
-        play.id = "play1";
+        play.id = "play";
         play.onmouseenter = function () { changeMenu('play', 'mouseenter') };
         play.onmouseleave = function () { changeMenu('play', 'mouseleave') };
         play.onclick = function () { changeMenu('play', 'mouseclick') };
@@ -38,7 +38,7 @@
         levelselect.style.top = '268px';
         levelselect.style.background = "none";
         levelselect.style.position = "absolute";
-        levelselect.id = "levelselect1";
+        levelselect.id = "levelselect";
         levelselect.onmouseenter = function () { changeMenu('levelselect', 'mouseenter') };
         levelselect.onmouseleave = function () { changeMenu('levelselect', 'mouseleave') };
         levelselect.onclick = function () { changeMenu('levelselect', 'mouseclick') };
@@ -52,7 +52,7 @@
         highscores.style.top = '366px';
         highscores.style.background = "none";
         highscores.style.position = "absolute";
-        highscores.id = "highscores1";
+        highscores.id = "highscores";
         highscores.onmouseenter = function () { changeMenu('highscores', 'mouseenter') };
         highscores.onmouseleave = function () { changeMenu('highscores', 'mouseleave') };
         highscores.onclick = function () { changeMenu('highscores', 'mouseclick') };
@@ -66,15 +66,11 @@
         instructions.style.top = '480px';
         instructions.style.background = "none";
         instructions.style.position = "absolute";
-        instructions.id = "instructions1";
+        instructions.id = "instructions";
+        instructions.onmouseenter = function () { changeMenu('instructions', 'mouseenter') };
+        instructions.onmouseleave = function () { changeMenu('instructions', 'mouseleave') };
+        instructions.onclick = function () { changeMenu('instructions', 'mouseclick') };
         document.body.appendChild(instructions);
-
-        function changeImage() {
-            this.img.src = "images/instructions.jpg";
-        }
-        instructions.onclick = function () { changeImage.call(this);
-        }
-
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     </body>

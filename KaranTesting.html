@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Frantic Frigate</title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        function startCanvas() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+            var play = c.getContext("2d");
+            var levelselect = c.getContext("2d");
+            var highscores = c.getContext("2d");
+            var instructions = c.getContext("2d");
+            var clearCanvas = false;
+
+            var image = new Image();
+
+            image.onload = function () {
+                image.src = 'images/mainmenu.png';
+                ctx.drawImage(image, 0, 0, 1280, 720);
+            }
+        }
+    </script>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    </body>
+</html>
