@@ -8,13 +8,12 @@
     <body>
     <script type="text/javascript">
         window.onload = function () {
-            var canvas = document.getElementById("canvas"); 
-            var context = canvas.getContext("2d"); 
-            var img = new Image() 
-            var imgone = new Image()
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var img = new Image()
 
-            img.src = "images/mainmenu.png" 
-            context.drawImage(img, 0, 0, 1280, 720); 
+            img.src = "images/mainmenu.png"
+            context.drawImage(img, 0, 0, 1280, 720);
         }
 
         var play = document.createElement('input');
@@ -26,8 +25,18 @@
         play.style.background = "none";
         play.style.position = "absolute";
         play.id = "play";
-        play.onclick = function () { changeMenu('play', 'mouseclick') };
         document.body.appendChild(play);
+        
+        play.onclick = function () { 
+        var script   = document.createElement("script");
+        script.type  = "text/javascript";
+        script.src   = "script2.js";
+        document.body.appendChild(script);
+            play.parentNode.removeChild(play)
+            levelselect.parentNode.removeChild(levelselect)
+            highscores.parentNode.removeChild(highscores)        
+            instructions.parentNode.removeChild(instructions)
+        };
 
         var levelselect = document.createElement('input');
         levelselect.type = "button";
@@ -38,8 +47,20 @@
         levelselect.style.background = "none";
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
-        levelselect.onclick = function () { changeMenu('levelselect', 'mouseclick') };
         document.body.appendChild(levelselect);
+        
+        levelselect.onclick = function () { 
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var img1 = new Image()
+            img1.src = "images/levelselect.jpg"
+            context.drawImage(img1, 0, 0, 1280, 720);
+         
+            play.parentNode.removeChild(play)
+            levelselect.parentNode.removeChild(levelselect)
+            highscores.parentNode.removeChild(highscores)        
+            instructions.parentNode.removeChild(instructions)
+        };
 
         var highscores = document.createElement('input');
         highscores.type = "button";
@@ -50,8 +71,19 @@
         highscores.style.background = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
-        highscores.onclick = function () { changeMenu('highscores', 'mouseclick') };
         document.body.appendChild(highscores);
+        
+        highscores.onclick = function () { 
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var img2 = new Image()
+            img2.src = "images/scores1280.jpg"
+            context.drawImage(img2, 0, 0, 1280, 720);
+            play.parentNode.removeChild(play)
+            levelselect.parentNode.removeChild(levelselect)
+            highscores.parentNode.removeChild(highscores)        
+            instructions.parentNode.removeChild(instructions)
+        };
 
         var instructions = document.createElement('input');
         instructions.type = "button";
@@ -62,18 +94,20 @@
         instructions.style.background = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
-        instructions.onclick = function (e) { changeMenu('instructions', 'mouseclick') };
         document.body.appendChild(instructions);
 
-                canvas.addEventListener(
-                    'mouseclick',
-                    function (e) {
-                        if ((instructions.style.width == '482px' && instructions.style.height == '68px') && (instructions.style.left == '764px' && instructions.style.top == '480px')) {
-                            context.drawImage(imgone, 0, 0, 1280, 720); 
-                            imgone.src = 'images/instructions.jpg';
-                        }
-                    },
-                    false);
+        instructions.onclick = function () {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var img1 = new Image()
+            img1.src = "images/instructions.jpg"
+            context.drawImage(img1, 0, 0, 1280, 720);
+            play.parentNode.removeChild(play)
+            levelselect.parentNode.removeChild(levelselect)
+            highscores.parentNode.removeChild(highscores)        
+            instructions.parentNode.removeChild(instructions)
+        };
+
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
     </body>
