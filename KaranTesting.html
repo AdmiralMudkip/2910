@@ -7,24 +7,19 @@
     </head>
     <body>
     <script type="text/javascript">
-        function startCanvas() {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        var context;
+        window.onload = function() {
+            var canvas = document.getElementById("canvas"); // grabs the canvas element
+            context = canvas.getContext("2d");
+            var img = document.getElementById("testname");//change this afterwards
 
-            var play = c.getContext("2d");
-            var levelselect = c.getContext("2d");
-            var highscores = c.getContext("2d");
-            var instructions = c.getContext("2d");
-            var clearCanvas = false;
-
-            var image = new Image();
-
-            image.onload = function () {
-                image.src = 'images/mainmenu.png';
-                ctx.drawImage(image, 0, 0, 1280, 720);
-            }
+            
+            context.drawImage(img, 0, 0, 1280, 720);
+            
         }
+        startCanvas();
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
+    <img src = "images/MainMenu.PNG" id="testname" style="display:none">
     </body>
 </html>
