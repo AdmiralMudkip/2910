@@ -11,9 +11,9 @@
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
             var img = new Image()
-
             img.src = "images/mainmenu.png"
             context.drawImage(img, 0, 0, 1280, 720);
+
         }
 
         var play = document.createElement('input');
@@ -26,15 +26,15 @@
         play.style.position = "absolute";
         play.id = "play";
         document.body.appendChild(play);
-        
-        play.onclick = function () { 
-        var script   = document.createElement("script");
-        script.type  = "text/javascript";
-        script.src   = "script2.js";
-        document.body.appendChild(script);
+
+        play.onclick = function () {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "script2.js";
+            document.body.appendChild(script);
             play.parentNode.removeChild(play)
+            highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
-            highscores.parentNode.removeChild(highscores)        
             instructions.parentNode.removeChild(instructions)
         };
 
@@ -48,18 +48,18 @@
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
         document.body.appendChild(levelselect);
-        
-        levelselect.onclick = function () { 
+
+        levelselect.onclick = function () {
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
             var img1 = new Image()
             img1.src = "images/levelselect.jpg"
             context.drawImage(img1, 0, 0, 1280, 720);
-         
             play.parentNode.removeChild(play)
+            highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
-            highscores.parentNode.removeChild(highscores)        
             instructions.parentNode.removeChild(instructions)
+
         };
 
         var highscores = document.createElement('input');
@@ -72,16 +72,16 @@
         highscores.style.position = "absolute";
         highscores.id = "highscores";
         document.body.appendChild(highscores);
-        
-        highscores.onclick = function () { 
+
+        highscores.onclick = function () {
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
             var img2 = new Image()
             img2.src = "images/scores1280.jpg"
             context.drawImage(img2, 0, 0, 1280, 720);
             play.parentNode.removeChild(play)
+            highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
-            highscores.parentNode.removeChild(highscores)        
             instructions.parentNode.removeChild(instructions)
         };
 
@@ -103,12 +103,13 @@
             img1.src = "images/instructions.jpg"
             context.drawImage(img1, 0, 0, 1280, 720);
             play.parentNode.removeChild(play)
+            highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
-            highscores.parentNode.removeChild(highscores)        
             instructions.parentNode.removeChild(instructions)
         };
 
     </script>
     <canvas id="canvas" width="1280" height="720"></canvas>
+    <script src="script2.js"></script>
     </body>
 </html>
