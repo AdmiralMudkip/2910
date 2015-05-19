@@ -1,26 +1,34 @@
-
+       
         function StartMenu() {
             var WIDTH = 720;
             var HEIGHT = 480;
             
-            window.currentWidth = window.WIDTH;
-        window.currentHeight = window.HEIGHT;
-        window.canvas = document.getElementById('canvas');
-        window.canvas.width = window.WIDTH;
-        window.canvas.height = window.HEIGHT;
-        window.ctx = window.canvas.getContext('2d');
-
+            //window.currentWidth = window.WIDTH;
+            //window.currentHeight = window.HEIGHT;
+            //window.canvas = document.getElementById('canvas');
+            //window.canvas.width = window.WIDTH;
+            //window.canvas.height = window.HEIGHT;
+            //window.ctx = window.canvas.getContext('2d');
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
             var img = new Image()
             img.src = "images/mainmenu.png"
             context.drawImage(img, 0, 0, 720, 480);
-
-        }
-
-        var play = document.createElement('input');
+            
+            //pulls the width of the canvas into var x
+            var x = ctx.canvas.style.width;
+            console.log(x);
+            //removes the "px" from x, returns just a number, puts it into buttonWidthNum
+            var buttonWidthNum = parseInt(x);
+            //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
+            buttonWidthNum = (buttonWidthNum * .5);
+            console.log(buttonWidthNum);
+            
+            var play = document.createElement('input');
         play.type = "button";
-        play.style.width = '270px';
+            //have to append "px" to it, otherwise it doesn't work
+        play.style.width = buttonWidthNum + "px";
+            console.log(play.style.width);
         play.style.height = '52px';
         play.style.left = '750px';
         play.style.top = '100px';
@@ -164,3 +172,6 @@
             };
         }
 
+        }
+        
+        
