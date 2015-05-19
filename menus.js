@@ -1,5 +1,5 @@
 
-        window.onload = function () {
+        function StartMenu() {
             var WIDTH = 720;
             var HEIGHT = 480;
             
@@ -25,7 +25,7 @@
         play.style.left = '750px';
         play.style.top = '100px';
         play.style.background = "none";
-        play.style.border = "none";
+        //play.style.border = "none";
         play.style.position = "absolute";
         play.id = "play";
         document.body.appendChild(play);

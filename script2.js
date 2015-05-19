@@ -166,8 +166,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        startLevel(level1);
-        
+        //startLevel(level1);
+        StartMenu();
     };
 
     function resize() {
@@ -510,5 +510,5 @@ window.Draw = {
 
 };
 
-window.addEventListener('load', false);
+window.addEventListener('load', window.init, false);
 window.addEventListener('resize', window.resize, false);
