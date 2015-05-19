@@ -1,115 +1,45 @@
-<!DOCTYPE html>
-
+<!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Frantic Frigate</title>
-    </head>
-    <body>
-    <script type="text/javascript">
-        window.onload = function () {
-            var canvas = document.getElementById("canvas");
-            var context = canvas.getContext("2d");
-            var img = new Image()
-            img.src = "images/mainmenu.png"
-            context.drawImage(img, 0, 0, 1280, 720);
+<head>
+<meta charset="UTF-8">
 
-        }
+<meta name="viewport" content="width=device-width, 
+    user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Frantic Frigate</title>
+<style type="text/css">
+    body { margin: 0; padding: 0; background: #000; color: white}
+    canvas { display: block; margin: 0 auto; background: #fff; }
+    img{display:none;}
+</style>
+    
+</head>
 
-        var play = document.createElement('input');
-        play.type = "button";
-        play.style.width = '482px';
-        play.style.height = '68px';
-        play.style.left = '760px';
-        play.style.top = '160px';
-        play.style.background = "none";
-        play.style.position = "absolute";
-        play.id = "play";
-        document.body.appendChild(play);
-
-        play.onclick = function () {
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = "script2.js";
-            document.body.appendChild(script);
-            play.parentNode.removeChild(play)
-            highscores.parentNode.removeChild(highscores)
-            levelselect.parentNode.removeChild(levelselect)
-            instructions.parentNode.removeChild(instructions)
-        };
-
-        var levelselect = document.createElement('input');
-        levelselect.type = "button";
-        levelselect.style.width = '482px';
-        levelselect.style.height = '68px';
-        levelselect.style.left = '758px';
-        levelselect.style.top = '268px';
-        levelselect.style.background = "none";
-        levelselect.style.position = "absolute";
-        levelselect.id = "levelselect";
-        document.body.appendChild(levelselect);
-
-        levelselect.onclick = function () {
-            var canvas = document.getElementById("canvas");
-            var context = canvas.getContext("2d");
-            var img1 = new Image()
-            img1.src = "images/levelselect.jpg"
-            context.drawImage(img1, 0, 0, 1280, 720);
-            play.parentNode.removeChild(play)
-            highscores.parentNode.removeChild(highscores)
-            levelselect.parentNode.removeChild(levelselect)
-            instructions.parentNode.removeChild(instructions)
-
-        };
-
-        var highscores = document.createElement('input');
-        highscores.type = "button";
-        highscores.style.width = '482px';
-        highscores.style.height = '68px';
-        highscores.style.left = '760px';
-        highscores.style.top = '366px';
-        highscores.style.background = "none";
-        highscores.style.position = "absolute";
-        highscores.id = "highscores";
-        document.body.appendChild(highscores);
-
-        highscores.onclick = function () {
-            var canvas = document.getElementById("canvas");
-            var context = canvas.getContext("2d");
-            var img2 = new Image()
-            img2.src = "images/scores1280.jpg"
-            context.drawImage(img2, 0, 0, 1280, 720);
-            play.parentNode.removeChild(play)
-            highscores.parentNode.removeChild(highscores)
-            levelselect.parentNode.removeChild(levelselect)
-            instructions.parentNode.removeChild(instructions)
-        };
-
-        var instructions = document.createElement('input');
-        instructions.type = "button";
-        instructions.style.width = '482px';
-        instructions.style.height = '68px';
-        instructions.style.left = '764px';
-        instructions.style.top = '480px';
-        instructions.style.background = "none";
-        instructions.style.position = "absolute";
-        instructions.id = "instructions";
-        document.body.appendChild(instructions);
-
-        instructions.onclick = function () {
-            var canvas = document.getElementById("canvas");
-            var context = canvas.getContext("2d");
-            var img1 = new Image()
-            img1.src = "images/instructions.jpg"
-            context.drawImage(img1, 0, 0, 1280, 720);
-            play.parentNode.removeChild(play)
-            highscores.parentNode.removeChild(highscores)
-            levelselect.parentNode.removeChild(levelselect)
-            instructions.parentNode.removeChild(instructions)
-        };
-
-    </script>
-    <canvas id="canvas" width="1280" height="720"></canvas>
-    <script src="script2.js"></script>
-    </body>
+<body>
+    <img id="Main" src="images/MainMenu.png"/>
+    <!-- Level images to be pulled into the JavaScript -->
+    <img id="LevelOne" src="art/Levels/1.png"/>
+    <img id="LevelTwo" src="art/Levels/2.png" />
+    <img id="LevelThree" src="art/Levels/3.png" />
+    <img id="LevelFour" src="art/Levels/4.png" />
+    <img id="LevelFive" src="art/Levels/5.png" />
+    
+    <img id="boat" src="art/Boat/Rotations/ShipRotation1.png"/>
+    
+    <!-- Various menu images -->
+    <img id="mainMenu" src="images/mainmenu.png" />
+    <img id="instructions" src="images/instructions.jpg" />
+    <img id="levelSelect" src="images/levelselect.jpg" />
+    <img id="highScores" src="images/scores1280.jpg" />
+    
+    
+<canvas id="canvas"></canvas>
+<label id="minutes">00</label>:<label id="seconds">00</label>
+<button type="button" onclick="clearTimer()">Pause</button>
+    
+<script src="menus.js"></script>
+<script src="script2.js"></script>
+<script src="timer.js"></script>
+</body>
 </html>
