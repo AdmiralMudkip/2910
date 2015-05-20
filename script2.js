@@ -35,8 +35,6 @@ window.requestAnimFrame = (function(){
     var goal = 4;
     var bar = 9;
 
-    var boatLevel1X = 265;
-    var boatLevel1Y = 145;
     
     //boat directions
     var left = 5;
@@ -87,6 +85,7 @@ window.requestAnimFrame = (function(){
                     [bar,   treasure,   mine,       empty,      goal,       bar],
                     [bar,   bar,        bar,        bar,        bar,        bar]
                 ];
+
     level1.name = "LevelOne";
     level1.width = 2;
     level1.height = 2;
@@ -206,32 +205,39 @@ window.requestAnimFrame = (function(){
         var boatCurrentDir;
         
         var treasureGrabbed = 0;
-        var boatLocX = 0
-        var boatLocY = 0;
+        var boatLocX = 1;
+        var boatLocY = 1;
         
         var score = 0;
+        
+        var mineX = [];
+        var mineY = [];
         
         
         currentLevel = null;
         currentLevel = level.slice(0);
         
         boatCurrentDir = right;
-       
-        for (i = 0; i < currentLevel.length; i++) {
-            for (j = 0; j < currentLevel[0].length; j++) {
-                if (currentLevel[i][j] == boat) {
-                    boatLocX = i;
-                    boatLocY = j;
-                }
-            }
-        }
-
         currentLevel.name = level.name;
-        levelBackground(currentLevel);
+        //we don't need this because in the conditionals we can set the starting location of the boat manually.  
+        //for (i = 0; i < currentLevel.length; i++) {
+        //    for (j = 0; j < currentLevel[0].length; j++) {
+        //        if (currentLevel[i][j] == boat) {
+        //            boatLocX = i;
+        //            boatLocY = j;
+        //        }
+        //    }
+        //}
+
         
+        
+        
+        //conditional to check what level the player is on, and then sets drawing variables, next level, and mine placements
         if (level == level1) { 
             boatDrawX = 265;
-            boatDrawY = 145;
+            boatDrawY = 115;
+            mineX[0] = 0;
+            mineY[0] = 1;
             nextLevel = level2;
         } else if (level == level2) {
             boatDrawX = 200;
@@ -250,6 +256,10 @@ window.requestAnimFrame = (function(){
             boatDrawY = 53;
         }
         
+        levelBackground(currentLevel);
+        
+        drawMines(currentLevel, mineX, mineY, boatDrawX, boatDrawY);
+        
         var boatMoveSound = boatSound();
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
@@ -264,7 +274,8 @@ window.requestAnimFrame = (function(){
         window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
         
         window.addEventListener('keydown', movement, false);
-
+        
+        //listeners for keyboard input
         function movement(e) {
             
                 if (e.keyCode == '38' ) {
@@ -311,6 +322,7 @@ window.requestAnimFrame = (function(){
                     //boat explodes func
                     loser(movement, loss, currentLevel);
                     loss.play();
+                    return;
                 }
 
                 else if(checkLeft() == goal) {
@@ -343,6 +355,7 @@ window.requestAnimFrame = (function(){
                     //boat explodes func
                     loser(movement, loss, currentLevel);
                     loss.play();
+                    return;
                 }
 
                 if(checkRight() == goal) {
@@ -375,6 +388,7 @@ window.requestAnimFrame = (function(){
                     //boat explodes func
                     loser(movement, loss, currentLevel);
                     loss.play();
+                    return;
                 }
 
                 if(checkUp() == goal) {
@@ -407,7 +421,8 @@ window.requestAnimFrame = (function(){
                     //boat explodes func
                     loser(movement, loss, currentLevel);
                     loss.play();
-                    window.removeEventListener('keydown', movement, false);
+                    //window.removeEventListener('keydown', movement, false);
+                    return;
                 }
 
                 if(checkDown() == goal) {
@@ -430,10 +445,44 @@ window.requestAnimFrame = (function(){
         
     };
     
-    //this starts the level setup animation
-    function levelAnim(level) {
+
+    function drawMines(level, mineX, mineY, boatDrawX, boatDrawY) {
         
-    }
+        var mineImg = new Image();
+        mineImg = document.getElementById("barrel");
+        var width = 52;
+        var height = 115;
+        var count = 1;
+        console.log(mineX.length);
+            for (var i = 0; i < mineX.length; i++){ 
+            var sheetY = (i * 115);
+                console.log('mine for loop');
+                var interval = setInterval( function (){
+            barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level);
+                count++;
+                sheetY = (count * 115);
+                    console.log(sheetY);
+                    if (count >= 20) {
+                        clearInterval(interval);
+                    }
+               
+        }, 200)
+            };
+        
+        
+        };
+    
+
+
+    function barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level) {
+        levelBackground(level);     
+        window.ctx.drawImage(mineImg, 0, sheetY, width, height, 0,0, width, height);
+            
+        
+        console.log("barrel rendered");
+        };
+    //(((mineX[i] - 1) * 64) + boatDrawX), (((mineY[i] - 1) * 64) + boatDrawY)
+    
     //draws the level background
     function levelBackground(level) {
         window.ctx.drawImage(document.getElementById("" + level.name), 0, 0, window.canvas.width, window.canvas.height);
@@ -445,9 +494,9 @@ window.requestAnimFrame = (function(){
     }
     
     function loseSound() {
-        return new Audio("sound/wilhelm.mp3", true);  
-        
+        return new Audio("sound/wilhelm.mp3", true);     
     }
+
     //background music depending on where you are in the game
     function backgroundMusic(location) {
         if(location.name == "LevelOne") {
@@ -463,7 +512,8 @@ window.requestAnimFrame = (function(){
                     }
             
                     alert('Your score was: ' + score);
-            
+                    sec = 0;
+                    
             startLevel(nextLevel);
             
             window.removeEventListener('keydown', movement, false);
@@ -473,6 +523,7 @@ window.requestAnimFrame = (function(){
         function loser(movement, loss, currentLevel) {
             alert("You lose, level restarting.");
             loss.play();
+            
             startLevel(currentLevel);
             window.removeEventListener('keydown', movement, false);
         }
@@ -512,3 +563,4 @@ window.Draw = {
 
 window.addEventListener('load', window.init, false);
 window.addEventListener('resize', window.resize, false);
+        
