@@ -165,8 +165,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        //startLevel(level1);
-        StartMenu();
+        startLevel(level1);
+        //StartMenu();
     };
 
     function resize() {
@@ -450,47 +450,38 @@ window.requestAnimFrame = (function(){
         
         var mineImg = new Image();
         mineImg = document.getElementById("barrel");
+        var width = 52;
+        var height = 115;
+        var count = 1;
+        console.log(mineX.length);
+            for (var i = 0; i < mineX.length; i++){ 
+            var sheetY = (i * 115);
+                console.log('mine for loop');
+                var interval = setInterval( function (){
+            barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level);
+                count++;
+                sheetY = (count * 115);
+                    console.log(sheetY);
+                    if (count >= 20) {
+                        clearInterval(interval);
+                    }
+               
+        }, 200)
+            };
         
-        for (var i = 0; i < mineX.length; i++){ 
-            window.ctx.drawImage(mineImg, (((mineX[i] - 1) * 64) + boatDrawX), (((mineY[i] - 1) * 64) + boatDrawY));
-            console.log('mine for loop');
-        }
         
-        var barrelImage = barrelSprite({
-            context: canvas.getContext("2d"),
-            width: 52,
-            height: 115,
-            image: mineImg
-        });
-        
-        
-        //mineImg.render();
-    }
-    
-    function barrelSprite (options) {
-        var that = {};
-        that.context = options.context;
-        that.width = options.width;
-        that.height = options.height;
-        that.image = options.image;
-
-        return that;
-        
-         
-    }
-    function barrelRender() {
-            that.context.drawImage(
-                that.image,
-                0,
-                0,
-                that.width,
-                that.height,
-                0,
-                0,
-                that.width,
-                that.height);
         };
     
+
+
+    function barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level) {
+        levelBackground(level);     
+        window.ctx.drawImage(mineImg, 0, sheetY, width, height, 0,0, width, height);
+            
+        
+        console.log("barrel rendered");
+        };
+    //(((mineX[i] - 1) * 64) + boatDrawX), (((mineY[i] - 1) * 64) + boatDrawY)
     
     //draws the level background
     function levelBackground(level) {
@@ -572,3 +563,4 @@ window.Draw = {
 
 window.addEventListener('load', window.init, false);
 window.addEventListener('resize', window.resize, false);
+        
