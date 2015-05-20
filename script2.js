@@ -85,6 +85,57 @@ window.requestAnimFrame = (function(){
                     [bar,   treasure,   mine,       empty,      goal,       bar],
                     [bar,   bar,        bar,        bar,        bar,        bar]
                 ];
+                
+    var level6 = [
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar],
+                    [bar,   treasure,   empty,      empty,      mine,       mine,       empty,      bar],
+                    [bar,   mine,       mine,       empty,      empty,      empty,      empty,      bar],
+                    [bar,   boat,       empty,      empty,      mine,       mine,       goal,       bar],
+                    [bar,   empty,      mine,       empty,      empty,      treausure,  mine,       bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar]
+                ];
+
+    var level7 = [
+                    [bar,   bar,        bar,        bar,        bar],
+                    [bar,   boat,       empty,      empty,      bar],
+                    [bar,   mine,       mine,       empty,      bar],
+                    [bar,   empty,      empty,      empty,      bar],
+                    [bar,   empty,      mine,       mine,       bar],
+                    [bar,   empty,      empty,      empty,      bar],
+                    [bar,   treasure,   mine,       goal,       bar],
+                    [bar,   bar,        bar,        bar,        bar]
+                ];
+
+    var level8 = [
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar],
+                    [bar,   bar,        bar,        treasure,   empty,      empty,      bar,        bar,       bar],
+                    [bar,   bar,        bar,        mine,       mine,       empty,      bar,        bar,       bar],
+                    [bar,   boat,       empty,      empty,      empty,      empty,      empty,      empty,     bar],
+                    [bar,   empty,      mine,       mine,       empty,      mine,       mine,       treasure,  bar],
+                    [bar,   bar,        bar,        empty,      empty,      empty,      bar,        bar,       bar],
+                    [bar,   bar,        bar,        treasure,   mine,       goal,       bar,        bar,       bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar]
+                ];
+
+    var level9 = [
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar,       bar],
+                    [bar,   empty,      empty,      empty,      empty,      empty,      empty,      mine,      treasure,  bar],
+                    [bar,   boat,       mine,       empty,      empty,      mine,       empty,      empty,     empty,     bar],
+                    [bar,   mine,       mine,       empty,      empty,      empty,      mine,       mine,      mine,      bar],
+                    [bar,   treasure,   empty,      empty,      mine,       empty,      empty,      empty,     goal,      bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar,       bar]
+                ];
+
+    var level10 = [
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar,       bar],
+                    [bar,   mine,       empty,      empty,      treasure,   mine,       empty,      empty,     empty,     bar],
+                    [bar,   empty,      empty,      mine,       mine,       empty,      empty,      mine,      empty,     bar],
+                    [bar,   empty,      mine,       empty,      empty,      empty,      mine,       empty,     empty,     bar],
+                    [bar,   boat,       empty,      empty,      mine,       mine,       mine,       treasure,  mine,      bar],
+                    [bar,   empty,      mine,       mine,       empty,      empty,      empty,      mine,      goal,      bar],
+                    [bar,   empty,      empty,      empty,      empty,      mine,       empty,      empty,     empty,     bar],
+                    [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar,       bar,       bar]
+                ];
 
     level1.name = "LevelOne";
     level1.width = 2;
@@ -104,7 +155,27 @@ window.requestAnimFrame = (function(){
     
     level5.name = "LevelFive";
     level5.width = 4;
-    level5.width = 4;
+    level5.height = 4;
+
+    level6.name = "LevelSix";
+    level6.width = 6;
+    level6.height = 4;
+
+    level7.name = "LevelSeven";
+    level7.width = 3;
+    level7.height = 6;
+
+    level8.name = "LevelEight";
+    level8.width = 7;
+    level8.height = 6;
+
+    level9.name = "LevelNine";
+    level9.width = 8;
+    level9.height = 4;
+
+    level10.name = "LevelTen";
+    level10.width = 8;
+    level10.height = 6;
 
     function init() {
 
