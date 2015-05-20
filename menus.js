@@ -21,17 +21,41 @@
             //removes the "px" from x, returns just a number, puts it into buttonWidthNum
             var buttonWidthNum = parseInt(x);
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
-            buttonWidthNum = (buttonWidthNum * .5);
+            buttonWidthNum = (buttonWidthNum * .375);
             console.log(buttonWidthNum);
-            
-            var play = document.createElement('input');
+
+            //height for all
+            var x = ctx.canvas.style.height;
+            console.log(x);
+            var buttonHeightNum = parseInt(x);
+            buttonHeightNum = (buttonHeightNum * .096);
+            console.log(buttonHeightNum);
+
+            //left for 'play'
+            var x = ctx.canvas.style.left;
+            console.log(x);
+            var buttonLeftNum = parseInt(x);
+            buttonLeftNum = (buttonLeftNum * 1.5);
+            console.log(buttonLeftNum);
+
+            //top for 'play'
+            var y = ctx.canvas.style.top;
+            console.log(y);
+            var buttonTopNum = parseInt(y);
+            buttonTopNum = (buttonTopNum * 2);
+            console.log(buttonTopNum);
+
+        var play = document.createElement('input');
         play.type = "button";
             //have to append "px" to it, otherwise it doesn't work
         play.style.width = buttonWidthNum + "px";
             console.log(play.style.width);
-        play.style.height = '52px';
-        play.style.left = '750px';
-        play.style.top = '100px';
+        play.style.height = buttonHeightNum + "px";
+            console.log(play.style.height);
+        play.style.left = buttonLeftNum + "px";
+            console.log(play.style.left);
+        play.style.top = buttonTopNum + "px";
+            console.log(play.style.top);
         play.style.background = "none";
         //play.style.border = "none";
         play.style.position = "absolute";
@@ -48,12 +72,16 @@
 
         var levelselect = document.createElement('input');
         levelselect.type = "button";
-        levelselect.style.width = '270px';
-        levelselect.style.height = '52px';
-        levelselect.style.left = '746px';
-        levelselect.style.top = '168px';
+        levelselect.style.width = buttonWidthNum + "px";
+            console.log(levelselect.style.width);
+        levelselect.style.height = buttonHeightNum + "px";
+            console.log(levelselect.style.height);
+        levelselect.style.left = buttonLeftNum + "px";
+            console.log(levelselect.style.left);
+        levelselect.style.top = buttonTopNum + "px";
+            console.log(levelselect.style.top);
         levelselect.style.background = "none";
-        levelselect.style.border = "none";
+        //levelselect.style.border = "none";
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
         document.body.appendChild(levelselect);
@@ -90,12 +118,15 @@
 
         var highscores = document.createElement('input');
         highscores.type = "button";
-        highscores.style.width = '270px';
-        highscores.style.height = '52px';
-        highscores.style.left = '745px';
+        highscores.style.width = buttonWidthNum + "px";
+            console.log(highscores.style.width);
+        highscores.style.height = buttonHeightNum + "px";
+            console.log(highscores.style.height);
+        highscores.style.left3 = buttonLeft3Num + "px";
+            console.log(highscores.style.left3);
         highscores.style.top = '234px';
         highscores.style.background = "none";
-        highscores.style.border = "none";
+        //highscores.style.border = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
         document.body.appendChild(highscores);
@@ -132,12 +163,15 @@
 
         var instructions = document.createElement('input');
         instructions.type = "button";
-        instructions.style.width = '270px';
-        instructions.style.height = '52px';
-        instructions.style.left = '748px';
+        instructions.style.width = buttonWidthNum + "px";
+            console.log(instructions.style.width);
+        instructions.style.height = buttonHeightNum + "px";
+            console.log(instructions.style.height);
+        instructions.style.left4 = buttonLeft4Num + "px";
+            console.log(instructions.style.left4);
         instructions.style.top = '310px';
         instructions.style.background = "none";
-        instructions.style.border = "none";
+        //instructions.style.border = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
         document.body.appendChild(instructions);
