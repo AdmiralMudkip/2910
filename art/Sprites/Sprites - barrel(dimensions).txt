@@ -1,0 +1,3 @@
+W: 52
+H: 114
+Spacing: 1 pixel.
