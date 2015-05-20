@@ -165,8 +165,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        startLevel(level1);
-        //StartMenu();
+        //startLevel(level1);
+        StartMenu();
     };
 
     function resize() {
@@ -465,7 +465,7 @@ window.requestAnimFrame = (function(){
                     if (count >= 20) {
                         clearInterval(interval);
                     }
-               
+           //speed at which the loop runs, milliseconds    
         }, 200)
             };
         

@@ -18,7 +18,7 @@
             
             //pulls the width of the canvas into var x
             var x = ctx.canvas.style.width;
-            
+            var width = parseInt(x);
             //removes the "px" from x, returns just a number, puts it into buttonWidthNum
             var buttonWidthNum = parseInt(x);
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
@@ -27,23 +27,25 @@
 
             //height for all
             var a = ctx.canvas.style.height;
-            
+            var height = parseInt(a);
             var buttonHeightNum = parseInt(a);
-            buttonHeightNum = (buttonHeightNum * .096);
             
+            buttonHeightNum = (buttonHeightNum * .096);
+            height = (height * .2);
 
             //left for 'play'
             var b = getXPosition(canvas);
             
             var buttonLeftNum = parseInt(b);
-            buttonLeftNum = (buttonLeftNum * 7);
+            buttonLeftNum = (buttonLeftNum * .7);
             
 
             //top for 'play
-            var buttonTopNum = (a * 7);
-            buttonTopNum = (buttonTopNum+ 30);
+            var buttonTopNum = (a * .7);
             
-            
+            //width * number + canvas x start position
+            var leftDist = (width * .6) + b;
+            //
             var buttonLeft3Num;
             var buttonLeft4Num;
 
@@ -53,10 +55,10 @@
         play.style.width = buttonWidthNum + "px";
             
         play.style.height = buttonHeightNum + "px";
+            console.log(leftDist);
+        play.style.left = leftDist + "px";
             
-        play.style.left = buttonLeftNum + "px";
-            
-        play.style.top = buttonTopNum + "px";
+        play.style.top = height + "px";
             
         play.style.background = "none";
         //play.style.border = "none";
