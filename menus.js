@@ -27,22 +27,17 @@
 
             //height for all
             var a = ctx.canvas.style.height;
-            
             var buttonHeightNum = parseInt(a);
             buttonHeightNum = (buttonHeightNum * .096);
             
-
             //left for 'play'
             var b = getXPosition(canvas);
-            
             var buttonLeftNum = parseInt(b);
             buttonLeftNum = (buttonLeftNum * 7);
             
-
             //top for 'play
-            var buttonTopNum = (a * 7);
-            buttonTopNum = (buttonTopNum+ 30);
-            
+            var buttonTopNum = (a * 1);
+            buttonTopNum = (buttonTopNum+ 50);
             
             var buttonLeft3Num;
             var buttonLeft4Num;
@@ -50,14 +45,10 @@
         var play = document.createElement('input');
         play.type = "button";
             //have to append "px" to it, otherwise it doesn't work
-        play.style.width = buttonWidthNum + "px";
-            
-        play.style.height = buttonHeightNum + "px";
-            
-        play.style.left = buttonLeftNum + "px";
-            
+        play.style.width = buttonWidthNum + "px";           
+        play.style.height = buttonHeightNum + "px";           
+        play.style.left = buttonLeftNum + "px";     
         play.style.top = buttonTopNum + "px";
-            
         play.style.background = "none";
         //play.style.border = "none";
         play.style.position = "absolute";
@@ -74,14 +65,10 @@
 
         var levelselect = document.createElement('input');
         levelselect.type = "button";
-        levelselect.style.width = buttonWidthNum + "px";
-            
-        levelselect.style.height = buttonHeightNum + "px";
-            
-        levelselect.style.left = 200+ "px";
-            
-        levelselect.style.top = 70+ "px";
-            
+        levelselect.style.width = buttonWidthNum + "px";            
+        levelselect.style.height = buttonHeightNum + "px";            
+        levelselect.style.left = 758+ "px";          
+        levelselect.style.top = 228+ "px";         
         levelselect.style.background = "none";
         //levelselect.style.border = "none";
         levelselect.style.position = "absolute";
@@ -120,12 +107,9 @@
 
         var highscores = document.createElement('input');
         highscores.type = "button";
-        highscores.style.width = buttonWidthNum + "px";
-            
-        highscores.style.height = buttonHeightNum + "px";
-            
-        highscores.style.left = buttonLeft3Num + "px";
-            
+        highscores.style.width = buttonWidthNum + "px";           
+        highscores.style.height = buttonHeightNum + "px";           
+        highscores.style.left = buttonLeft3Num + "px";          
         highscores.style.top = '234px';
         highscores.style.background = "none";
         //highscores.style.border = "none";
@@ -165,12 +149,9 @@
 
         var instructions = document.createElement('input');
         instructions.type = "button";
-        instructions.style.width = buttonWidthNum + "px";
-            
-        instructions.style.height = buttonHeightNum + "px";
-            
-        instructions.style.left4 = buttonLeft4Num + "px";
-            
+        instructions.style.width = buttonWidthNum + "px";           
+        instructions.style.height = buttonHeightNum + "px";   
+        instructions.style.left4 = buttonLeft4Num + "px";         
         instructions.style.top = '310px';
         instructions.style.background = "none";
         //instructions.style.border = "none";
