@@ -30,7 +30,7 @@
             buttonWidth2Num = (buttonWidth2Num * .201);
             buttonWidth3Num = (buttonWidth3Num * .19);
           
-///////////////////////PLAY///////////////////////////
+///////////////////////PLAY//////////////////////////
 
             //height for 'play'
             var a = ctx.canvas.style.height;
