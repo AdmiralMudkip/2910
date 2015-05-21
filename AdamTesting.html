@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, 
+    user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Frantic Frigate</title>
+<style type="text/css">
+    body { margin: 0; padding: 0; background: #000; color: white}
+    canvas { display: block; margin: 0 auto; background: #fff; }
+    img{display:none;}
+</style>
+    
+</head>
+
+<body>
+    <img id="Main" src="images/MainMenu.png"/>
+    <!-- Level images to be pulled into the JavaScript -->
+    <img id="LevelOne" src="art/Levels/1.png"/>
+    <img id="LevelTwo" src="art/Levels/2.png" />
+    <img id="LevelThree" src="art/Levels/3.png" />
+    <img id="LevelFour" src="art/Levels/4.png" />
+    <img id="LevelFive" src="art/Levels/5.png" />
+    
+    <img id="boat" src="art/Boat/Rotations/ShipRotation1.png"/>
+    <img id="barrel" src="art/Sprites/barrel.png"/>
+    <img id="treasure" src="art/Sprites/treasure.png"/>
+    
+    <!-- Various menu images -->
+    <img id="mainMenu" src="images/mainmenu.png" />
+    <img id="instructions" src="images/instructions.jpg" />
+    <img id="levelSelect" src="images/levelselect.jpg" />
+    <img id="highScores" src="images/scores1280.jpg" />
+    
+    
+<canvas id="canvas"></canvas>
+<label id="minutes">00</label>:<label id="seconds">00</label>:<label id="milliseconds">00</label>
+<button type="button" onclick="clearTimer()">Pause</button>
+    
+
+<script src="scriptAdam.js"></script>
+<script src="menus.js"></script>
+<script src="timer.js"></script>
+</body>
+</html>
