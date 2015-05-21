@@ -91,7 +91,7 @@ window.requestAnimFrame = (function(){
                     [bar,   treasure,   empty,      empty,      mine,       mine,       empty,      bar],
                     [bar,   mine,       mine,       empty,      empty,      empty,      empty,      bar],
                     [bar,   boat,       empty,      empty,      mine,       mine,       goal,       bar],
-                    [bar,   empty,      mine,       empty,      empty,      treausure,  mine,       bar],
+                    [bar,   empty,      mine,       empty,      empty,      treasure,   mine,       bar],
                     [bar,   bar,        bar,        bar,        bar,        bar,        bar,        bar]
                 ];
 
@@ -236,8 +236,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        //startLevel(level1);
-        StartMenu();
+        startLevel(level1);
+        //StartMenu();
     };
 
     function resize() {
@@ -307,12 +307,16 @@ window.requestAnimFrame = (function(){
         if (level == level1) { 
             boatDrawX = 265;
             boatDrawY = 115;
-            mineX[0] = 0;
-            mineY[0] = 1;
+            mineX[0] = 1.5;
+            mineY[0] = 1.5;
             nextLevel = level2;
         } else if (level == level2) {
             boatDrawX = 200;
             boatDrawY = 120;
+            mineX[0] = 1.5;
+            mineY[0] = 1.5;
+            mineX[1] = 3.5;
+            mineY[1] = 0.5;
             nextLevel = level3;
         } else if (level == level3) {
             boatDrawX = 232;
@@ -325,11 +329,26 @@ window.requestAnimFrame = (function(){
         } else if (level == level5) {
             boatDrawX = 232;
             boatDrawY = 53;
+        } else if (level == level6) {
+            
+            
+        } else if (level == level7) {
+         
+            
+        } else if (level == level8) {
+            
+            
+        } else if (level == level9) {
+            
+            
+        } else if (level == level10) {
+            
+            
         }
         
         levelBackground(currentLevel);
         
-        drawMines(currentLevel, mineX, mineY, boatDrawX, boatDrawY);
+        drawMines(currentLevel, mineX, mineY, boatDrawX, boatDrawY, boatLocX, boatLocY);
         
         var boatMoveSound = boatSound();
         var music = backgroundMusic(currentLevel);
@@ -342,7 +361,7 @@ window.requestAnimFrame = (function(){
 
         //music.play();
         //currently breaks things for some reason
-        window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
+        
         
         window.addEventListener('keydown', movement, false);
         
@@ -516,41 +535,52 @@ window.requestAnimFrame = (function(){
         
     };
     
-
-    function drawMines(level, mineX, mineY, boatDrawX, boatDrawY) {
+//function to draw the mines.  Runs with two separate timers, 
+    function drawMines(level, mineX, mineY, boatDrawX, boatDrawY, boatLocX, boatLocY) {
         
         var mineImg = new Image();
         mineImg = document.getElementById("barrel");
         var width = 52;
         var height = 115;
         var count = 1;
-        console.log(mineX.length);
-            for (var i = 0; i < mineX.length; i++){ 
-            var sheetY = (i * 115);
-                console.log('mine for loop');
-                var interval = setInterval( function (){
-            barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level);
-                count++;
+        var count2 = 0;
+        var i = 0;
+        var sheetY;
+        
+        var outerLoop = setInterval(function(){
+            var interval = setInterval(function (){ 
+                if (count < 20) {
                 sheetY = (count * 115);
-                    console.log(sheetY);
-                    if (count >= 20) {
-                        clearInterval(interval);
-                    }
-           //speed at which the loop runs, milliseconds    
-        }, 200)
-            };
-        
-        
+                barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level)
+                count++;   
+                } else if (count >= 20) {
+                    clearInterval(interval);
+                    count2++;
+                    i++;
+                } 
+            }, 100)
+            
+            if (count2 >= mineX.length){
+                clearInterval(outerLoop);   
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
+            } else if (count2 < mineX.length) {
+                count = 0;
+            }
+        }, 2200);
         };
     
 
 
     function barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level) {
-        levelBackground(level);     
-        window.ctx.drawImage(mineImg, 0, sheetY, width, height, 0,0, width, height);
+        levelBackground(level);
+        
+        var xPos = (((mineX[i] - 1) * 64) + boatDrawX);
+        var yPos = (((mineY[i] - 1) * 64) + boatDrawY);
+        
+        window.ctx.drawImage(mineImg, 0, sheetY, width, height, xPos, yPos, width, height);
             
         
-        console.log("barrel rendered");
+        
         };
     //(((mineX[i] - 1) * 64) + boatDrawX), (((mineY[i] - 1) * 64) + boatDrawY)
     
@@ -561,11 +591,11 @@ window.requestAnimFrame = (function(){
 
     //boat moving sound
     function boatSound() {
-        return new Audio("sound/oarswater-000.ogg", true);
+        return new Audio("sound/oarswater-000.wav", true);
     }
     
     function loseSound() {
-        return new Audio("sound/wilhelm.mp3", true);     
+        return new Audio("sound/button.mp3", true);     
     }
 
     //background music depending on where you are in the game
