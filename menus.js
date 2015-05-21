@@ -24,13 +24,15 @@
             var buttonWidth1Num = parseInt(x);
             var buttonWidth2Num = parseInt(x);
             var buttonWidth3Num = parseInt(x);
+            var buttonWidth4Num = parseInt(x);
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
             buttonWidthNum = (buttonWidthNum * .375);
             buttonWidth1Num = (buttonWidth1Num * .12);
             buttonWidth2Num = (buttonWidth2Num * .201);
             buttonWidth3Num = (buttonWidth3Num * .19);
+            buttonWidth4Num = (buttonWidth4Num * .096);
           
-///////////////////////PLAY//////////////////////////
+//PLAY
 
             //height for 'play'
             var a = ctx.canvas.style.height;
@@ -52,7 +54,7 @@
             //width * number + canvas x start position
             var leftDist = (width * .59) + b;
 
-////////////////LEVELSELECT////////////////////
+//LEVELSELECT
 
             //height for 'levelselect'
             var a = ctx.canvas.style.height;
@@ -74,7 +76,7 @@
             //width * number + canvas x start position
             var leftDist1 = (width * .589) + b;
 
-////////////////HIGHSCORES////////////////////
+//HIGHSCORES
 
             //height for 'highscores'
             var a = ctx.canvas.style.height;
@@ -96,7 +98,7 @@
             //width * number + canvas x start position
             var leftDist2 = (width * .59) + b;
 
-////////////////INSTRUCTIONS////////////////////
+//INSTRUCTIONS
 
             //height for 'instructions'
             var a = ctx.canvas.style.height;
@@ -118,7 +120,7 @@
             //width * number + canvas x start position
             var leftDist3 = (width * .59) + b;
 
-////////////////BACK BUTTON FOR LEVELSELECT////////////////////
+//BACK BUTTON FOR LEVELSELECT
 
             //height for 'back'
             var a = ctx.canvas.style.height;
@@ -140,7 +142,7 @@
             //width * number + canvas x start position
             var leftDist4 = (width * .69) + b;
 
-////////////////BACK BUTTON FOR HIGHSCORES////////////////////
+//BACK BUTTON FOR HIGHSCORES
 
             //height for 'back'
             var a = ctx.canvas.style.height;
@@ -162,7 +164,7 @@
             //width * number + canvas x start position
             var leftDist5 = (width * .78) + b;
 
-////////////////BACK BUTTON FOR INSTRUCTIONS////////////////////
+//BACK BUTTON FOR INSTRUCTIONS
 
             //height for 'back'
             var a = ctx.canvas.style.height;
@@ -180,9 +182,28 @@
             var buttonTopNum = (b * .7);
             var buttonTopNum = (b * 1);
             buttonTopNum = (buttonTopNum+ 50);
+
+//PAUSE BUTTON FOR PLAY
+
+            //height for 'pause'
+            var a = ctx.canvas.style.height;
+            var height7 = parseInt(a);
+            var buttonHeight4Num = parseInt(a);
+            buttonHeight4Num = (buttonHeight4Num * .085);
+            height7 = (height7 * 0.91);
+
+            //left for 'pause'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'pause'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
      
             //width * number + canvas x start position
-            var leftDist6 = (width * .72) + b;
+            var leftDist7 = (width * .315) + b;
 
         var play = document.createElement('input');
         play.type = "button";
@@ -193,7 +214,7 @@
         play.style.left = leftDist + "px";          
         play.style.top = height + "px";
         play.style.background = "none";
-        //play.style.border = "none";
+        play.style.border = "none";
         play.style.position = "absolute";
         play.id = "play";
         document.body.appendChild(play);
@@ -204,6 +225,18 @@
             highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
             instructions.parentNode.removeChild(instructions)
+
+            var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            //pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
         };
 
         var levelselect = document.createElement('input');
@@ -213,7 +246,7 @@
         levelselect.style.left = leftDist1 + "px";          
         levelselect.style.top = height1 + "px";         
         levelselect.style.background = "none";
-        //levelselect.style.border = "none";
+        levelselect.style.border = "none";
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
         document.body.appendChild(levelselect);
@@ -236,7 +269,7 @@
             back.style.left = leftDist4 + "px";
             back.style.top = height4 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
@@ -255,7 +288,7 @@
         highscores.style.left = leftDist2 + "px";          
         highscores.style.top = height2 + "px";
         highscores.style.background = "none";
-        //highscores.style.border = "none";
+        highscores.style.border = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
         document.body.appendChild(highscores);
@@ -278,7 +311,7 @@
             back.style.left = leftDist5 + "px";
             back.style.top = height5 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
@@ -297,7 +330,7 @@
         instructions.style.left = leftDist3 + "px";         
         instructions.style.top = height3 + "px";
         instructions.style.background = "none";
-        //instructions.style.border = "none";
+        instructions.style.border = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
         document.body.appendChild(instructions);
@@ -320,7 +353,7 @@
             back.style.left = leftDist6 + "px";
             back.style.top = height6 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
