@@ -284,6 +284,8 @@ window.requestAnimFrame = (function(){
         var mineX = [];
         var mineY = [];
         
+        var treasureX = [];
+        var treasureY = [];
         
         currentLevel = null;
         currentLevel = level.slice(0);
@@ -309,6 +311,8 @@ window.requestAnimFrame = (function(){
             boatDrawY = 115;
             mineX[0] = 1.5;
             mineY[0] = 1.5;
+            treasureX[0] = 2;
+            treasureY[0] = 2;
             nextLevel = level2;
         } else if (level == level2) {
             boatDrawX = 200;
@@ -349,7 +353,7 @@ window.requestAnimFrame = (function(){
         levelBackground(currentLevel);
         
         drawMines(currentLevel, mineX, mineY, boatDrawX, boatDrawY, boatLocX, boatLocY);
-        
+        drawTreasure(currentLevel, treasureX, treasureY, boatDrawX, boatDrawY);
         var boatMoveSound = boatSound();
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
@@ -578,11 +582,12 @@ window.requestAnimFrame = (function(){
         var yPos = (((mineY[i] - 1) * 64) + boatDrawY);
         
         window.ctx.drawImage(mineImg, 0, sheetY, width, height, xPos, yPos, width, height);
-            
-        
-        
         };
-    //(((mineX[i] - 1) * 64) + boatDrawX), (((mineY[i] - 1) * 64) + boatDrawY)
+    
+    function drawTreasure(currentLevel, treasureX, treasureY, boatDrawX, boatDrawY) {
+           window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
+    }
+
     
     //draws the level background
     function levelBackground(level) {
