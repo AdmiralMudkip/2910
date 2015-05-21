@@ -352,7 +352,7 @@ window.requestAnimFrame = (function(){
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
         var win = winSound();
- //       var treasureSound = treasureSound();
+  //      var treasureDing = treasureSound();
         
         //music.addEventListener('ended', function() {
         //    this.currentTime = 0;
@@ -608,9 +608,9 @@ window.requestAnimFrame = (function(){
         return new Audio("sound/Win.mp3", true);
     }
 
-//    function treasureSound() {
-//       return new Audio("sound/Treasure.wav", true);        
-//    }
+ //  function treasureSound() {
+  //      return new Audio("sound/Treasure.wav", true);        
+  //  }
      function loseSound() {
 		var gameOver = Math.floor(Math.random() * 11) + 1
 		switch (gameOver) {
@@ -696,7 +696,7 @@ window.requestAnimFrame = (function(){
                     treasureY[i] = 0;
                 }
             }
- //           treasureSound.play();
+         //   treasureDing.play();
             treasureGrab += 1;
         }
 
