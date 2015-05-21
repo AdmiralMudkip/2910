@@ -181,6 +181,7 @@ window.requestAnimFrame = (function(){
 
         // the proportion of width to height
         RATIO = WIDTH / HEIGHT;
+        
         // these will change when the screen is resized
         window.currentWidth = window.WIDTH;
         window.currentHeight = window.HEIGHT;
@@ -388,29 +389,23 @@ window.requestAnimFrame = (function(){
         function click(e) {
             var x = getXPosition(canvas);
             var y = getYPosition(canvas);
-            //console.log(((boatLocY - 1) * 64) + boatDrawX + 55 + x);
-            console.log(x);
-            //console.log(y);
-            console.log(e.x);
-            //console.log(e.y);
-                       if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 101) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 151) && e.y > (((boatLocX - 1) * 64) + boatDrawY + y + 35 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 72)){
-                           console.log('moveup');
-                    //moveUp();
-                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 101) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 151) && e.y > (((boatLocX - 1) * 64) + boatDrawY + y + 110) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 147)){
-                    console.log('movedown');
-                    //moveDown();
-                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 35 ) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 75 ) && e.y > (((boatLocX -1 ) * 64) + boatDrawY + y + 78 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 110)){
-                    console.log('moveleft');
-                    //moveLeft();
-                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 150) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 182) && e.y > (((boatLocX -1 ) * 64) + boatDrawY + y + 78 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 110)){
-                    console.log('moveright');
-                    //moveRight(); 
-                }
-        
-        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 12), 25, 25);//top
-       // Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 82), 25, 25);//bottom
-        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 5), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//left
-        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 100), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//right
+            var z = ctx.canvas.style.width;
+            var zz = ctx.canvas.style.height;
+            var z = parseInt(z);
+            var zz = parseInt(zz);
+            var aa = ((e.x / z) * 720);
+            var bb = ((e.y / zz) * 480);
+            //can you tell this is last minute yet?
+                   
+                       if (aa > (((boatLocY - 1) * 64) + boatDrawX + x) && aa < (((boatLocY - 1) * 64) + boatDrawX + x + 22) && bb > (((boatLocX - 1) * 64) + boatDrawY + y) && bb < (((boatLocX - 1) * 64) + boatDrawY + y + 38)){      
+                    moveUp();
+                } else if (aa > (((boatLocY - 1) * 64) + boatDrawX + x) && aa < (((boatLocY - 1) * 64) + boatDrawX + x + 22) && bb > (((boatLocX - 1) * 64) + boatDrawY + y + 75) && bb < (((boatLocX - 1) * 64) + boatDrawY + y + 113)){
+                    moveDown();
+                } else if (aa > (((boatLocY - 1) * 64) + boatDrawX + x - 57) && aa < (((boatLocY - 1) * 64) + boatDrawX + x - 22) && bb > (((boatLocX - 1) * 64) + boatDrawY + y + 50) && bb < (((boatLocX - 1) * 64) + boatDrawY + y + 73)) {
+                    moveLeft();
+                } else if (aa > (((boatLocY - 1) * 64) + boatDrawX + x + 40) && aa < (((boatLocY - 1) * 64) + boatDrawX + x + 72) && bb > (((boatLocX - 1 ) * 64) + boatDrawY + y + 50) && bb < (((boatLocX - 1) * 64) + boatDrawY + y + 73)) { 
+                    moveRight(); 
+               }
         }
             
         function checkLeft() {
@@ -437,6 +432,10 @@ window.requestAnimFrame = (function(){
 
                 else if(checkLeft() == mine) {
                     //boat explodes func
+                    boatLocY -= 1;
+                    levelBackground(currentLevel);
+                    
+                    window.ctx.drawImage(document.getElementById("explosion"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
                     loser(movement, loss, level);
                     loss.play();
                     return;
@@ -472,7 +471,11 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == mine) {
                     //boat explodes func
-                    loser(movement, loss, level);
+                    levelBackground(currentLevel);
+                    boatLocY += 1;
+                   
+                    window.ctx.drawImage(document.getElementById("explosion"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
+                    //loser(movement, loss, level);
                     loss.play();
                     return;
                 }
@@ -507,6 +510,10 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == mine) {
                     //boat explodes func
+                    levelBackground(currentLevel);
+                    boatLocX -= 1;
+                    
+                    window.ctx.drawImage(document.getElementById("explosion"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
                     loser(movement, loss, level);
                     loss.play();
                     return;
@@ -542,6 +549,10 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == mine) {
                     //boat explodes func
+                    levelBackground(currentLevel);
+                    boatLocX += 1;
+                    
+                    window.ctx.drawImage(document.getElementById("explosion"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
                     loser(movement, loss, level);
                     loss.play();
                     //window.removeEventListener('keydown', movement, false);
