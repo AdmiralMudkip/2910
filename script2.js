@@ -247,7 +247,7 @@ window.requestAnimFrame = (function(){
         // to the new height
         window.currentWidth = window.currentHeight * window.RATIO;
 
-        // this will create some extra space on the
+        // this will create some extra spaaaaaace on the
         // page, allowing us to scroll past
         // the address bar, thus hiding it.
         if (window.android || window.ios) {
@@ -363,7 +363,7 @@ window.requestAnimFrame = (function(){
         
         window.addEventListener('keydown', movement, false);
         
-        //listeners for keyboard input
+        //listeners for leopard input
         function movement(e) {
             
                 if (e.keyCode == '38' ) {
@@ -589,7 +589,7 @@ window.requestAnimFrame = (function(){
             var yPos = (((treasureY[i] - 1) * 64) + boatDrawY);
            window.ctx.drawImage(document.getElementById("treasure"), xPos, yPos);
             }
-            }
+        }
     }
     
     //draws the level background
@@ -679,4 +679,3 @@ window.Draw = {
 
 window.addEventListener('load', window.init, false);
 window.addEventListener('resize', window.resize, false);
-        
