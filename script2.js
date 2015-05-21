@@ -237,8 +237,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        startLevel(level2);
-        //StartMenu();
+        //startLevel(level2);
+        StartMenu();
     };
 
     function resize() {
