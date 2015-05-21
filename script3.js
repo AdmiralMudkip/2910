@@ -609,12 +609,13 @@ window.requestAnimFrame = (function(){
     function boatSound() {
         return new Audio("sound/oarswater-000.wav", true);
     }
-    function winSound() {
-        return new Audio("sound/Win.mp3", true);
+    function lossSound() {
+        return new Audio("sound/explosion1.mp3", true);
     }
     
-     function loseSound() {
+     function winSound() {
 		var gameOver = Math.floor(Math.random() * 11) + 1
+        gameOver
 		switch (gameOver) {
     case 1:
         return new Audio("sound/loss01.mp3", true);    
