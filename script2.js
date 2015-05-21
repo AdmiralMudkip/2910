@@ -209,7 +209,7 @@ window.requestAnimFrame = (function(){
 
         // listen for clicks
         window.addEventListener('click', function (e) {
-            e.preventDefault();
+            //getPosition(e)
             
             //window.Input.set(e);
         }, false);
@@ -236,8 +236,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        //startLevel(level1);
-        StartMenu();
+        startLevel(level2);
+        //StartMenu();
     };
 
     function resize() {
@@ -363,7 +363,7 @@ window.requestAnimFrame = (function(){
         
         
         window.addEventListener('keydown', movement, false);
-        
+        window.addEventListener('click', click, false);
         //listeners for leopard input
         function movement(e) {
             
@@ -385,6 +385,34 @@ window.requestAnimFrame = (function(){
                 }
         }
         
+        function click(e) {
+            var x = getXPosition(canvas);
+            var y = getYPosition(canvas);
+            //console.log(((boatLocY - 1) * 64) + boatDrawX + 55 + x);
+            console.log(x);
+            //console.log(y);
+            console.log(e.x);
+            //console.log(e.y);
+                       if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 101) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 151) && e.y > (((boatLocX - 1) * 64) + boatDrawY + y + 35 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 72)){
+                           console.log('moveup');
+                    //moveUp();
+                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 101) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 151) && e.y > (((boatLocX - 1) * 64) + boatDrawY + y + 110) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 147)){
+                    console.log('movedown');
+                    //moveDown();
+                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 35 ) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 75 ) && e.y > (((boatLocX -1 ) * 64) + boatDrawY + y + 78 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 110)){
+                    console.log('moveleft');
+                    //moveLeft();
+                } else if (e.x > (((boatLocY - 1) * 64) + boatDrawX + x + 150) && e.x < (((boatLocY - 1) * 64) + boatDrawX + x + 182) && e.y > (((boatLocX -1 ) * 64) + boatDrawY + y + 78 ) && e.y < (((boatLocX - 1) * 64) + boatDrawY + y + 110)){
+                    console.log('moveright');
+                    //moveRight(); 
+                }
+        
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 12), 25, 25);//top
+       // Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 82), 25, 25);//bottom
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 5), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//left
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 100), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//right
+        }
+            
         function checkLeft() {
             return currentLevel[boatLocX][boatLocY - 1];
         }
@@ -425,6 +453,7 @@ window.requestAnimFrame = (function(){
                 currentLevel[boatLocX][boatLocY] = boat;
                 levelBackground(currentLevel);
                 window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
+                drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY);
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
                 boatMoveSound.play();
                 
@@ -460,6 +489,7 @@ window.requestAnimFrame = (function(){
                 currentLevel[boatLocX][boatLocY] = boat;
                 levelBackground(currentLevel);
                 window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
+                drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY);
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
                 boatMoveSound.play();
                 
@@ -494,6 +524,7 @@ window.requestAnimFrame = (function(){
                 currentLevel[boatLocX][boatLocY] = boat;
                 levelBackground(currentLevel);
                 window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
+                drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY);
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
                 boatMoveSound.play();
                 
@@ -529,6 +560,7 @@ window.requestAnimFrame = (function(){
                 currentLevel[boatLocX][boatLocY] = boat;
                 levelBackground(currentLevel);
                 window.ctx.drawImage(document.getElementById("boat"), (((boatLocY - 1) * 64) + boatDrawX), (((boatLocX - 1) * 64) + boatDrawY));
+                drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY);
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
                 boatMoveSound.play();
                 
@@ -565,8 +597,9 @@ window.requestAnimFrame = (function(){
             
             if (count2 >= mineX.length){
                 clearInterval(outerLoop);   
-                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
+                window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
+                drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY);
                 mili = 0;
                 sec = 0;
             } else if (count2 < mineX.length) {
@@ -590,9 +623,29 @@ window.requestAnimFrame = (function(){
             if (treasureX[i] != 0) {
             var xPos = (((treasureX[i] - 1) * 64) + boatDrawX);
             var yPos = (((treasureY[i] - 1) * 64) + boatDrawY);
-           window.ctx.drawImage(document.getElementById("treasure"), xPos, yPos);
+            window.ctx.drawImage(document.getElementById("treasure"), xPos, yPos);
             }
         }
+    }
+
+    function drawTouch(boatLocX, boatLocY, boatDrawX, boatDrawY) {
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 12), 25, 25);//top
+        //e.x > (((boatLocY - 1) * 64) + boatDrawX + 55) && e.x < ((((boatLocY - 1) * 64) + boatDrawX + 80)) && e.y > (((boatLocX - 1) * 64) + boatDrawY + 12) && e.y < (((boatLocX - 1) * 64) + boatDrawY + 37)
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 55), (((boatLocX - 1) * 64) + boatDrawY + 82), 25, 25);//bottom
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 5), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//left
+        //Draw.rect((((boatLocY - 1) * 64) + boatDrawX + 100), (((boatLocX - 1) * 64) + boatDrawY + 50), 25, 25);//right
+    }
+
+    function getPosition(e) {
+        var x = e.x;
+        var y = e.y;
+        
+        var canvas = document.getElementById("canvas");
+        
+        x -= canvas.offsetLeft;
+        y -= canvas.offsetTop;
+        
+        alert("x:" + x + " y:" + y);
     }
     
     //draws the level background
