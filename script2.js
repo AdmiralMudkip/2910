@@ -284,12 +284,13 @@ window.requestAnimFrame = (function(){
         var mineX = [];
         var mineY = [];
         
-        var treasureX = [];
-        var treasureY = [];
+        var treasureX = [null];
+        var treasureY = [null];
+        
+        var currentHighScore;  //to check if the score is higher than this and then POST it to the database
         
         currentLevel = null;
         currentLevel = level.slice(0);
-        
         
         currentLevel.name = level.name;
                 
@@ -302,16 +303,16 @@ window.requestAnimFrame = (function(){
             mineY[0] = 1.5;
             treasureX[0] = 2.5;
             treasureY[0] = 1.5;
+            currentHighScore = 145;
             nextLevel = level2;
         } else if (level == level2) {
             boatDrawX = 200;
             boatDrawY = 120;
-            mineX[0] = 1.5;
-            mineY[0] = 1.5;
-            mineX[1] = 3.5;
-            mineY[1] = 0.5;
+            mineX = [1.5, 3.5];//fill the mine/treasure arrays like this instead
+            mineY = [1.5, 0.5];
             treasureX[0] = 2.5;
             treasureY[0] = 2.5;
+            currentHighScore = 143;
             nextLevel = level3;
         } else if (level == level3) {
             boatDrawX = 232;
@@ -415,7 +416,7 @@ window.requestAnimFrame = (function(){
 
                 else if(checkLeft() == goal) {
                     //winning anim function
-                    winner(movement);
+                    winner(movement, currentHighScore);
                     return;
                 }
                 
@@ -449,7 +450,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == goal) {
                     //winning anim function
-                    winner(movement);
+                    winner(movement, currentHighScore);
                     return;
                 }
                 
@@ -483,7 +484,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == goal) {
                     //winning anim function
-                    winner(movement);
+                    winner(movement, currentHighScore);
                     return;
                 }
                 
@@ -518,7 +519,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == goal) {
                     //winning anim function
-                    winner(movement);
+                    winner(movement, currentHighScore);
                     return;
                 }
                 
@@ -566,6 +567,8 @@ window.requestAnimFrame = (function(){
                 clearInterval(outerLoop);   
                 window.ctx.drawImage(document.getElementById("boat"), (((boatLocX - 1) * 64) + boatDrawX), (((boatLocY - 1) * 64) + boatDrawY));
                 drawTreasure(treasureX, treasureY, boatDrawX, boatDrawY);
+                mili = 0;
+                sec = 0;
             } else if (count2 < mineX.length) {
                 count = 0;
             }
@@ -613,26 +616,28 @@ window.requestAnimFrame = (function(){
         }
     }
     
-        function winner(movement) {
+        function winner(movement, currentHighScore) {
                     var y = document.getElementById("seconds").innerHTML;
-                    var score = 100 - (10 * y) + (treasureGrab * 50);
+                    var z = document.getElementById("milliseconds").innerHTML;
+                    var score = 100 - (10 * y) - (1 * z) + (treasureGrab * 50);
                     if (score < 0) {
                         score = 0;   
+                    }
+                    
+                    if (score > currentHighScore) {
+                        console.log("test");   
                     }
             
                     alert('Your score was: ' + score);
                     sec = 0;
                     
             startLevel(nextLevel);
-            
             window.removeEventListener('keydown', movement, false);
             return null;
         }
 
         function loser(movement, loss, currentLevel) {
-            
             loss.play();
-            
             startLevel(currentLevel);
             window.removeEventListener('keydown', movement, false);
         }
