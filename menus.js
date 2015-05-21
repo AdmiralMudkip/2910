@@ -25,6 +25,9 @@
             var buttonWidth2Num = parseInt(x);
             var buttonWidth3Num = parseInt(x);
             var buttonWidth4Num = parseInt(x);
+            var buttonWidth5Num = parseInt(x);
+            var buttonWidth6Num = parseInt(x);
+            var buttonWidth7Num = parseInt(x);
 
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
             buttonWidthNum = (buttonWidthNum * .375);
@@ -32,6 +35,9 @@
             buttonWidth2Num = (buttonWidth2Num * .201);
             buttonWidth3Num = (buttonWidth3Num * .19);
             buttonWidth4Num = (buttonWidth4Num * .096);
+            buttonWidth5Num = (buttonWidth5Num * .42);
+            buttonWidth6Num = (buttonWidth6Num * .42);
+            buttonWidth7Num = (buttonWidth7Num * .42);
           
 ///////////////////////PLAY//////////////////////////
 
@@ -209,11 +215,74 @@
             //width * number + canvas x start position
             var leftDist7 = (width * .315) + b;
 
+////////////////PAUSE BUTTON FOR 'BACK TO GAME'////////////////////
+
+            //height for 'pause'
+            var a = ctx.canvas.style.height;
+            var height8 = parseInt(a);
+            var buttonHeight5Num = parseInt(a);
+            buttonHeight5Num = (buttonHeight5Num * .18);
+            height8 = (height8 * 0.25);
+
+            //left for 'pause'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'pause'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist8 = (width * .27) + b;
+
+////////////////PAUSE BUTTON FOR 'INSTRUCTIONS'////////////////////
+
+            //height for 'pause'
+            var a = ctx.canvas.style.height;
+            var height9 = parseInt(a);
+            var buttonHeight6Num = parseInt(a);
+            buttonHeight6Num = (buttonHeight6Num * .18);
+            height9 = (height9 * 0.46);
+
+            //left for 'pause'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'pause'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist9 = (width * .27) + b;
+
+////////////////PAUSE BUTTON FOR 'MAIN MENU'////////////////////
+
+            //height for 'pause'
+            var a = ctx.canvas.style.height;
+            var height10 = parseInt(a);
+            var buttonHeight7Num = parseInt(a);
+            buttonHeight7Num = (buttonHeight7Num * .18);
+            height10 = (height10 * 0.675);
+
+            //left for 'pause'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'pause'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist10 = (width * .27) + b;
 
         var play = document.createElement('input');
         play.type = "button";
-            //have to append "px" to it, otherwise it doesn't work
-
         play.style.width = buttonWidthNum + "px";   
         play.style.height = buttonHeightNum + "px";          
         play.style.left = leftDist + "px";          
@@ -249,8 +318,93 @@
                 var img3 = new Image()
                 img3.src = "images/pause.jpg"
                 context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                //pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                //pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+
+                var back1 = document.createElement('input');
+                back1.type = "button";
+                back1.style.width = buttonWidth3Num + "px";
+                back1.style.height = buttonHeight3Num + "px";
+                back1.style.left = leftDist6 + "px";
+                back1.style.top = height6 + "px";
+                back1.style.background = "none";
+                //back1.style.border = "none";
+                back1.style.position = "absolute";
+                back1.id = "back1";
+                document.body.appendChild(back1);
+
+                back1.onclick = function () {
+                    startLevel(level1);
+                    back1.parentNode.removeChild(back1)
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                //pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
             };
-        };
+        }
 
         var levelselect = document.createElement('input');
         levelselect.type = "button";
@@ -290,7 +444,7 @@
             back.onclick = function () {
                 var canvas = document.getElementById("canvas");
                 var context = canvas.getContext("2d");
-                window.location.href = "./index.html"
+                window.location.href = "./FranticFrigate.html"
             };
         };
 
@@ -332,7 +486,7 @@
             back.onclick = function () {
                 var canvas = document.getElementById("canvas");
                 var context = canvas.getContext("2d");
-                window.location.href="./index.html"
+                window.location.href="./FranticFrigate.html"
             };
         };
 
@@ -374,7 +528,7 @@
             back.onclick = function () {
                 var canvas = document.getElementById("canvas");
                 var context = canvas.getContext("2d");
-                window.location.href="./index.html"
+                window.location.href="./FranticFrigate.html"
             };
         }
 
