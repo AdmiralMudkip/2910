@@ -290,21 +290,9 @@ window.requestAnimFrame = (function(){
         currentLevel = null;
         currentLevel = level.slice(0);
         
-        boatCurrentDir = right;
+        
         currentLevel.name = level.name;
-        //we don't need this because in the conditionals we can set the starting location of the boat manually.  
-        //for (i = 0; i < currentLevel.length; i++) {
-        //    for (j = 0; j < currentLevel[0].length; j++) {
-        //        if (currentLevel[i][j] == boat) {
-        //            boatLocX = i;
-        //            boatLocY = j;
-        //        }
-        //    }
-        //}
-
-        
-        
-        
+                
         //conditional to check what level the player is on, and then sets drawing variables, next level, and mine placements
         //array (mine and treasure) variables have to be .5 higher than what their position is.  That's how this works, and I don't feel like fixing it.  
         if (level == level1) { 
@@ -352,6 +340,8 @@ window.requestAnimFrame = (function(){
         } else if (level == level10) {
             
             
+        } else {
+               
         }
         
         levelBackground(currentLevel);
@@ -418,7 +408,7 @@ window.requestAnimFrame = (function(){
 
                 else if(checkLeft() == mine) {
                     //boat explodes func
-                    loser(movement, loss, currentLevel);
+                    loser(movement, loss, level);
                     loss.play();
                     return;
                 }
@@ -452,7 +442,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == mine) {
                     //boat explodes func
-                    loser(movement, loss, currentLevel);
+                    loser(movement, loss, level);
                     loss.play();
                     return;
                 }
@@ -486,7 +476,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == mine) {
                     //boat explodes func
-                    loser(movement, loss, currentLevel);
+                    loser(movement, loss, level);
                     loss.play();
                     return;
                 }
@@ -520,7 +510,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == mine) {
                     //boat explodes func
-                    loser(movement, loss, currentLevel);
+                    loser(movement, loss, level);
                     loss.play();
                     //window.removeEventListener('keydown', movement, false);
                     return;
@@ -547,7 +537,7 @@ window.requestAnimFrame = (function(){
         
     };
     
-//function to draw the mines.  Runs with two separate timers, 
+//function to draw the mines, boat, treasure.  Mines run with two separate timers, 
     function drawAll(level, mineX, mineY, boatDrawX, boatDrawY, boatLocX, boatLocY, treasureX, treasureY) {
         
         var mineImg = new Image();
@@ -582,8 +572,6 @@ window.requestAnimFrame = (function(){
         }, 2200);
         };
     
-
-
     function barrelRender(mineImg, mineX, mineY, boatDrawX, boatDrawY, i, sheetY, width, height, level) {
         levelBackground(level);
         
@@ -642,7 +630,7 @@ window.requestAnimFrame = (function(){
         }
 
         function loser(movement, loss, currentLevel) {
-            alert("You lose, level restarting.");
+            
             loss.play();
             
             startLevel(currentLevel);
