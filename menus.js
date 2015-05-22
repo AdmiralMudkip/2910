@@ -28,6 +28,8 @@
             var buttonWidth5Num = parseInt(x);
             var buttonWidth6Num = parseInt(x);
             var buttonWidth7Num = parseInt(x);
+            var buttonWidth8Num = parseInt(x);
+            var buttonWidth9Num = parseInt(x);
 
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
             buttonWidthNum = (buttonWidthNum * .375);
@@ -38,6 +40,8 @@
             buttonWidth5Num = (buttonWidth5Num * .42);
             buttonWidth6Num = (buttonWidth6Num * .42);
             buttonWidth7Num = (buttonWidth7Num * .42);
+            buttonWidth8Num = (buttonWidth8Num * .096);
+            buttonWidth9Num = (buttonWidth9Num * .096);
           
 ///////////////////////PLAY//////////////////////////
 
@@ -281,6 +285,50 @@
             //width * number + canvas x start position
             var leftDist10 = (width * .27) + b;
 
+////////////////RESTART BUTTON FOR PLAY////////////////////
+
+            //height for 'restart'
+            var a = ctx.canvas.style.height;
+            var height11 = parseInt(a);
+            var buttonHeight8Num = parseInt(a);
+            buttonHeight8Num = (buttonHeight8Num * .085);
+            height11 = (height11 * 0.91);
+
+            //left for 'restart'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'restart'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist11 = (width * .452) + b;
+
+////////////////MUTE BUTTON FOR PLAY////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height12 = parseInt(a);
+            var buttonHeight9Num = parseInt(a);
+            buttonHeight9Num = (buttonHeight9Num * .085);
+            height12 = (height12 * 0.91);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist12 = (width * .59) + b;
+
         var play = document.createElement('input');
         play.type = "button";
         play.style.width = buttonWidthNum + "px";   
@@ -319,6 +367,8 @@
                 img3.src = "images/pause.jpg"
                 context.drawImage(img3, 0, 0, 720, 480);
                 pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
 
                 var pause1 = document.createElement('input');
                 pause1.type = "button";
@@ -361,26 +411,26 @@
                     pause1.parentNode.removeChild(pause1)
                     pause2.parentNode.removeChild(pause2)
                     pause3.parentNode.removeChild(pause3)
-                }
 
-                var back1 = document.createElement('input');
-                back1.type = "button";
-                back1.style.width = buttonWidth3Num + "px";
-                back1.style.height = buttonHeight3Num + "px";
-                back1.style.left = leftDist6 + "px";
-                back1.style.top = height6 + "px";
-                back1.style.background = "none";
-                //back1.style.border = "none";
-                back1.style.position = "absolute";
-                back1.id = "back1";
-                document.body.appendChild(back1);
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    //back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
 
-                back1.onclick = function () {
-                    startLevel(level1);
-                    back1.parentNode.removeChild(back1)
-                    pause1.parentNode.removeChild(pause1)
-                    pause2.parentNode.removeChild(pause2)
-                    pause3.parentNode.removeChild(pause3)
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
                 };
 
                 var pause3 = document.createElement('input');
@@ -403,7 +453,44 @@
                     pause2.parentNode.removeChild(pause2)
                     pause3.parentNode.removeChild(pause3)
                 }
-            };
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            //restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                //code goes here nick!!
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            //mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
+
+
         }
 
         var levelselect = document.createElement('input');
