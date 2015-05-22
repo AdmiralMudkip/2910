@@ -237,8 +237,8 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-        //startLevel(level4);
-        StartMenu();
+        startLevel(level6);
+        //StartMenu();
     };
 
     function resize() {
@@ -334,9 +334,21 @@ window.requestAnimFrame = (function(){
         } else if (level == level5) {
             boatDrawX = 232;
             boatDrawY = 53;
+            mineX = [1, 2, 3];
+            mineY = [2, 4, 1];
+            treasureX = [1, 4];//1,1 and 4
+            treasureY = [1, 4];
+            nextLevel = level6;
             nextLevel = level6;
         } else if (level == level6) {
-            
+            boatDrawX = 135;
+            boatDrawY = 50;
+            boatLocX = 1;
+            boatLocY = 3;
+            mineX = [1, 2, 2, 4, 4, 5, 5, 6];
+            mineY = [2, 2, 4, 1, 3, 1, 3, 4];
+            treasureX = [1, 5];
+            treasureY = [1, 4];
             nextLevel = level7;
         } else if (level == level7) {
          
