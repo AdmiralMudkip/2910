@@ -394,6 +394,7 @@ window.requestAnimFrame = (function(){
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
         var win = winSound();
+        var treasureDing = treasureSound();
         
         //music.addEventListener('ended', function() {
         //    this.currentTime = 0;
@@ -464,6 +465,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = left;
                 if(checkLeft() == treasure) {
                     //boat gets treasure anim func
+                    treasureDing.play();
                     scoreIncrease((boatLocX - 1), boatLocY, treasureX, treasureY);
                 }
 
@@ -504,6 +506,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = right;
                 if(checkRight() == treasure) {
                     //boat gets treasure anim func
+                    treasureDing.play();
                     scoreIncrease((boatLocX + 1), boatLocY, treasureX, treasureY);
                 }
 
@@ -544,6 +547,7 @@ window.requestAnimFrame = (function(){
                 boatCurrentDir = up;
                 if(checkUp() == treasure) {
                     //boat gets treasure anim func
+                    treasureDing.play();
                     scoreIncrease(boatLocX, (boatLocY - 1), treasureX, treasureY);
                 }
 
@@ -583,6 +587,7 @@ window.requestAnimFrame = (function(){
                 //boat moving left anim func
                 boatCurrentDir = down;
                 if(checkDown() == treasure) {
+                    treasureDing.play();
                     scoreIncrease(boatLocX, (boatLocY + 1), treasureX, treasureY);
                 }
 
@@ -691,6 +696,11 @@ window.requestAnimFrame = (function(){
     function winSound() {
         return new Audio("sound/Win.mp3", true);
     }
+
+    function treasureSound() {
+        return new Audio("sound/Treasure.wav", true);
+    }
+    
 
     function loseSound() {
         return new Audio("sound/Explosion.mp3", true);     
