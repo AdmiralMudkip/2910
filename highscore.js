@@ -26,29 +26,11 @@ function highscoreMeta() {
         };
         
         // Post a score
-        function postScore (ctx, name, time, callback) {
-            console.log('Posting score', name, time);
-            $.ajax({
-                type: 'POST',
-                url: 'https://highscore2910.herokuapp.com/scores/',
-                data: {
-                    name: name,
-                    time: time,
-                },
-		  success: function(data) {
-              console.log('Score posted', data);
-              if (callback) callback();
-          },
-                error: function(xhr, msg) {
-                    console.error('AJAX error', xhr.status, msg);
-                }
-	   });
-
-        };
+        
     
         getTopScores();
         //have to delay, because it takes a second to get the scores
-        setTimeout(function(){timer(scores)}, 500);
+        setTimeout(function(){timer(scores)}, 750);
             
         function timer(data) {
             //sorts by time
@@ -74,6 +56,24 @@ function highscoreMeta() {
             }
         }
 }
-        
+        function postScore (ctx, name, time, callback) {
+            console.log('Posting score', name, time);
+            $.ajax({
+                type: 'POST',
+                url: 'https://highscore2910.herokuapp.com/scores/',
+                data: {
+                    name: name,
+                    time: time,
+                },
+		  success: function(data) {
+              console.log('Score posted', data);
+              if (callback) callback();
+          },
+                error: function(xhr, msg) {
+                    console.error('AJAX error', xhr.status, msg);
+                }
+	   });
+
+        };
         //posting works!
         //postScore(context, 'POST', 30);

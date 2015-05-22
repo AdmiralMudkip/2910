@@ -578,7 +578,7 @@
         play.style.left = leftDist + "px";          
         play.style.top = height + "px";
         play.style.background = "none";
-        //play.style.border = "none";
+        play.style.border = "none";
         play.style.position = "absolute";
         play.id = "play";
         document.body.appendChild(play);
@@ -597,7 +597,7 @@
             pause.style.left = leftDist7 + "px";
             pause.style.top = height7 + "px";
             pause.style.background = "none";
-            //pause.style.border = "none";
+            pause.style.border = "none";
             pause.style.position = "absolute";
             pause.id = "pause";
             document.body.appendChild(pause);
@@ -605,6 +605,10 @@
             pause.onclick = function () {
                 var canvas = document.getElementById("canvas");
                 var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
                 var img3 = new Image()
                 img3.src = "images/pause.jpg"
                 context.drawImage(img3, 0, 0, 720, 480);
@@ -619,7 +623,7 @@
                 pause1.style.left = leftDist8 + "px";
                 pause1.style.top = height8 + "px";
                 pause1.style.background = "none";
-                //pause1.style.border = "none";
+                pause1.style.border = "none";
                 pause1.style.position = "absolute";
                 pause1.id = "pause1";
                 document.body.appendChild(pause1);
@@ -639,7 +643,7 @@
                 pause2.style.left = leftDist9 + "px";
                 pause2.style.top = height9 + "px";
                 pause2.style.background = "none";
-                //pause2.style.border = "none";
+                pause2.style.border = "none";
                 pause2.style.position = "absolute";
                 pause2.id = "pause2";
                 document.body.appendChild(pause2);
@@ -661,7 +665,7 @@
                     back1.style.left = leftDist6 + "px";
                     back1.style.top = height6 + "px";
                     back1.style.background = "none";
-                    //back1.style.border = "none";
+                    back1.style.border = "none";
                     back1.style.position = "absolute";
                     back1.id = "back1";
                     document.body.appendChild(back1);
@@ -682,7 +686,7 @@
                 pause3.style.left = leftDist10 + "px";
                 pause3.style.top = height10 + "px";
                 pause3.style.background = "none";
-                //pause3.style.border = "none";
+                pause3.style.border = "none";
                 pause3.style.position = "absolute";
                 pause3.id = "pause3";
                 document.body.appendChild(pause3);
@@ -705,14 +709,13 @@
             restart.style.left = leftDist11 + "px";
             restart.style.top = height11 + "px";
             restart.style.background = "none";
-            //restart.style.border = "none";
+            restart.style.border = "none";
             restart.style.position = "absolute";
             restart.id = "restart";
             document.body.appendChild(restart);
 
             restart.onclick = function () {
-                //code goes here nick!!
-
+                startLevel(currentLevel);
             }
 
             var mute = document.createElement('input');
@@ -722,7 +725,7 @@
             mute.style.left = leftDist12 + "px";
             mute.style.top = height12 + "px";
             mute.style.background = "none";
-            //mute.style.border = "none";
+            mute.style.border = "none";
             mute.style.position = "absolute";
             mute.id = "mute";
             document.body.appendChild(mute);
@@ -741,7 +744,7 @@
         levelselect.style.left = leftDist1 + "px";          
         levelselect.style.top = height1 + "px";         
         levelselect.style.background = "none";
-        //levelselect.style.border = "none";
+        levelselect.style.border = "none";
         levelselect.style.position = "absolute";
         levelselect.id = "levelselect";
         document.body.appendChild(levelselect);
@@ -766,13 +769,13 @@
             levelone.style.left = leftDist13 + "px";
             levelone.style.top = height13 + "px";
             levelone.style.background = "none";
-            //levelone.style.border = "none";
+            levelone.style.border = "none";
             levelone.style.position = "absolute";
             levelone.id = "levelone";
             document.body.appendChild(levelone);
 
             levelone.onclick = function () {
-                startLevel(level1);
+                startLevel(level1)
                 levelone.parentNode.removeChild(levelone)
                 leveltwo.parentNode.removeChild(leveltwo)
                 levelthree.parentNode.removeChild(levelthree)
@@ -784,6 +787,153 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+            var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
+
             };
 
             var leveltwo = document.createElement('input');
@@ -793,7 +943,7 @@
             leveltwo.style.left = leftDist14 + "px";
             leveltwo.style.top = height14 + "px";
             leveltwo.style.background = "none";
-            //leveltwo.style.border = "none";
+            leveltwo.style.border = "none";
             leveltwo.style.position = "absolute";
             leveltwo.id = "leveltwo";
             document.body.appendChild(leveltwo);
@@ -811,6 +961,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelthree = document.createElement('input');
@@ -820,7 +1116,7 @@
             levelthree.style.left = leftDist15 + "px";
             levelthree.style.top = height15 + "px";
             levelthree.style.background = "none";
-            //levelthree.style.border = "none";
+            levelthree.style.border = "none";
             levelthree.style.position = "absolute";
             levelthree.id = "levelthree";
             document.body.appendChild(levelthree);
@@ -838,6 +1134,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelfour = document.createElement('input');
@@ -847,7 +1289,7 @@
             levelfour.style.left = leftDist16 + "px";
             levelfour.style.top = height16 + "px";
             levelfour.style.background = "none";
-            //levelfour.style.border = "none";
+            levelfour.style.border = "none";
             levelfour.style.position = "absolute";
             levelfour.id = "levelfour";
             document.body.appendChild(levelfour);
@@ -865,6 +1307,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelfive = document.createElement('input');
@@ -874,7 +1462,7 @@
             levelfive.style.left = leftDist17 + "px";
             levelfive.style.top = height17 + "px";
             levelfive.style.background = "none";
-            //levelfive.style.border = "none";
+            levelfive.style.border = "none";
             levelfive.style.position = "absolute";
             levelfive.id = "levelfive";
             document.body.appendChild(levelfive);
@@ -892,6 +1480,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelsix = document.createElement('input');
@@ -901,7 +1635,7 @@
             levelsix.style.left = leftDist18 + "px";
             levelsix.style.top = height18 + "px";
             levelsix.style.background = "none";
-            //levelsix.style.border = "none";
+            levelsix.style.border = "none";
             levelsix.style.position = "absolute";
             levelsix.id = "levelsix";
             document.body.appendChild(levelsix);
@@ -919,6 +1653,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelseven = document.createElement('input');
@@ -928,7 +1808,7 @@
             levelseven.style.left = leftDist19 + "px";
             levelseven.style.top = height19 + "px";
             levelseven.style.background = "none";
-            //levelseven.style.border = "none";
+            levelseven.style.border = "none";
             levelseven.style.position = "absolute";
             levelseven.id = "levelseven";
             document.body.appendChild(levelseven);
@@ -946,6 +1826,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var leveleight = document.createElement('input');
@@ -955,7 +1981,7 @@
             leveleight.style.left = leftDist20 + "px";
             leveleight.style.top = height20 + "px";
             leveleight.style.background = "none";
-            //leveleight.style.border = "none";
+            leveleight.style.border = "none";
             leveleight.style.position = "absolute";
             leveleight.id = "leveleight";
             document.body.appendChild(leveleight);
@@ -973,6 +1999,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelnine = document.createElement('input');
@@ -982,7 +2154,7 @@
             levelnine.style.left = leftDist21 + "px";
             levelnine.style.top = height21 + "px";
             levelnine.style.background = "none";
-            //levelnine.style.border = "none";
+            levelnine.style.border = "none";
             levelnine.style.position = "absolute";
             levelnine.id = "levelnine";
             document.body.appendChild(levelnine);
@@ -1000,6 +2172,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             var levelten = document.createElement('input');
@@ -1009,7 +2327,7 @@
             levelten.style.left = leftDist22 + "px";
             levelten.style.top = height22 + "px";
             levelten.style.background = "none";
-            //levelten.style.border = "none";
+            levelten.style.border = "none";
             levelten.style.position = "absolute";
             levelten.id = "levelten";
             document.body.appendChild(levelten);
@@ -1027,6 +2345,152 @@
                 levelnine.parentNode.removeChild(levelnine)
                 levelten.parentNode.removeChild(levelten)
                 back.parentNode.removeChild(back)
+
+                var pause = document.createElement('input');
+            pause.type = "button";
+            pause.style.width = buttonWidth4Num + "px";
+            pause.style.height = buttonHeight4Num + "px";
+            pause.style.left = leftDist7 + "px";
+            pause.style.top = height7 + "px";
+            pause.style.background = "none";
+            pause.style.border = "none";
+            pause.style.position = "absolute";
+            pause.id = "pause";
+            document.body.appendChild(pause);
+
+            pause.onclick = function () {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                if (pad) {
+                clearInterval(pad);
+                }
+                alert(document.getElementById("minutes").innerHTML + ':' + document.getElementById("seconds").innerHTML);             
+                var img3 = new Image()
+                img3.src = "images/pause.jpg"
+                context.drawImage(img3, 0, 0, 720, 480);
+                pause.parentNode.removeChild(pause)
+                restart.parentNode.removeChild(restart)
+                mute.parentNode.removeChild(mute)
+
+                var pause1 = document.createElement('input');
+                pause1.type = "button";
+                pause1.style.width = buttonWidth5Num + "px";
+                pause1.style.height = buttonHeight5Num + "px";
+                pause1.style.left = leftDist8 + "px";
+                pause1.style.top = height8 + "px";
+                pause1.style.background = "none";
+                pause1.style.border = "none";
+                pause1.style.position = "absolute";
+                pause1.id = "pause1";
+                document.body.appendChild(pause1);
+
+                pause1.onclick = function () {
+                    startLevel(level1);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                    back1.parentNode.removeChild(back1)
+                }
+
+                var pause2 = document.createElement('input');
+                pause2.type = "button";
+                pause2.style.width = buttonWidth6Num + "px";
+                pause2.style.height = buttonHeight6Num + "px";
+                pause2.style.left = leftDist9 + "px";
+                pause2.style.top = height9 + "px";
+                pause2.style.background = "none";
+                pause2.style.border = "none";
+                pause2.style.position = "absolute";
+                pause2.id = "pause2";
+                document.body.appendChild(pause2);
+
+                pause2.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    var img1 = new Image()
+                    img1.src = "images/instructions.jpg"
+                    context.drawImage(img1, 0, 0, 720, 480);
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+
+                    var back1 = document.createElement('input');
+                    back1.type = "button";
+                    back1.style.width = buttonWidth3Num + "px";
+                    back1.style.height = buttonHeight3Num + "px";
+                    back1.style.left = leftDist6 + "px";
+                    back1.style.top = height6 + "px";
+                    back1.style.background = "none";
+                    back1.style.border = "none";
+                    back1.style.position = "absolute";
+                    back1.id = "back1";
+                    document.body.appendChild(back1);
+
+                    back1.onclick = function () {
+                        startLevel(level1);
+                        back1.parentNode.removeChild(back1)
+                        pause1.parentNode.removeChild(pause1)
+                        pause2.parentNode.removeChild(pause2)
+                        pause3.parentNode.removeChild(pause3)
+                    }
+                };
+
+                var pause3 = document.createElement('input');
+                pause3.type = "button";
+                pause3.style.width = buttonWidth7Num + "px";
+                pause3.style.height = buttonHeight7Num + "px";
+                pause3.style.left = leftDist10 + "px";
+                pause3.style.top = height10 + "px";
+                pause3.style.background = "none";
+                pause3.style.border = "none";
+                pause3.style.position = "absolute";
+                pause3.id = "pause3";
+                document.body.appendChild(pause3);
+
+                pause3.onclick = function () {
+                    var canvas = document.getElementById("canvas");
+                    var context = canvas.getContext("2d");
+                    window.location.href = "./FranticFrigate.html"
+                    pause1.parentNode.removeChild(pause1)
+                    pause2.parentNode.removeChild(pause2)
+                    pause3.parentNode.removeChild(pause3)
+                }
+            }
+
+
+            var restart = document.createElement('input');
+            restart.type = "button";
+            restart.style.width = buttonWidth8Num + "px";
+            restart.style.height = buttonHeight8Num + "px";
+            restart.style.left = leftDist11 + "px";
+            restart.style.top = height11 + "px";
+            restart.style.background = "none";
+            restart.style.border = "none";
+            restart.style.position = "absolute";
+            restart.id = "restart";
+            document.body.appendChild(restart);
+
+            restart.onclick = function () {
+                startLevel(level);
+
+            }
+
+            var mute = document.createElement('input');
+            mute.type = "button";
+            mute.style.width = buttonWidth9Num + "px";
+            mute.style.height = buttonHeight9Num + "px";
+            mute.style.left = leftDist12 + "px";
+            mute.style.top = height12 + "px";
+            mute.style.background = "none";
+            mute.style.border = "none";
+            mute.style.position = "absolute";
+            mute.id = "mute";
+            document.body.appendChild(mute);
+
+            mute.onclick = function () {
+                //code goes here nick!!
+
+            }
             };
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1038,7 +2502,7 @@
             back.style.left = leftDist4 + "px";
             back.style.top = height4 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
@@ -1057,7 +2521,7 @@
         highscores.style.left = leftDist2 + "px";          
         highscores.style.top = height2 + "px";
         highscores.style.background = "none";
-        //highscores.style.border = "none";
+        highscores.style.border = "none";
         highscores.style.position = "absolute";
         highscores.id = "highscores";
         document.body.appendChild(highscores);
@@ -1081,7 +2545,7 @@
             back.style.left = leftDist5 + "px";
             back.style.top = height5 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
@@ -1100,7 +2564,7 @@
         instructions.style.left = leftDist3 + "px";         
         instructions.style.top = height3 + "px";
         instructions.style.background = "none";
-        //instructions.style.border = "none";
+        instructions.style.border = "none";
         instructions.style.position = "absolute";
         instructions.id = "instructions";
         document.body.appendChild(instructions);
@@ -1123,7 +2587,7 @@
             back.style.left = leftDist6 + "px";
             back.style.top = height6 + "px";
             back.style.background = "none";
-            //back.style.border = "none";
+            back.style.border = "none";
             back.style.position = "absolute";
             back.id = "back";
             document.body.appendChild(back);
