@@ -237,11 +237,11 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-<<<<<<< HEAD
+
         //startLevel(level6);
-=======
+
         //startLevel(level10);
->>>>>>> 7679463e3478fdfd206060b83381a3dcf5eb3def
+
         StartMenu();
     };
 
