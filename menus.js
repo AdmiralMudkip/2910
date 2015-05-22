@@ -1063,6 +1063,7 @@
         document.body.appendChild(highscores);
 
         highscores.onclick = function () {
+            highscoreMeta();
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
             var img2 = new Image()
