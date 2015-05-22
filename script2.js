@@ -520,6 +520,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == goal) {
                     //winning anim function
+                    win.play();
                     winner(movement, currentHighScore);
                     return;
                 }
@@ -559,6 +560,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == goal) {
                     //winning anim function
+                    win.play();
                     winner(movement, currentHighScore);
                     return;
                 }
@@ -598,6 +600,7 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == goal) {
                     //winning anim function
+                    win.play();
                     winner(movement, currentHighScore);
                     return;
                 }
@@ -690,7 +693,7 @@ window.requestAnimFrame = (function(){
     }
 
     function loseSound() {
-        return new Audio("sound/button.mp3", true);     
+        return new Audio("sound/Explosion.mp3", true);     
     }
 
     //background music depending on where you are in the game
