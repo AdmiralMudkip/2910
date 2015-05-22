@@ -30,6 +30,16 @@
             var buttonWidth7Num = parseInt(x);
             var buttonWidth8Num = parseInt(x);
             var buttonWidth9Num = parseInt(x);
+            var buttonWidth10Num = parseInt(x);
+            var buttonWidth11Num = parseInt(x);
+            var buttonWidth12Num = parseInt(x);
+            var buttonWidth13Num = parseInt(x);
+            var buttonWidth14Num = parseInt(x);
+            var buttonWidth15Num = parseInt(x);
+            var buttonWidth16Num = parseInt(x);
+            var buttonWidth17Num = parseInt(x);
+            var buttonWidth18Num = parseInt(x);
+            var buttonWidth19Num = parseInt(x);
 
             //reduces buttonWidthNum to be half of what it was, change this to whatever, but use multiplication 
             buttonWidthNum = (buttonWidthNum * .375);
@@ -42,6 +52,16 @@
             buttonWidth7Num = (buttonWidth7Num * .42);
             buttonWidth8Num = (buttonWidth8Num * .096);
             buttonWidth9Num = (buttonWidth9Num * .096);
+            buttonWidth10Num = (buttonWidth10Num * .096);
+            buttonWidth11Num = (buttonWidth11Num * .08);
+            buttonWidth12Num = (buttonWidth12Num * .11);
+            buttonWidth13Num = (buttonWidth13Num * .112);
+            buttonWidth14Num = (buttonWidth14Num * .1);
+            buttonWidth15Num = (buttonWidth15Num * .08);
+            buttonWidth16Num = (buttonWidth16Num * .096);
+            buttonWidth17Num = (buttonWidth17Num * .096);
+            buttonWidth18Num = (buttonWidth18Num * .096);
+            buttonWidth19Num = (buttonWidth19Num * .105);
           
 ///////////////////////PLAY//////////////////////////
 
@@ -329,6 +349,228 @@
             //width * number + canvas x start position
             var leftDist12 = (width * .59) + b;
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////LEVEL 1 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height13 = parseInt(a);
+            var buttonHeight10Num = parseInt(a);
+            buttonHeight10Num = (buttonHeight10Num * .15);
+            height13 = (height13 * 0.248);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist13 = (width * .555) + b;
+
+////////////////LEVEL 2 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height14 = parseInt(a);
+            var buttonHeight11Num = parseInt(a);
+            buttonHeight11Num = (buttonHeight11Num * .13);
+            height14 = (height14 * 0.2485);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist14 = (width * .705) + b;
+
+////////////////LEVEL 3 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height15 = parseInt(a);
+            var buttonHeight12Num = parseInt(a);
+            buttonHeight12Num = (buttonHeight12Num * .15);
+            height15 = (height15 * 0.24);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist15 = (width * .835) + b;
+
+////////////////LEVEL 4 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height16 = parseInt(a);
+            var buttonHeight13Num = parseInt(a);
+            buttonHeight13Num = (buttonHeight13Num * .145);
+            height16 = (height16 * 0.41);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist16 = (width * .535) + b;
+
+////////////////LEVEL 5 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height17 = parseInt(a);
+            var buttonHeight14Num = parseInt(a);
+            buttonHeight14Num = (buttonHeight14Num * .145);
+            height17 = (height17 * 0.4);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist17 = (width * .665) + b;
+
+////////////////LEVEL 6 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height18 = parseInt(a);
+            var buttonHeight15Num = parseInt(a);
+            buttonHeight15Num = (buttonHeight15Num * .13);
+            height18 = (height18 * 0.4);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist18 = (width * .794) + b;
+
+////////////////LEVEL 7 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height19 = parseInt(a);
+            var buttonHeight16Num = parseInt(a);
+            buttonHeight16Num = (buttonHeight16Num * .15);
+            height19 = (height19 * 0.397);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist19 = (width * .898) + b;
+
+////////////////LEVEL 8 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height20 = parseInt(a);
+            var buttonHeight17Num = parseInt(a);
+            buttonHeight17Num = (buttonHeight17Num * .15);
+            height20 = (height20 * 0.57);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist20 = (width * .567) + b;
+
+////////////////LEVEL 9 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height21 = parseInt(a);
+            var buttonHeight18Num = parseInt(a);
+            buttonHeight18Num = (buttonHeight18Num * .14);
+            height21 = (height21 * 0.56);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist21 = (width * .7) + b;
+
+////////////////LEVEL 10 FOR LEVELSELECT////////////////////
+
+            //height for 'mute'
+            var a = ctx.canvas.style.height;
+            var height22 = parseInt(a);
+            var buttonHeight19Num = parseInt(a);
+            buttonHeight19Num = (buttonHeight19Num * .14);
+            height22 = (height22 * 0.56);
+
+            //left for 'mute'
+            var b = getXPosition(canvas);
+            var buttonLeftNum = parseInt(b);
+            buttonLeftNum = (buttonLeftNum * .7);
+            
+            //top for 'mute'
+            var buttonTopNum = (b * .7);
+            var buttonTopNum = (b * 1);
+            buttonTopNum = (buttonTopNum+ 50);
+     
+            //width * number + canvas x start position
+            var leftDist22 = (width * .857) + b;
+
         var play = document.createElement('input');
         play.type = "button";
         play.style.width = buttonWidthNum + "px";   
@@ -490,7 +732,6 @@
 
             }
 
-
         }
 
         var levelselect = document.createElement('input');
@@ -515,6 +756,280 @@
             highscores.parentNode.removeChild(highscores)
             levelselect.parentNode.removeChild(levelselect)
             instructions.parentNode.removeChild(instructions)
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            var levelone = document.createElement('input');
+            levelone.type = "button";
+            levelone.style.width = buttonWidth10Num + "px";
+            levelone.style.height = buttonHeight10Num + "px";
+            levelone.style.left = leftDist13 + "px";
+            levelone.style.top = height13 + "px";
+            levelone.style.background = "none";
+            //levelone.style.border = "none";
+            levelone.style.position = "absolute";
+            levelone.id = "levelone";
+            document.body.appendChild(levelone);
+
+            levelone.onclick = function () {
+                startLevel(level1);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var leveltwo = document.createElement('input');
+            leveltwo.type = "button";
+            leveltwo.style.width = buttonWidth11Num + "px";
+            leveltwo.style.height = buttonHeight11Num + "px";
+            leveltwo.style.left = leftDist14 + "px";
+            leveltwo.style.top = height14 + "px";
+            leveltwo.style.background = "none";
+            //leveltwo.style.border = "none";
+            leveltwo.style.position = "absolute";
+            leveltwo.id = "leveltwo";
+            document.body.appendChild(leveltwo);
+
+            leveltwo.onclick = function () {
+                startLevel(level2);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelthree = document.createElement('input');
+            levelthree.type = "button";
+            levelthree.style.width = buttonWidth12Num + "px";
+            levelthree.style.height = buttonHeight12Num + "px";
+            levelthree.style.left = leftDist15 + "px";
+            levelthree.style.top = height15 + "px";
+            levelthree.style.background = "none";
+            //levelthree.style.border = "none";
+            levelthree.style.position = "absolute";
+            levelthree.id = "levelthree";
+            document.body.appendChild(levelthree);
+
+            levelthree.onclick = function () {
+                startLevel(level3);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelfour = document.createElement('input');
+            levelfour.type = "button";
+            levelfour.style.width = buttonWidth13Num + "px";
+            levelfour.style.height = buttonHeight13Num + "px";
+            levelfour.style.left = leftDist16 + "px";
+            levelfour.style.top = height16 + "px";
+            levelfour.style.background = "none";
+            //levelfour.style.border = "none";
+            levelfour.style.position = "absolute";
+            levelfour.id = "levelfour";
+            document.body.appendChild(levelfour);
+
+            levelfour.onclick = function () {
+                startLevel(level4);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelfive = document.createElement('input');
+            levelfive.type = "button";
+            levelfive.style.width = buttonWidth14Num + "px";
+            levelfive.style.height = buttonHeight14Num + "px";
+            levelfive.style.left = leftDist17 + "px";
+            levelfive.style.top = height17 + "px";
+            levelfive.style.background = "none";
+            //levelfive.style.border = "none";
+            levelfive.style.position = "absolute";
+            levelfive.id = "levelfive";
+            document.body.appendChild(levelfive);
+
+            levelfive.onclick = function () {
+                startLevel(level5);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelsix = document.createElement('input');
+            levelsix.type = "button";
+            levelsix.style.width = buttonWidth15Num + "px";
+            levelsix.style.height = buttonHeight15Num + "px";
+            levelsix.style.left = leftDist18 + "px";
+            levelsix.style.top = height18 + "px";
+            levelsix.style.background = "none";
+            //levelsix.style.border = "none";
+            levelsix.style.position = "absolute";
+            levelsix.id = "levelsix";
+            document.body.appendChild(levelsix);
+
+            levelsix.onclick = function () {
+                startLevel(level6);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelseven = document.createElement('input');
+            levelseven.type = "button";
+            levelseven.style.width = buttonWidth16Num + "px";
+            levelseven.style.height = buttonHeight16Num + "px";
+            levelseven.style.left = leftDist19 + "px";
+            levelseven.style.top = height19 + "px";
+            levelseven.style.background = "none";
+            //levelseven.style.border = "none";
+            levelseven.style.position = "absolute";
+            levelseven.id = "levelseven";
+            document.body.appendChild(levelseven);
+
+            levelseven.onclick = function () {
+                startLevel(level7);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var leveleight = document.createElement('input');
+            leveleight.type = "button";
+            leveleight.style.width = buttonWidth17Num + "px";
+            leveleight.style.height = buttonHeight17Num + "px";
+            leveleight.style.left = leftDist20 + "px";
+            leveleight.style.top = height20 + "px";
+            leveleight.style.background = "none";
+            //leveleight.style.border = "none";
+            leveleight.style.position = "absolute";
+            leveleight.id = "leveleight";
+            document.body.appendChild(leveleight);
+
+            leveleight.onclick = function () {
+                startLevel(level8);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelnine = document.createElement('input');
+            levelnine.type = "button";
+            levelnine.style.width = buttonWidth18Num + "px";
+            levelnine.style.height = buttonHeight18Num + "px";
+            levelnine.style.left = leftDist21 + "px";
+            levelnine.style.top = height21 + "px";
+            levelnine.style.background = "none";
+            //levelnine.style.border = "none";
+            levelnine.style.position = "absolute";
+            levelnine.id = "levelnine";
+            document.body.appendChild(levelnine);
+
+            levelnine.onclick = function () {
+                startLevel(level9);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            var levelten = document.createElement('input');
+            levelten.type = "button";
+            levelten.style.width = buttonWidth19Num + "px";
+            levelten.style.height = buttonHeight19Num + "px";
+            levelten.style.left = leftDist22 + "px";
+            levelten.style.top = height22 + "px";
+            levelten.style.background = "none";
+            //levelten.style.border = "none";
+            levelten.style.position = "absolute";
+            levelten.id = "levelten";
+            document.body.appendChild(levelten);
+
+            levelten.onclick = function () {
+                startLevel(level10);
+                levelone.parentNode.removeChild(levelone)
+                leveltwo.parentNode.removeChild(leveltwo)
+                levelthree.parentNode.removeChild(levelthree)
+                levelfour.parentNode.removeChild(levelfour)
+                levelfive.parentNode.removeChild(levelfive)
+                levelsix.parentNode.removeChild(levelsix)
+                levelseven.parentNode.removeChild(levelseven)
+                leveleight.parentNode.removeChild(leveleight)
+                levelnine.parentNode.removeChild(levelnine)
+                levelten.parentNode.removeChild(levelten)
+                back.parentNode.removeChild(back)
+            };
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             var back = document.createElement('input');
             back.type = "button";
