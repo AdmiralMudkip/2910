@@ -337,7 +337,7 @@ window.requestAnimFrame = (function(){
             mineX = [1, 2, 3];
             mineY = [2, 4, 1];
             treasureX = [1, 4];//1,1 and 4
-            treasureY = [1, 4];
+            treasureY = [4, 1];
             nextLevel = level6;
             nextLevel = level6;
         } else if (level == level6) {
