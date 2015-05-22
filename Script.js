@@ -12,8 +12,8 @@ level 5
 level 6
             boatDrawX = 135;
             boatDrawY = 183;
-            mineX = [1, 2, 3];
-            mineY = [2, 4, 1];
+            mineX = [1, 2, 2, 4, 4, 5, 5, 6];
+            mineY = [2, 2, 4, 1, 3, 1, 3, 4];
             treasureX = [1, 5];
             treasureY = [1, 4];
             nextLevel = level7;
