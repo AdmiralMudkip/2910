@@ -237,12 +237,12 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
-
-        //startLevel(level6);
+backgroundMusic();
+        startLevel(level2);
 
         //startLevel(level10);
 
-        StartMenu();
+        //StartMenu();
     };
 
     function resize() {
@@ -343,7 +343,6 @@ window.requestAnimFrame = (function(){
             treasureX = [1, 4];//1,1 and 4
             treasureY = [4, 1];
             nextLevel = level6;
-            nextLevel = level6;
         } else if (level == level6) {
             boatDrawX = 135;
             boatDrawY = 50;
@@ -399,7 +398,7 @@ window.requestAnimFrame = (function(){
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
 
-        var win = winSoud();
+        var win = winSound();
 
         
         
@@ -443,14 +442,18 @@ window.requestAnimFrame = (function(){
             var bb = ((e.y / zz) * 480);
             //can you tell this is last minute yet?
                    
-                       if (aa > (((boatLocX - 1) * 64) + boatDrawX + x) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 22) && bb > (((boatLocY - 1) * 64) + boatDrawY + y) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 38)){      
-                    moveUp();
-                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 22) && bb > (((boatLocY - 1) * 64) + boatDrawY + y + 75) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 113)){
-                    moveDown();
-                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x - 57) && aa < (((boatLocX - 1) * 64) + boatDrawX + x - 22) && bb > (((boatLocY - 1) * 64) + boatDrawY + y + 50) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 73)) {
-                    moveLeft();
-                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x + 40) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 72) && bb > (((boatLocY - 1 ) * 64) + boatDrawY + y + 50) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 73)) { 
-                    moveRight(); 
+                       if (aa > (((boatLocX - 1) * 64) + boatDrawX + x + 72) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 95) && bb > (((boatLocY - 1) * 64) + boatDrawY + y) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 41)){      
+                    //moveUp();
+                    console.log('up');
+                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x + 72) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 95) && bb > (((boatLocY - 1) * 64) + boatDrawY + y + 75) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 113)){
+                    //moveDown();
+                    console.log('down');
+                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x + 15) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 60) && bb > (((boatLocY - 1) * 64) + boatDrawY + y + 50) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 73)) {
+                    //moveLeft();
+                    console.log('left');
+                } else if (aa > (((boatLocX - 1) * 64) + boatDrawX + x + 112) && aa < (((boatLocX - 1) * 64) + boatDrawX + x + 145) && bb > (((boatLocY - 1 ) * 64) + boatDrawY + y + 50) && bb < (((boatLocY - 1) * 64) + boatDrawY + y + 73)) { 
+                    console.log('right');
+                    //moveRight(); 
                }
         }
 
@@ -495,7 +498,7 @@ window.requestAnimFrame = (function(){
                     winner(movement, click, currentHighScore);
 
                     win.play();
-                    winner(movement, currentHighScore);
+                    
 
                     return;
                 }
@@ -541,7 +544,7 @@ window.requestAnimFrame = (function(){
                     winner(movement, click, currentHighScore);
 
                     win.play();
-                    winner(movement, currentHighScore);
+                    
 
                     return;
                 }
@@ -587,7 +590,7 @@ window.requestAnimFrame = (function(){
                     winner(movement, click, currentHighScore);
 
                     win.play();
-                    winner(movement, currentHighScore);
+                    
 
                     return;
                 }
@@ -631,7 +634,7 @@ window.requestAnimFrame = (function(){
                     winner(movement, click, currentHighScore);
 
                     win.play();
-                    winner(movement, currentHighScore);
+                    
 
                     return;
                 }
@@ -729,10 +732,10 @@ window.requestAnimFrame = (function(){
     }
 
     //background music depending on where you are in the game
-    function backgroundMusic(location) {
-        if(location.name == "LevelOne") {
+    function backgroundMusic() {
+        
             return new Audio("sound/background.mp3", true);
-        }
+        
     }
     
         function winner(movement, click, currentHighScore) {
@@ -762,6 +765,7 @@ window.requestAnimFrame = (function(){
             loss.play();
             startLevel(currentLevel);
             window.removeEventListener('keydown', movement, false);
+            window.removeEventListener('click', click, false);
         }
 
         function scoreIncrease(boatLocX, boatLocY, treasureX, treasureY) {
