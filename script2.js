@@ -237,7 +237,11 @@ window.requestAnimFrame = (function(){
             e.preventDefault();
         }, false);
 
+<<<<<<< HEAD
         //startLevel(level6);
+=======
+        //startLevel(level10);
+>>>>>>> 7679463e3478fdfd206060b83381a3dcf5eb3def
         StartMenu();
     };
 
@@ -337,13 +341,12 @@ window.requestAnimFrame = (function(){
             mineX = [1, 2, 3];
             mineY = [2, 4, 1];
             treasureX = [1, 4];//1,1 and 4
-            treasureY = [1, 4];
+            treasureY = [4, 1];
             nextLevel = level6;
             nextLevel = level6;
         } else if (level == level6) {
             boatDrawX = 135;
             boatDrawY = 50;
-            boatLocX = 1;
             boatLocY = 3;
             mineX = [1, 2, 2, 4, 4, 5, 5, 6];
             mineY = [2, 2, 4, 1, 3, 1, 3, 4];
@@ -351,17 +354,39 @@ window.requestAnimFrame = (function(){
             treasureY = [1, 4];
             nextLevel = level7;
         } else if (level == level7) {
-         
+            boatDrawX = 232;
+            boatDrawY = -12;
+            mineX = [1, 2, 2, 2, 3];
+            mineY = [2, 2, 4, 6, 4];
+            treasureX = [1];
+            treasureY = [6];
             nextLevel = level8;
         } else if (level == level8) {
-            
+            boatDrawX = 102;
+            boatDrawY = -12;
+            boatLocY = 3;
+            mineX = [2, 3, 3, 4, 4, 5, 6];
+            mineY = [4, 2, 4, 2, 6, 4, 4];
+            treasureX = [3, 3, 7];
+            treasureY = [1, 6, 4];
             nextLevel = level9;
         } else if (level == level9) {
-            
+            boatDrawX = 70;
+            boatDrawY = 50;
+            boatLocY = 2;
+            mineX = [1, 2, 2, 4, 5, 6, 7, 7, 8];
+            mineY = [3, 2, 3, 4, 2, 3, 1, 3, 3];
+            treasureX = [1, 8];
+            treasureY = [4, 1];
             nextLevel = level10;
         } else if (level == level10) {
-            
-            
+            boatDrawX = 70;
+            boatDrawY = -12;
+            boatLocY = 4;
+            mineX = [1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8];
+            mineY = [1, 3, 5, 2, 5, 2, 4, 1, 4, 6, 3, 4, 2, 5, 4];
+            treasureX = [4, 7];
+            treasureY = [1, 4];
         } else {
                
         }
@@ -373,7 +398,12 @@ window.requestAnimFrame = (function(){
         var boatMoveSound = boatSound();
         var music = backgroundMusic(currentLevel);
         var loss = loseSound();
+
         var win = winSoud();
+
+        
+        
+
         //music.addEventListener('ended', function() {
         //    this.currentTime = 0;
         //    this.play();
@@ -461,7 +491,12 @@ window.requestAnimFrame = (function(){
 
                 else if(checkLeft() == goal) {
                     //winning anim function
+
                     winner(movement, click, currentHighScore);
+
+                    win.play();
+                    winner(movement, currentHighScore);
+
                     return;
                 }
                 
@@ -502,7 +537,12 @@ window.requestAnimFrame = (function(){
 
                 if(checkRight() == goal) {
                     //winning anim function
+
                     winner(movement, click, currentHighScore);
+
+                    win.play();
+                    winner(movement, currentHighScore);
+
                     return;
                 }
                 
@@ -543,7 +583,12 @@ window.requestAnimFrame = (function(){
 
                 if(checkUp() == goal) {
                     //winning anim function
+
                     winner(movement, click, currentHighScore);
+
+                    win.play();
+                    winner(movement, currentHighScore);
+
                     return;
                 }
                 
@@ -582,7 +627,12 @@ window.requestAnimFrame = (function(){
 
                 if(checkDown() == goal) {
                     //winning anim function
+
                     winner(movement, click, currentHighScore);
+
+                    win.play();
+                    winner(movement, currentHighScore);
+
                     return;
                 }
                 
@@ -671,11 +721,13 @@ window.requestAnimFrame = (function(){
     
     function loseSound() {
         return new Audio("sound/Explosion.mp3", true);     
+
     }
     
     function winSound() {
         return new Audio("sound/Win.mp3", true);   
     }
+
     //background music depending on where you are in the game
     function backgroundMusic(location) {
         if(location.name == "LevelOne") {
@@ -684,7 +736,7 @@ window.requestAnimFrame = (function(){
     }
     
         function winner(movement, click, currentHighScore) {
-                    win.play();
+                    
                     var y = document.getElementById("seconds").innerHTML;
                     var z = document.getElementById("milliseconds").innerHTML;
                     var score = 100 - (10 * y) - (1 * z) + (treasureGrab * 50);
