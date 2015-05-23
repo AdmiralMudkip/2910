@@ -731,7 +731,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
 
@@ -930,7 +930,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
 
@@ -1104,7 +1104,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -1277,7 +1277,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -1450,7 +1450,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -1623,7 +1623,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -1796,7 +1796,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -1969,7 +1969,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -2142,7 +2142,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -2315,7 +2315,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
@@ -2488,7 +2488,7 @@
             document.body.appendChild(mute);
 
             mute.onclick = function () {
-                //code goes here nick!!
+                //mute button broken
 
             }
             };
